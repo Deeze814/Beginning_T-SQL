@@ -6,7 +6,7 @@ Repository to hold notes/exercises from the book
 
 <ol>
 	<li>In order to practice the examples from the book, we will need to install SQL Server and the Adventure Works database
-	<li>SQL Server Download</li>
+	<li><b>SQL Server Download</b></li>
 		<ul>
 			<li>I installed SQL Server 2017 Express <b>with Advanced Services</b> from https://www.microsoft.com/en-us/sql-server/sql-server-editions-express 
 				<ul>
@@ -23,7 +23,7 @@ Repository to hold notes/exercises from the book
 			</li>			
 		</ul>
 	</li>
-	<li>SQL Server Installation 
+	<li><b>SQL Server Installation </b>
 		<ul>
 			<li>Select the <b>New SQL Server stand-alone installation or add features to existing installation</b></li>
 			<li>I left all the pre-checked options as they were under the <b>Feature Selection</b></li>
@@ -40,7 +40,7 @@ Repository to hold notes/exercises from the book
 			</li>
 		</ul>
 	</li>
-	<li>SSMS Installation
+	<li><b>SSMS Installation</b>
 		<ul>
 			<li>Once installed, I pinned the SSMS 2017 icon to the taskbar and started the application.</li>
 			<li>Once started, I clicked the <b>Server name</b> dropdown
