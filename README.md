@@ -1,8 +1,8 @@
 # Beginning T-SQL, 3rd Edition - Kathi Kellenberger and Scott Shaw (Apress, 2014)
 Repository to hold notes/exercises from the book
 
-## Chapter 1: ##
-### Getting Started ###
+## Chapter 1: Getting Started##
+### SQL Server Setup ###
 
 <ol>
 	<li>In order to practice the examples from the book, we will need to install SQL Server and the Adventure Works database
@@ -38,7 +38,6 @@ Repository to hold notes/exercises from the book
 					<li>Click the <b>FILESTREAM</b> tab and check all 3 checkboxes</li>
 				</ul>				
 			</li>
-
 		</ul>
 	</li>
 	<li>SSMS Installation
