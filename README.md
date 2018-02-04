@@ -1,7 +1,7 @@
 # Beginning T-SQL, 3rd Edition - Kathi Kellenberger and Scott Shaw (Apress, 2014)
 Repository to hold notes/exercises from the book
 
-## Chapter 1: Getting Started##
+## Chapter 1: Getting Started ##
 ### SQL Server Setup ###
 
 <ol>
