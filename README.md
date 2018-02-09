@@ -64,7 +64,28 @@ Repository to hold notes/exercises from the book
 	</li>
 	<li>Installing the <b>Adventures Works</b> test database
 		<ul>
-			<li></li>
+			<li>The book is a bit out-dated and it seems that Adventure Works has been moved to being archived</li>
+			<li>A new <b>World Wide Importers</b> database is the most current, but since all examples in this book use <b>Adventure Works 2012</b>, I will as well</li>
+			<li>I got the 2012 .bak for Adventure Works at: https://github.com/Microsoft/sql-server-samples/releases/tag/adventureworks </li>
+			<li>Following the instructions for restoring a backup (https://github.com/Microsoft/sql-server-samples/blob/master/samples/databases/adventure-works/README.md#to-restore-a-database-backup)
+				<ul>
+					<li>Locate the Backup folder for your SQL Server instance. The default path for 64-bit SQL Server 2016 is C:\Program Files\Microsoft SQL Server\MSSQL13.MSSQLSERVER\MSSQL\Backup. The MSSQL value is MSSQL14 for SQL Server 2017, MSSQL13 for SQL Server 2016, MSSQL12 for SQL Server 2014, MSSQL11 for SQL Server 2012, and MSSQL10 for SQL Server 2008R2.</li>
+					<li>Download the .bak file from AdventureWorks release and save it to the Backup folder for your SQL Server instance.</li>	
+					<li>Open SQL Server Management Studio and connect to your SQL Server instance.</li>
+					<li>Restore the database using the SQL Server Management Studio user interface.
+						<ul>
+							<li>In Object Explorer, connect to an instance of the SQL Server Database Engine and then expand that instance.</li>
+							<li>Right-click Databases and select Restore Database...</li>
+							<li>On the General page, use the <b>Source</b> section to specify the source and location of the backup sets to restore. Select one of the following options:
+								<ul>
+									<li>I had to select the <b>Device</b> option</li>
+									<li>Then the <b>...</b> to browse to my downloaded .bak files after click <b>Add</b></li>									
+								</ul>
+							</li>
+						</ul>
+					</li>					
+				</ul>
+			</li>
 		</ul>
 	</li>
 </ol>
