@@ -89,3 +89,67 @@ Repository to hold notes/exercises from the book
 		</ul>
 	</li>
 </ol>
+
+## Chapter 2: Exploring Database Concepts ##
+### SQL Server Setup ###
+
+<ol>
+	<li>SQL Server Files
+		<ul>
+			<li>A SQL Server data must comprise at least two files
+				<ul>
+					<li><b>.mdf:</b> The default data file
+						<ul>
+							<li>Data files can be organized into multiple file groups</li>
+							<li>File groups are use for strategically backing up only portions of the database at a time or store the data on different drives for increased performance.</li>
+						</ul>
+					</li>
+					<li><b>.ldf:</b> The log file
+						<ul>
+							<li>The log file in SQL Server stores <b>transactions</b> to ensure data consistency</li>
+							<li>DBA can take frequent backups of the log files to allow the database to be restored to a point in time in case of data corruption, disk failure, or other disaster</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+	<li>Understanding Indexes
+		<ul>
+			<li>A <b>clustered index</b> stores and organizes the table
+				<ul>
+					<li>A table can have only one clustered index</li>
+					<li>A phone book is a good example of a clustered index
+						<ul>
+							<li>Each entry in the directory represents one row of the table</li>
+							<li>When a new entry is added, it is added to the correct <b>data page</b> relative to the other existing entries</li>
+							<li>A list of pointers maintains order between the pages, so the rows in other pages will not have to actually move.</li>
+							<li>In our phone book example, the phone number is the primary key but not the clustered index
+								<ul>
+									<li>Normally the primary key is the clustered index (it is by default if you dont specify)</li>
+								</ul>
+							</li>
+							<li>Our clustered index is the <b>First/Last name</b> combination
+								<ul>
+									<li>You would seek the phone number you want by looking up the last name and then the first name
+										<ul>
+											<li>The process of using the First/Last name to locate a record would be a <b>clustered index seek</b></li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			<li>A <b>non-clustered index</b> is defined on one or more columns of the table, but is is a <b>separate structure</b> that points to the actual table
+				<ul>
+					<li>The non-clustered index allows for a different sorting strategy for records in a table but the information of this sorting is stored apart from the actual table it is referencing (unlike the clustered index which is the primary sort strategy of the actual table.)</li>
+					<li>A good example of a non-clustered index would be the index in the back of a book.</li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+</ol>
+
+
