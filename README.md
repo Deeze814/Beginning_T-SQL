@@ -2,7 +2,7 @@
 Repository to hold notes/exercises from the book
 
 ## Chapter 1: Getting Started ##
-### SQL Server Setup ###
+### Getting Setup ###
 
 <ol>
 	<li>In order to practice the examples from the book, we will need to install SQL Server and the Adventure Works database
@@ -91,7 +91,7 @@ Repository to hold notes/exercises from the book
 </ol>
 
 ## Chapter 2: Exploring Database Concepts ##
-### SQL Server Setup ###
+### File Types ###
 
 <ol>
 	<li>SQL Server Files
@@ -114,6 +114,11 @@ Repository to hold notes/exercises from the book
 			</li>
 		</ul>
 	</li>
+</ol>
+
+### Indexes ###
+
+<ol>
 	<li>Understanding Indexes
 		<ul>
 			<li>A <b>clustered index</b> stores and organizes the table
@@ -146,6 +151,51 @@ Repository to hold notes/exercises from the book
 				<ul>
 					<li>The non-clustered index allows for a different sorting strategy for records in a table but the information of this sorting is stored apart from the actual table it is referencing (unlike the clustered index which is the primary sort strategy of the actual table.)</li>
 					<li>A good example of a non-clustered index would be the index in the back of a book.</li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+</ol>
+
+## Chapter 3: Writing Simple Select Queries ##
+### Taking Advantage of Indexes ###
+
+<ol>
+	<li>Searching on Composite keys
+		<ul>
+			<li>When a table contains an <b>index</b> on a column, the database engine will usually use that index to find the rows for the results if the column appears in the WHERE clause</li>
+			<li>When the index is a <b>composite key</b> (such as the Person.Person table's <b>IX_Person_LastName_FirstName_MiddleName</b>), the <b>WHERE</b> clause needs to filter on the first column declared in the composite index in order to take full advantage of the index's performance benefit
+				<ul>
+					<li>This is because the non-clustered index created on Last/First/Middle name has the rows organized around the <b>Last Name</b> value.</li>
+					<li>Think about our phone book example, searching for a phone number and you only have the first name
+						<ul>
+							<li>SQL Server has to do the same thing, looking at the First Name value of each entry in the index</li>
+							<li>This is still faster than doing a lookup against the clustered index (the actual table) because the non-clustered index contains less data per row (only Last/First/Middle name values)</li>
+						</ul>
+					</li>
+					<li>For an example see <b>Chapter 3/Seek_Vs_Scan.sql</b></li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+	<li>Seek Vs. Scan
+		<ul>
+			<li><b>Seek</b>
+				<ul>
+					<li>When the DB can quickly look at records to tell if they match the criteria of a query
+						<ul>
+							<li>Can use sorting algorithms to become faster</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			<li><b>Scan:</b>
+				<ul>
+					<li>When the DB must sequentially process each row to test each record for matching the criteria of a query
+						<ul>
+							<li>It is sequential because the DB cannot determine from the index if the record matches search criteria and therefore has to go record by record.</li>
+						</ul>
+					</li>
 				</ul>
 			</li>
 		</ul>
