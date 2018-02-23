@@ -238,7 +238,7 @@ Repository to hold notes/exercises from the book
 					<li>Follows the format:
 <p>
 
-```TSQL
+```SQL
 SELECT * FROM Person.Address
 ```
 </p>
