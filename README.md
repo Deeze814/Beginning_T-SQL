@@ -239,7 +239,7 @@ Repository to hold notes/exercises from the book
 <p>
 
 ```SQL
-SELECT * FROM Person.Address
+SELECT * FROM Person.Address where intPersonID = 5;
 ```
 </p>
 					</li>
