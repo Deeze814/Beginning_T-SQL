@@ -172,8 +172,7 @@ Repository to hold notes/exercises from the book
 							<li>SQL Server has to do the same thing, looking at the First Name value of each entry in the index</li>
 							<li>This is still faster than doing a lookup against the clustered index (the actual table) because the non-clustered index contains less data per row (only Last/First/Middle name values)</li>
 						</ul>
-					</li>
-					<li>For an example see <b>Chapter 3/Seek_Vs_Scan.sql</b></li>
+					</li>					
 				</ul>
 			</li>
 		</ul>
@@ -195,6 +194,54 @@ Repository to hold notes/exercises from the book
 						<ul>
 							<li>It is sequential because the DB cannot determine from the index if the record matches search criteria and therefore has to go record by record.</li>
 						</ul>
+					</li>
+				</ul>
+			</li>
+			<li>For an example see <b>Chapter 3/Seek_Vs_Scan.sql</b></li>
+		</ul>
+	</li>
+</ol>
+
+## Chapter 4: Using Built-In Functions and Expressions ##
+### Concatenating Strings ###
+<ol>
+	<li>Concatenating String values with <b>NULL</b> will always return <b>NULL</b>
+		<ul>
+			<li>This concept is sometimes referred to as <b>NULL Propagation</b>
+				<ul>
+					<li>This makes sense when you consider that a value of NULL means <b>unknown</b> in TSQL</li>
+					<li>Thus, if you add something to an unknown quantity or entity, you still do not know what the result will be and so NULL (or unknown) is returned</li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+	<li>The <b>CONCAT</b> function
+		<ul>
+			<li>This function was introduced by SQL Server 2012</li>
+			<li>It can concatenate string and even non-string values</li>
+			<li>It takes any number of arguments and concatenates them together</li>
+			<li><b>NULL</b> values are ignored by the CONCAT function</li>
+			<li>See Chapter4/Concat_Function.sql for more information</li>
+		</ul>
+	</li>
+	<li><b>ISNULL</b> and <b>COALESCE</b>
+		<ul>
+			<li>Both of these functions are available to provide a way to replace NULL values</li>
+			<li><b>ISNULL</b>
+				<ul>
+					<li>Takes two parameters:
+						<ul>
+							<li>First: the value to check for NULL</li>
+							<li>Second: the value to use in place of the checked value if it is NULL</li>
+						</ul>
+					</li>
+					<li>Follows the format:
+<p>
+
+```TSQL
+SELECT * FROM Person.Address
+```
+</p>
 					</li>
 				</ul>
 			</li>
