@@ -245,6 +245,21 @@ ISNULL(<value>, <replacement>);
 					</li>
 				</ul>
 			</li>
+			<li><b>COALESCE</b>
+				<ul>
+					<li>Takes any number of arguments and returns the first non-NULL value</li>
+					<li>COALESCE is generally preferred over ISNULL since it meets ANSI standards</li>
+					<li>Follows the format
+<p>
+
+```SQL
+COALESCE(<value1>,<value2>, ..., <valueN>);
+```
+</p>
+					</li>
+				</ul>
+			</li>
+			<li>See Chapter4/IsNull_Coalesce.sql for more information</li>
 		</ul>
 	</li>
 </ol>
