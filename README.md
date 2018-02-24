@@ -222,6 +222,19 @@ Repository to hold notes/exercises from the book
 			<li>It takes any number of arguments and concatenates them together</li>
 			<li><b>NULL</b> values are ignored by the CONCAT function</li>
 			<li>See Chapter4/Concat_Function.sql for more information</li>
+			<li>Instead of using <b>CAST</b> or <b>CONVERT</b> to concatenate numeric data types with strings, you can use <b>CONCAT</b> which will automatically convert the numeric value to a string
+				<ul>
+					<li>
+<p>
+
+```SQL
+SELECT 1 + '1'
+```
+</p>
+					</li>
+					<li>If the desired result is `11` instead of 2, then you must explicitly convert the numeric one to a string.</li>
+				</ul>
+			</li>
 		</ul>
 	</li>
 	<li><b>ISNULL</b> and <b>COALESCE</b>
@@ -262,6 +275,115 @@ COALESCE(<value1>,<value2>, ..., <valueN>);
 			<li>See Chapter4/IsNull_Coalesce.sql for more information</li>
 		</ul>
 	</li>
+	<li><b>CASE</b> and <b>CONVERT</b>
+		<ul>
+			<li><b>CAST</b> follows the format:
+<p>
+
+```SQL
+CAST(<value> AS <new data type>)
+```
+</p>
+
+			</li>
+			<li>CONVERT follow the format:
+<p>
+
+```SQL
+CONVERT(<new data type>, <value>)
+```
+</p>
+			</li>
+		</ul>
+	</li>
 </ol>
 
+### <b>LEFT</b> and <b>RIGHT</b> ###
+
+<ol>
+	<li>The <b>LEFT</b> and <b>RIGHT</b> functions return a specified number of characters on the left or right of a string
+		<ul>
+			<li>The format for each:
+<p>
+
+```SQL
+LEFT(<string>,<number of characters>)
+RIGHT(<string>,<number of characters>)
+```
+</p>
+			</li>
+			<li><b>NOTE:</b> Even if the value contains fewer characters than the number specified in the second parameter, the function still works to return as many characters as possible</li>
+		</ul>
+	</li>
+</ol>
+
+### <b>LEN</b> and <b>DATALENGTH</b> ###
+
+<ol>
+	<li>
+		<ul>Both of these functions serve as a means to return the number of characters in a sring
+			<li>The format is the same for both:
+<p>
+
+```SQL
+LEN(<string>)
+DATALENGTH(<string>)
+```
+</p>
+			</li>
+			<li>Be careful when using <b>DATALENGTH</b>, as it will the number of <b>BYTES</b> in a string versus the number of characters
+				<ul>
+					<li>This becomes important when dealing with <b>VARCHAR</b> versus <b>NVARCHAR</b>
+						<ul>
+							<li><b>VARCHAR</b> stores characters as a single byte</li>
+							<li><b>NVARCHAR</b> stores characters as two bytes</li>
+						</ul>
+					</li>
+					<li>This means that using <b>DATALENGTH</b> on an <b>NVARCHAR</b> would result in a number twice as large as a call using <b>LEN</b> on the same string</li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+</ol>
+
+### String Traversal ###
+
+
+<ol>
+	<li><b>CHARINDEX</b>
+		<ul>
+			<li>Used to find the location of a string within the specified string and return its numeric index
+				<ul>
+					<li><b>NOTE:</b> The first letter of the string is treated as <b>1</b>, not <b>0</b> in terms of the numeric value returned</li>
+					<li><b>NOTE:</b> When specifying the <b>star location</b>, the start of the string is considered <b>0</b></li>
+					<li><b>NOTE:</b> The search is case <b>insensitive</b></li>
+				</ul>
+			</li>
+			<li>Follows the format:
+<p>
+
+```SQL
+CHARINDEX(<search string>, <target string>[,<start location>])
+```
+</p>
+			</li>
+			<li>See exercise Chapter4/CharIndex</li>
+		</ul>
+	</li>
+	<li><b>SUBSTRING</b>
+		<ul>
+			<li>Allows the searching of a string in order to return the characters between the specified start and end parameters</li>
+			<li>If the <b>start position</b> is past the end of the string, NULL will be returned</li>
+			<li>
+<p>
+
+```SQL
+SUBSTRING(<string>,<start location>, <length>)
+```
+</p>
+			</li>
+			<li>See exercise Chapter4/SubString</li>
+		</ul>
+	</li>
+</ol>
 
