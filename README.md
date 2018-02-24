@@ -270,9 +270,9 @@ COALESCE(<value1>,<value2>, ..., <valueN>);
 ```
 </p>
 					</li>
+					<li>See Chapter4/IsNull_Coalesce.sql for more information</li>
 				</ul>
 			</li>
-			<li>See Chapter4/IsNull_Coalesce.sql for more information</li>
 		</ul>
 	</li>
 	<li><b>CASE</b> and <b>CONVERT</b>
