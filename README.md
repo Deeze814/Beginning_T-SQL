@@ -284,10 +284,7 @@ COALESCE(<value1>,<value2>, ..., <valueN>);
 CAST(<value> AS <new data type>)
 ```
 </p>
-
 			</li>
-		</ul>
-		<ul>
 			<li>CONVERT follow the format:
 <p>
 
