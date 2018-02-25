@@ -453,6 +453,7 @@ DATEADD(<date part>, <number>, <date>)
 </p>
 			</li>
 			<li><b>NOTE:</b> T-SQL does not have a <b>DATESUBTRACT</b> but you can use a negative number to achieve the same effect.</li>
+			<li>See exercise <b>Chapter4/DateAdd</b></li>
 			<li>The values for the <b>Date Part</b> parameter</li>
 		</ul>
 	</li>
