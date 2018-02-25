@@ -474,7 +474,8 @@ DATEADD(<date part>, <number>, <date>)
 | Microsecond | Mcs			|
 | Nanosecond | Ns			|		
 
-<ol start="4"><b>DATEDIFF</b>
+<ol start="4">
+	<b>DATEDIFF</b>
 	<li>
 		<ul>
 			<li></li>
