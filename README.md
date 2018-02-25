@@ -270,7 +270,7 @@ COALESCE(<value1>,<value2>, ..., <valueN>);
 ```
 </p>
 					</li>
-					<li>See Chapter4/IsNull_Coalesce.sql for more information</li>
+					<li>See <b>Chapter4/IsNull_Coalesce.sql</b> for more information</li>
 				</ul>
 			</li>
 		</ul>
@@ -364,7 +364,7 @@ CHARINDEX(<search string>, <target string>[,<start location>])
 ```
 </p>
 			</li>
-			<li>See exercise Chapter4/CharIndex</li>
+			<li>See exercise <b>Chapter4/CharIndex</b></li>
 		</ul>
 	</li>
 	<li><b>SUBSTRING</b>
@@ -380,6 +380,97 @@ SUBSTRING(<string>,<start location>, <length>)
 </p>
 			</li>
 			<li>See exercise Chapter4/SubString</li>
+		</ul>
+	</li>
+	<li><b>CHOOSE</b>
+		<ul>
+			<li>This is a new function introduced with SQL Server 2012</li>
+			<li>Allows you to select a value in an array (series of values) based on an index
+				<ul>
+					<li>The index points to the position in the series of values (array) you want to return</li>
+				</ul>
+			</li>
+			<li>Follows the format:
+<p>
+
+```SQL
+CHOOSE(index, val_1, val_2[, val_n])
+```
+</p>			
+			</li>
+			<li>See Exercise <b>Chpater4/Choose</b></li>
+			<li><b>NOTE:</b> The function takes the highest data type precedence.
+				<ul>
+					<li>This means if there is an integer in the list, the <b>CHOOSE</b> function will try to convert any results to an integer</li>
+					<li>This is best used when the range of values ("array") are of the same type or easily convertible</li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+	<li><b>REVERSE</b>
+		<ul>
+			<li>This function will reverse the characters in a string</li>
+			<li>A common use case is to pair <b>REVERSE</b> with <b>CHARINDEX</b> and <b>RIGHT</b> to find a file name from a string value of its file path</li>
+			<li>See <b>Chapter4/Reverse</b> for more information</li>
+		</ul>
+	</li>
+</ol>
+
+### Using Date and Time Functions ###
+
+<ol>
+	<li><b>GETDATE</b> or <b>SYSDATETIME</b> can be used to get the current date and time of the server
+		<ul>
+			<li><b>GETDATE</b> returns <b>3</b> decimal places after the second value
+				<ul>
+					<li>The data type returned is of the <b>DATETIME</b> type</li>
+				</ul>
+			</li>
+			<li><b>SYSDATETIME</b> returns <b>7</b> decimal places after the second value
+				<ul>
+					<li>The data type returned is of the <b>DATETIME2(7)</b> type</li>
+				</ul>
+			</li>
+		</ul>
+		<li>The functions can be invoked in the following manner:
+<p>
+
+```SQL
+SELECT GETDATE();
+SELECT SYSDATETIME();
+```
+</p>			
+		</li>
+	</li>
+	<li><b>DATEADD</b>
+		<ul>
+			<li>Follows the format:
+<p>
+
+```SQL
+DATEADD(<date part>, <number>, <date>)
+```
+</p>
+			</li>
+			<li>The values for the <b>Date Part</b> parameter
+			
+			| Date Part | Abbreviation 	|
+			| --------- | ------------ 	|
+			| Year		| yy, yyyy	   	|
+			| Quarter	| qq, q 	   	|
+			| Month		| mm, m  	   	|
+			| DayofYear	| dy, y   	   	|
+			| Day 		| dd, d		   	|
+			| Week		| wk, ww       	|
+			| Weekday	| Dw 		   	|
+			| Hour		| Hh			|
+			| Minute	| mi, n			|
+			| Second	| ss, s 		|
+			| Millisecond | Ms			|
+			| Microsecond | Mcs			|
+			| Nanosecond | Ns			|			
+			</li>
+			<li><b>NOTE:</b> T-SQL does not have a <b>DATESUBTRACT</b> but you can use a negative number to achieve the same effect.</li>
 		</ul>
 	</li>
 </ol>
