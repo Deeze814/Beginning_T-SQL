@@ -346,8 +346,6 @@ DATALENGTH(<string>)
 </ol>
 
 ### String Traversal ###
-
-
 <ol>
 	<li><b>CHARINDEX</b>
 		<ul>
