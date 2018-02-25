@@ -456,6 +456,7 @@ DATEADD(<date part>, <number>, <date>)
 		</ul>
 	</li>
 </ol>
+
     | Date Part | Abbreviation 	|
     | --------- | ------------ 	|
     | Year		| yy, yyyy	   	|
