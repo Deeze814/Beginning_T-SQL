@@ -456,21 +456,21 @@ DATEADD(<date part>, <number>, <date>)
 		</ul>
 	</li>
 	
-| Date Part | Abbreviation 	|
-| --------- | ------------ 	|
-| Year		| yy, yyyy	   	|
-| Quarter	| qq, q 	   	|
-| Month		| mm, m  	   	|
-| DayofYear	| dy, y   	   	|
-| Day 		| dd, d		   	|
-| Week		| wk, ww       	|
-| Weekday	| Dw 		   	|
-| Hour		| Hh			|
-| Minute	| mi, n			|
-| Second	| ss, s 		|
-| Millisecond | Ms			|
-| Microsecond | Mcs			|
-| Nanosecond | Ns			|		
+	| Date Part | Abbreviation 	|
+	| --------- | ------------ 	|
+	| Year		| yy, yyyy	   	|
+	| Quarter	| qq, q 	   	|
+	| Month		| mm, m  	   	|
+	| DayofYear	| dy, y   	   	|
+	| Day 		| dd, d		   	|
+	| Week		| wk, ww       	|
+	| Weekday	| Dw 		   	|
+	| Hour		| Hh			|
+	| Minute	| mi, n			|
+	| Second	| ss, s 		|
+	| Millisecond | Ms			|
+	| Microsecond | Mcs			|
+	| Nanosecond | Ns			|		
 	
 
 	<li>
