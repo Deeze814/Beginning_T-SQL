@@ -456,6 +456,7 @@ DATEADD(<date part>, <number>, <date>)
 		</ul>
 	</li>
 	<li>
+	
 | Date Part | Abbreviation 	|
 | --------- | ------------ 	|
 | Year		| yy, yyyy	   	|
@@ -471,7 +472,6 @@ DATEADD(<date part>, <number>, <date>)
 | Millisecond | Ms			|
 | Microsecond | Mcs			|
 | Nanosecond | Ns			|		
-	
 	</li>
 	<li>
 		<ul>
