@@ -473,7 +473,7 @@ DATEADD(<date part>, <number>, <date>)
     | Microsecond | Mcs			|
     | Nanosecond | Ns			|		
 
-<ol>
+<ol start="4">
 	<li>
 		<ul>
 			<li><b>NOTE:</b> T-SQL does not have a <b>DATESUBTRACT</b> but you can use a negative number to achieve the same effect.</li>
