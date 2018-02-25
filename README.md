@@ -455,26 +455,21 @@ DATEADD(<date part>, <number>, <date>)
 			<li>The values for the <b>Date Part</b> parameter</li>
 		</ul>
 	
-| Date Part | Abbreviation 	|
-| --------- | ------------ 	|
-| Year		| yy, yyyy	   	|
-| Quarter	| qq, q 	   	|
-| Month		| mm, m  	   	|
-| DayofYear	| dy, y   	   	|
-| Day 		| dd, d		   	|
-| Week		| wk, ww       	|
-| Weekday	| Dw 		   	|
-| Hour		| Hh			|
-| Minute	| mi, n			|
-| Second	| ss, s 		|
-| Millisecond | Ms			|
-| Microsecond | Mcs			|
-| Nanosecond | Ns			|		
-
-| Date Part | Abbreviation 	|
-| --------- | ------------ 	|
-| Year		| yy, yyyy	   	|
-| Quarter	| qq, q 	   	|
+    | Date Part | Abbreviation 	|
+    | --------- | ------------ 	|
+    | Year		| yy, yyyy	   	|
+    | Quarter	| qq, q 	   	|
+    | Month		| mm, m  	   	|
+    | DayofYear	| dy, y   	   	|
+    | Day 		| dd, d		   	|
+    | Week		| wk, ww       	|
+    | Weekday	| Dw 		   	|
+    | Hour		| Hh			|
+    | Minute	| mi, n			|
+    | Second	| ss, s 		|
+    | Millisecond | Ms			|
+    | Microsecond | Mcs			|
+    | Nanosecond | Ns			|		
 		
 		<ul>
 			<li><b>NOTE:</b> T-SQL does not have a <b>DATESUBTRACT</b> but you can use a negative number to achieve the same effect.</li>
