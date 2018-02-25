@@ -453,6 +453,7 @@ DATEADD(<date part>, <number>, <date>)
 </p>
 			</li>
 			<li>The values for the <b>Date Part</b> parameter</li>
+		</ul>
 	
 | Date Part | Abbreviation 	|
 | --------- | ------------ 	|
@@ -474,6 +475,8 @@ DATEADD(<date part>, <number>, <date>)
 | --------- | ------------ 	|
 | Year		| yy, yyyy	   	|
 | Quarter	| qq, q 	   	|
+		
+		<ul>
 			<li><b>NOTE:</b> T-SQL does not have a <b>DATESUBTRACT</b> but you can use a negative number to achieve the same effect.</li>
 		</ul>
 	</li>
