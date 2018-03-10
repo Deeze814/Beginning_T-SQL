@@ -511,6 +511,12 @@ DATEADD(<date part>, <number>, <date>)
 			<li>I can either replace everything in the new Notepad++ installation's <b>shortcuts.xml</b> file or simple paste int the <b>&lt;Macros&gt;</b> section.</li>
 		</ul>
 	</li>
+	<li>I also had to downgrade to NPP 6.9 (32 bit)
+		<ul>
+			<li>The current (7.5.5) was 64 bit and did not have support for <b>Plugin Manager</b></li>
+			<li>The macros also did not recognize the <b>auto indent</b> functionality</li>
+		</ul>
+	</li>
 </ol>
 
 
