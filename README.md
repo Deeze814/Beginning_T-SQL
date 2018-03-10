@@ -483,3 +483,37 @@ DATEADD(<date part>, <number>, <date>)
 	</li>
 </ol>
 
+
+
+
+# Appendix A: Notepad++ custom setup
+<ol>
+	<li><b>IMPORTANT:</b> Regardless of what directory you tell the installer to place the Notepad++ files, it will create most of the required file directories in:
+		<ul>
+			<li><b>C:\Users\&lt;user&gt;\AppData\Roaming\Notepad++</b></li>
+		</ul>
+	</li>
+	<li><b>THEMES</b>
+		<ul>
+			<li>In order to get a dark themed NPP, I had to download the <b>VSNotepadTheme</b> 
+				<ul>
+					<li>I then placed this in the <b>themes</b> folder undernea the AppData folder created during installation</li>
+				</ul>
+			</li>
+			<li>To use this once NPP is open, go to <b>Settings --> Style Configurator --> Select Theme</b></li>
+			<li>I also turned on html tag highlighing by going to <b>Language --> XML</b></li>
+		</ul>
+	</li>
+	<li>MACROS
+		<ul>
+			<li>I imported macros I had on another computer's NPP installaction</li>
+			<li>To do this, I copied the <b>shortcuts.xml</b> file within the installed <b>Notepad++</b> directory</li>
+			<li>I can either replace everything in the new Notepad++ installation's <b>shortcuts.xml</b> file or simple paste int the <b>&lt;Macros&gt;</b> section.</li>
+		</ul>
+	</li>
+</ol>
+
+
+
+
+
