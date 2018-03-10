@@ -35,7 +35,7 @@ Repository to hold notes/exercises from the book
 			<li>On the <b>Database Engine Configuration</b>
 				<ul>
 					<li>Leave the <b>Authentication Mode </b>as <b>Windows authentication mode</b></li>
-					<li>Click the <b>FILESTREAM</b> tab and check all 3 checkboxes</li>
+					<li>Click the <b>FILESTREAM</b> tab and check all 3 check-boxes</li>
 				</ul>				
 			</li>
 		</ul>
@@ -43,14 +43,14 @@ Repository to hold notes/exercises from the book
 	<li><b>SSMS Installation</b>
 		<ul>
 			<li>Once installed, I pinned the SSMS 2017 icon to the taskbar and started the application.</li>
-			<li>Once started, I clicked the <b>Server name</b> dropdown
+			<li>Once started, I clicked the <b>Server name</b> drop-down
 				<ul>
 					<li>Selected <b>browse for more</b></li>
 					<li>Expanded <b>Database Engine</b></li>
-					<li>I selected the entry that matched the <b>Instance Name</b> from the <b>Sql Server Installation</b> process above (<b>BEGINNING_TSQL</b>)</li>	
+					<li>I selected the entry that matched the <b>Instance Name</b> from the <b>SQL Server Installation</b> process above (<b>BEGINNING_TSQL</b>)</li>	
 					<li><b>NOTE:</b> This step initially did not work for me, I had to do the following
 						<ul>
-							<li>In the start menu, I typed <b>Sql Server</b> and opened the <b>Sql Server Configuration Manager</b></li>
+							<li>In the start menu, I typed <b>SQL Server</b> and opened the <b>SQL Server Configuration Manager</b></li>
 							<li>Under the <b>SQL Server Configuration Manager --> SQL Server Services</b> it lists all of the SQL Server instance you have installed on your machine</li>
 							<li>I had a previous installation of SQL Service and it was the only one running.</li>
 							<li>I clicked that instance and stopped it</li>
@@ -197,7 +197,7 @@ Repository to hold notes/exercises from the book
 					</li>
 				</ul>
 			</li>
-			<li>For an example see <b>Chapter 3/Seek_Vs_Scan.sql</b></li>
+			<li>For an example see <b>Chapter 3/Seek_Vs_Scan.SQL</b></li>
 		</ul>
 	</li>
 </ol>
@@ -320,7 +320,7 @@ RIGHT(<string>,<number of characters>)
 
 <ol>
 	<li>
-		<ul>Both of these functions serve as a means to return the number of characters in a sring
+		<ul>Both of these functions serve as a means to return the number of characters in a string
 			<li>The format is the same for both:
 <p>
 
@@ -398,7 +398,7 @@ CHOOSE(index, val_1, val_2[, val_n])
 ```
 </p>			
 			</li>
-			<li>See Exercise <b>Chpater4/Choose</b></li>
+			<li>See Exercise <b>Chapter4/Choose</b></li>
 			<li><b>NOTE:</b> The function takes the highest data type precedence.
 				<ul>
 					<li>This means if there is an integer in the list, the <b>CHOOSE</b> function will try to convert any results to an integer</li>
@@ -483,9 +483,6 @@ DATEADD(<date part>, <number>, <date>)
 	</li>
 </ol>
 
-
-
-
 # Appendix A: Notepad++ custom setup
 <ol>
 	<li><b>IMPORTANT:</b> Regardless of what directory you tell the installer to place the Notepad++ files, it will create most of the required file directories in:
@@ -497,27 +494,70 @@ DATEADD(<date part>, <number>, <date>)
 		<ul>
 			<li>In order to get a dark themed NPP, I had to download the <b>VSNotepadTheme</b> 
 				<ul>
-					<li>I then placed this in the <b>themes</b> folder undernea the AppData folder created during installation</li>
+					<li>I then placed this in the <b>themes</b> folder underneath the AppData folder created during installation</li>
 				</ul>
 			</li>
 			<li>To use this once NPP is open, go to <b>Settings --> Style Configurator --> Select Theme</b></li>
-			<li>I also turned on html tag highlighing by going to <b>Language --> XML</b></li>
+			<li>I also turned on html tag highlighting by going to <b>Language --> XML</b></li>
 		</ul>
 	</li>
 	<li>MACROS
 		<ul>
-			<li>I imported macros I had on another computer's NPP installaction</li>
+			<li>I imported macros I had on another computer's NPP installation</li>
 			<li>To do this, I copied the <b>shortcuts.xml</b> file within the installed <b>Notepad++</b> directory</li>
-			<li>I can either replace everything in the new Notepad++ installation's <b>shortcuts.xml</b> file or simple paste int the <b>&lt;Macros&gt;</b> section.</li>
+			<li>I can either replace everything in the new Notepad++ installation's <b>shortcuts.xml</b> file or simply paste in the <b>&lt;Macros&gt;</b> section.</li>
 		</ul>
 	</li>
 	<li>I also had to downgrade to NPP 6.9 (32 bit)
 		<ul>
 			<li>The current (7.5.5) was 64 bit and did not have support for <b>Plugin Manager</b></li>
 			<li>The macros also did not recognize the <b>auto indent</b> functionality</li>
+		</ul> 
+	</li>
+	<li>SPELL CHECKER
+		<ul>
+			<li>In order to get a spell checker that I could get (1)real-time spell checking as I typed and (2)ability to have the checker "learn" words like SQL
+				<ul>
+					<li>I installed <b>DSpellCheck</b>
+						<ul>
+							<li>This plugin allows the real-time checking of words in the document as you type</li>
+							<li>It will underline misspelled words</li>
+						</ul>
+					</li>
+					<li>I also installed <b>Spell-checker</b>
+						<ul>
+							<li>This is a more traditional spell checker in that you click the button and it will then check the entire document for spelling errors</li>
+							<li>When a misspelling is encountered, the plugin gives you a chance to Replace, Ignore, or <b>Learn</b>
+								<ul>
+									<li>It is the ability to <b>Learn</b> that will allow you to no longer have to keep correcting the same word that the dictionary does not recognize (like SQL)</li>
+								</ul>
+							</li>
+							<li>This plugin needs an additional .dll file that serves as its dictionary
+								<ul>
+									<li>I downloaded the <b>Aspell</b> dictionary from http://aspell.net/win32/
+										<ul>
+											<li>I took both the full installer and then the English exe</li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li>You can point <b>DSpellCheck</b> to using the <b>Aspell</b> dictionary as well
+						<ul>
+							<li>Under <b>Plugins --> DSpellCheck --> Settings</b>
+								<ul>
+									<li>Path the <b>Aspell Location</b> to the path you downloaded the dictionary .dll</li>
+								</ul>
+							</li>
+							<li>This means you can use <b>Spell-Checker</b> to add words to your dictionary that then <b>DSpellCheck</b> will recognize and no longer underline the same word.</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
 		</ul>
 	</li>
-</ol>
+</ol> 
 
 
 
