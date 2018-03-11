@@ -478,10 +478,39 @@ DATEADD(<date part>, <number>, <date>)
 <ol start="4">
 	<li><b>DATEDIFF</b>
 		<ul>
-			<li></li>
+			<li>The <b>DATEDIFF</b> function allows you to find the difference between two dates</li>
+			<li>Follows the format:
+<p>
+
+```SQL
+DATEDIFF(<datepart>, <early date>, <later date>)
+```
+</p>
+			</li>
+			<li>See exercise <b>Chapter4/DateDiff</b></li>
 		</ul>
 	</li>
 </ol>
+
+
+<ol>
+	<li><b>DATENAME</b> and <b>DATEPART</b>
+		<ul>
+			<li>These two functions return parts of a specified date</li>
+			<li>They follow the format:
+<p>
+
+```SQL
+DATENAME(<datepart>, <date>)
+DATEPART(<datepart>, <date>)
+```
+</p>
+			</li>
+			
+		</ul>
+	</li>
+</ol>
+
 
 # Appendix A: Notepad++ custom setup
 <ol>
