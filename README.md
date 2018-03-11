@@ -505,8 +505,7 @@ DATENAME(<datepart>, <date>)
 DATEPART(<datepart>, <date>)
 ```
 </p>
-			</li>
-			
+			</li>			
 		</ul>
 	</li>
 </ol>
