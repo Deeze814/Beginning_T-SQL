@@ -493,7 +493,7 @@ DATEDIFF(<datepart>, <early date>, <later date>)
 </ol>
 
 
-<ol>
+<ol start="5">
 	<li><b>DATENAME</b> and <b>DATEPART</b>
 		<ul>
 			<li>These two functions return parts of a specified date</li>
