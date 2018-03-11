@@ -505,7 +505,58 @@ DATENAME(<datepart>, <date>)
 DATEPART(<datepart>, <date>)
 ```
 </p>
-			</li>			
+			</li>
+			<li><b>DATENAME</b> will give you the numeric representation of the part of the date specified</li>
+			<li><b>DATEPART</b> will give you the English text description of the part of the date specified</li>
+			<li>See exercise <b>Chapter4/DateNameDatePart</b></li>
+			<li>Another shorthand way obtain the numeric representation of date parts:
+<p>
+
+```SQL
+DAY(<date>)
+MONTH(<date>)
+YEAR(<date>)
+```
+</p>
+			</li>
+		</ul>
+	</li>
+</ol>
+
+
+<ol start="6">
+	<li><b>CONVERT</b>
+		<ul>
+			<li><b>CONVERT</b> can used with an optional parameter to provide string formating for the conversation of a date value into a string</li>
+			<li>Follows the format:
+<p>
+
+```SQL
+CONVERT(<data type, usually a VARCHAR>, <date>[, <style>])
+```
+</p>
+			</li>
+			<li>See exercise <b>Chapter4/ConvertDateToString</b></li>
+		</ul>
+	</li>
+</ol>
+
+
+<ol start="7">
+	<li><b>FORMAT</b>
+		<ul>
+			<li>This function is was introduced in 2012 to simplify the conversion of date/time values as string values</li>
+			<li>Another purpose is to convert date/time values to their cultural equivalencies</li>
+			<li><b>IMPORTANT:</b> If performance is to be an issue, you are better served sticking with <b>CONVERT</b></li>
+			<li>Follows the format:
+<p>
+
+```SQL
+FORMAT(value, format[, culture])
+```
+</p>
+			</li>
+			<li>See exercise <b>Chapter4/Format</b></li>
 		</ul>
 	</li>
 </ol>
