@@ -561,6 +561,97 @@ FORMAT(value, format[, culture])
 	</li>
 </ol>
 
+<ol start="8">
+	<li><b>DATEFROMPARTS</b>
+		<ul>
+			<li>Introduced in SQL Server 2012, these functions allow for a simple method to derive a date, time or date and time from a list of values
+				<ul>
+					<li>The primary function is called <b>DATEFROMPARTS</b>, but there is also a version of the function for both date or time data types</li>
+				</ul>
+			</li>
+			<li>See Exercise <b>Chapter4/DateFromParts</b></li>
+		</ul>
+	</li>
+</ol>
+
+
+<ol start="9">
+	<li><b>EOMONTH</b>
+		<ul>
+			<li>Another addition made by SQL Server 2012, <b>EOMONTH</b> will return the date of the last day of the supplied month argument</li>
+			<li>YOu can alternatively supply an <b>offset</b> to return the end of the month for another month</li>
+			<li>See exercise <b>Chapter4/EoMonth</b></li>
+		</ul>
+	</li>
+</ol>
+
+
+### Mathematical Functions ###
+<ol>
+	<li><b>ABS</b>
+		<ul>
+			<li>Will return the absolute value of number</li>
+			<li>Follows the format:
+<p>
+
+```SQL
+ABS(<number value>)
+```
+</p>
+			</li>
+		</ul>
+	</li>
+	<li><b>POWER</b>
+		<ul>
+			<li>Returns the result of raising the first argument to the power of the second argument</li>
+			<li>Follows the format:
+<p>
+
+```SQL
+POWER(<number>,<power>)
+```
+</p>				
+			</li>
+		</ul>
+	</li>
+	<li><b>SQUARE</b> and <b>SQRT</b>
+		<ul>
+			<li><b>SQUARE</b> returns the value of the specified number squared</li>
+			<li><b>SQRT</b> returns the value of the square root of the specified number </li>
+			<li>The functions follow the format:
+<p>
+
+```SQL
+SQUARE(<number>)
+SQRT(<number>)
+```
+</p>
+			</li>
+		</ul>
+	</li>
+	<li><b>RAND</b>
+		<ul>
+			<li>This function will return a value between 0 and 1</li>
+			<li>It is invoked with either with no arguments or a single optional parameter, <b>@seed</b>
+				<ul>
+					<li>If a seed value is specified, the RAND function will return the same value each time</li>
+					<li>If you supply a seed value to on of the calls to RAND within a <b>batch</b> statement, that see affects the other calls
+						<ul>
+							<li>The values are NOT the same, but the values are predictable</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+	<li>For more information, see exercise <b>Chapter4/MathFunctions</b></li>
+</ol>
+
+
+
+
+
+
 
 # Appendix A: Notepad++ custom setup
 <ol>
