@@ -647,6 +647,60 @@ SQRT(<number>)
 	<li>For more information, see exercise <b>Chapter4/MathFunctions</b></li>
 </ol>
 
+### Logical Functions and Expressions ###
+<ol>
+	<li>Searched <b>CASE</b> expression
+		<ul>
+			<li>Can be used when you want to compare value from a column to several other values in an <b>IN</b> list
+				<ul>
+					<li>Can also be use greater-than or less-than operators</li>
+					<li>This usage of <b>CASE</b> will still return the first value that returns true for the evaluation</li>
+				</ul>
+			</li>
+			<li>Follows the format:
+<p>
+
+```SQL
+CASE	
+	WHEN <test expression> THEN <value1>
+	[WHEN <test expression> THEN <value2>]
+	[ELSE <value3>]
+END
+```
+</p>
+			</li>
+			<li><b>NOTE:</b> The return values in the CASE statement must be of compatible types</li>
+			<li>See Exercise <b>Chapter4/SearchCAse</b></li>
+		</ul>
+	</li>
+	<li>Listing a Column as the Return value
+		<ul>
+			<li>It is also possible to list a column name instead of hard-coded value sin the THEN part of the <b>CASE</b> expression
+				<ul>
+					<li>This means you can display one column for some of the rows returned an another column for other rows</li>
+				</ul>
+			</li>
+			<li>Generic syntax:
+<p>
+
+```SQL
+SELECT 
+	 column_1
+	,column_2
+	,CASE
+		WHEN column_1 > column_2 THEN column_1
+		ELSE column_2
+	END AS 'More Hours'
+FROM schema.tableName;
+```
+</p>				
+			</li>
+			<li>See exercise <b>Chapter4/ColumnAsReturnValue</b></li>
+		</ul>
+	</li>
+</ol>
+
+
 
 
 
