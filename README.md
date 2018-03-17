@@ -762,8 +762,9 @@ ORDER BY REVERSE(LastName);
 		</ul>
 	</li>
 	<li>The <b>TOP</b> keyword
-		<li>The TOP keyword allows you to limit the number or percentage or rows returned from a query</li>
-		<li>Follows the format:
+		<ul>
+			<li>The TOP keyword allows you to limit the number or percentage or rows returned from a query</li>
+			<li>Follows the format:
 <p>
 
 ```SQL
@@ -774,11 +775,11 @@ FROM <table1>
 [ORDER BY <col1>]
 ```
 </p>
-		</li>
-		<li>The <b>WITH TIES</b> option means that if there are rows that have identical values in the <b>ORDER BY</b>, the results will included all rows even though you now end up with more rows than you expect</li>
-		<li>A trick you can use to get random rows is by sorting your query by the <b>NEWID</b> function
-			<ul>
-				<li>Looks like this:
+			</li>
+			<li>The <b>WITH TIES</b> option means that if there are rows that have identical values in the <b>ORDER BY</b>, the results will included all rows even though you now end up with more rows than you expect</li>
+			<li>A trick you can use to get random rows is by sorting your query by the <b>NEWID</b> function
+				<ul>
+					<li>Looks like this:
 <p>
 
 ```SQL
@@ -790,15 +791,16 @@ FROM Sales.SalesOrderHeader
 ORDER BY NEWID();
 ```
 </p>
-				</li>
-			</ul>
-		</li>
-		<li><b>NOTE:</b> Microsoft recommends using the <b>OFFSET</b> and <b>FETCH</b> clauses introduced with SQL Server 2008 as opposed to <b>TOP</b> as a paging solution and to limit the amount of data sent to a client
-			<ul>
-				<li><b>OFFSET</b> and <b>FETCH</b> also allow for more options, including the use of variables</li>
-			</ul>
-		</li>
-		<li>See Exercise <b>Chapter4/Top</b></li>
+					</li>
+				</ul>
+			</li>
+			<li><b>NOTE:</b> Microsoft recommends using the <b>OFFSET</b> and <b>FETCH</b> clauses introduced with SQL Server 2008 as opposed to <b>TOP</b> as a paging solution and to limit the amount of data sent to a client
+				<ul>
+					<li><b>OFFSET</b> and <b>FETCH</b> also allow for more options, including the use of variables</li>
+				</ul>
+			</li>
+			<li>See Exercise <b>Chapter4/Top</b></li>
+		</ul>
 	</li>
 	<li><b>Thinking about performance with functions</b>
 		<ul>
