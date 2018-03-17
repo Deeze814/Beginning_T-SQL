@@ -670,7 +670,7 @@ END
 </p>
 			</li>
 			<li><b>NOTE:</b> The return values in the CASE statement must be of compatible types</li>
-			<li>See Exercise <b>Chapter4/SearchCAse</b></li>
+			<li>See Exercise <b>Chapter4/SearchCase</b></li>
 		</ul>
 	</li>
 	<li>Listing a Column as the Return value
@@ -698,8 +698,108 @@ FROM schema.tableName;
 			<li>See exercise <b>Chapter4/ColumnAsReturnValue</b></li>
 		</ul>
 	</li>
+	<li><b>IIF</b>
+		<ul>
+			<li>Introduced with SQL SERVER 2012, this operator behaves like a SQL based <b>ternary</b> operator</li>
+			<li>Follows the format:
+<p>
+
+```SQL
+IIF(boolean_expression, true_value, false_value);
+```
+</p>
+			</li>
+			<li>See Exercise <b>Chapter4/IIF</b></li>
+		</ul>
+	</li>
 </ol>
 
+### Administrative Functions ###
+<ol>
+	<li>Some of the built in functions within SQL Server allow DBAs to quickly ascertain information about the DB
+		<ul>
+			<li>Some of the administrative functions are listed in the below select statement
+<p>
+
+```SQL
+
+```
+</p>
+			</li>
+			<li>See exercise <b>Chapter4/AdminFunctions</b></li>
+		</ul>
+	</li>
+	<li>Using functions in <b>WHERE</b> and <b>ORDER BY</b> clauses
+		<ul>
+			<li>An example of this would be the following queries
+<p>
+
+```SQL
+SELECT FirstName
+FROM Person.Person
+WHERE CHARINDEX('ke', FirstName) > 0;
+
+SELECT 
+	LastName
+	,REVERSE(LastName)
+FROM Person.Person
+ORDER BY REVERSE(LastName);
+```
+</p>
+			</li>
+			<li>While this is perfectly valid SQL, it is important to realize that using a function in the above locations can cause performance to suffer
+				<ul>
+					<li>When a function is invoked on a column, the DB engine must still evaluate <b>each row one at a time</b>					</li>
+					<li>If the column that is the target of the function has an index created for it, the DB can search the index but must still do so one record at a time.</li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+	<li>The <b>TOP</b> keyword
+		<li>The TOP keyword allows you to limit the number or percentage or rows returned from a query</li>
+		<li>Follows the format:
+<p>
+
+```SQL
+SELECT TOP(<number>) [PERCENT] [WITH TIES] 
+	<col1>
+	,<col2>
+FROM <table1> 
+[ORDER BY <col1>]
+```
+</p>
+		</li>
+		<li>The <b>WITH TIES</b> option means that if there are rows that have identical values in the <b>ORDER BY</b>, the results will included all rows even though you now end up with more rows than you expect</li>
+		<li>A trick you can use to get random rows is by sorting your query by the <b>NEWID</b> function
+			<ul>
+				<li>Looks like this:
+<p>
+
+```SQL
+SELECT TOP(2)
+	CustomerID
+	,OrderDate
+	,SalesOrderID
+FROM Sales.SalesOrderHeader
+ORDER BY NEWID();
+```
+</p>
+				</li>
+			</ul>
+		</li>
+		<li><b>NOTE:</b> Microsoft recommends using the <b>OFFSET</b> and <b>FETCH</b> clauses introduced with SQL Server 2008 as opposed to <b>TOP</b> as a paging solution and to limit the amount of data sent to a client
+			<ul>
+				<li><b>OFFSET</b> and <b>FETCH</b> also allow for more options, including the use of variables</li>
+			</ul>
+		</li>
+		<li>See Exercise <b>Chapter4/Top</b></li>
+	</li>
+	<li><b>Thinking about performance with functions</b>
+		<ul>
+			<li></li>
+		</ul>
+	</li>
+</ol>
 
 
 
