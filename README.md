@@ -847,6 +847,103 @@ WHERE YEAR(OrderDate) = 2011;
 	</li>
 </ol>
 
+## Chapter 5: Joining Tables ##
+### Concatenating Strings ###
+<ol>
+	<li><b>INNER JOINS</b>
+		<ul>
+			<li>Will return all records from the two joined tables that have value for the column that is being joined</li>
+			<li><b>Cartesian Product</b>
+				<ul>
+					<li>This is a type of inner join that results in every row from the first table joins every row in the second table</li>
+					<li>An example:
+<p>
+
+```SQL
+--Cartesian Product
+SELECT
+	soh.SalesOrderID
+	,soh.OrderDate
+	,soh.TotalDue
+	,sod.SalesOrderDetailID
+	,sod.ProductID
+	,sod.OrderQty
+FROM Sales.SalesOrderHeader soh
+JOIN Sales.SalesOrderDetail sod ON 1 = 1;
+```
+</p>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+	<li><b>LEFT JOIN</b>
+		<ul>
+			<li>Will return all records in the first table and any records in the second table that have value for the joining column</li>
+			<li>Example:
+<p>
+
+```SQL
+--Left Join
+SELECT 
+	c.CustomerID
+	,soh.SalesOrderID
+	,soh.OrderDate
+FROM Sales.Customer c
+LEFT JOIN Sales.SalesOrderHeader soh ON c.CustomerID = soh.CustomerID
+WHERE c.CustomerID IN (11028, 11029, 1, 2, 3, 4);
+```
+</p>			
+				<ul>
+					<li><b>Sales.Customer</b> is on the <b>LEFT</b> side of the JOIN so all of its rows (that meet filter criteria) will be returned</li>
+				</ul>
+			</li>			
+		</ul>
+	</li>
+	<li><b>RIGHT JOIN</b>
+		<ul>
+			<li>Will return all records in the second table and any records in the first table that have value for the joining column</li>
+			<li>Example:
+<p>
+
+```SQL
+--Right Join
+SELECT 
+	c.CustomerID
+	,soh.SalesOrderID
+	,soh.OrderDate
+FROM Sales.SalesOrderHeader soh  
+RIGHT JOIN Sales.Customer c ON soh.CustomerID = c.CustomerID 
+WHERE c.CustomerID IN (11028, 11029, 1, 2, 3, 4);
+```
+</p>			
+				<ul>
+					<li><b>Sales.Customer</b> is on the <b>RIGHT</b> side of the JOIN so all of its rows (that meet filter criteria) will be returned</li>
+				</ul>
+			</li>			
+		</ul>
+	</li>
+	<li>A note on Inner, Left, and Right joins
+		<ul>
+			<li>Essentially, it is the construction of the query that determines the how records will be interpreted relative to the type of join being done
+				<ul>
+					<li>Tables declared prior to the current <b>JOIN</b> are the <b>LEFT</b></li>
+					<li>Tables declared after the <b>JOIN</b> statement are on the <b>RIGHT</b></li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+	<li>Adding a table to the Right side of a <b>LEFT JOIN</b>
+		<ul>
+			<li>If you need to join to a table that your existing query has <b>LEFT</b> joined to, the new table must also be a <b>LEFT</b> join
+				<ul>
+					<li>This will avoid losing the NULL values of your previous LEFT join</li>
+				</ul>
+			</li>
+			<li>See Exercise <b>Chapter5/SuccessiveLeftJoins</b></li>
+		</ul>
+	</li>
+</ol>
 
 
 
