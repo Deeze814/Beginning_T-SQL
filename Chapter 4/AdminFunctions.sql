@@ -4,4 +4,4 @@ SELECT
 	,CURRENT_USER AS 'Current User'
 	,SUSER_NAME() AS 'Login'
 	,USER_NAME() AS 'User Name'
-	,APP_NAME() AS 'App Name'
+	,APP_NAME() AS 'App Name';

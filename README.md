@@ -804,7 +804,45 @@ ORDER BY NEWID();
 	</li>
 	<li><b>Thinking about performance with functions</b>
 		<ul>
-			<li></li>
+			<li>When using a function in the <b>WHERE</b> clause, you must be aware that the function will cause the database engine to perform a <b>SCAN</b> of the entire (clustered)index, retrieve each row's column value and then compare it to determine whether the result of the function applied to each value meets the criteria.
+				<ul>
+					<li>The DB has to scan the index because it has to get every row value, feed it into the function, and then see if it meets the <b>WHERE</b> criteria</li>
+				</ul>
+			</li>
+			<li>If you create a non-clustered index on the column being feed into a <b>DIRECT COMPARISON</b>, then the DB can do a <b>SEEK</b> on the non-clustered index because it can compare each value of the index outright
+				<ul>
+					<li>As opposed to having to lookup each clustered index (every table row) and then find the column value that is being compared</li>
+					<li>The non-clustered index gives the DB engine direct access to the value needing to be evaluated in <b>WHERE</b> clause</li>
+				</ul>
+			</li>
+			<li><b>NOTE:</b> Direct comparisons in a <b>WHERE</b> clause are only faster if they are being done on an <b>indexed</b> column
+				<ul>
+					<li>Otherwise, they perform similarly to a <b>WHERE</b> clause with functions</li>
+					<li>They both have to perform <b>clustered index scans</b></li>
+				</ul>
+			</li>
+			<li>An illustration of <b>DIRECT COMPARISION</b> vs <b>Functions</b>
+<p>
+
+```SQL
+--DIRECT COMPARISON
+SELECT
+	SalesOrderID
+	,OrderDate
+FROM Sales.SalesOrderHeader
+WHERE OrderDate >= '2011-01-01 00:00:00'
+  AND OrderDate < '2012-01-01 00:00:00';
+
+--Function
+SELECT
+	SalesOrderID
+	,OrderDate
+FROM Sales.SalesOrderHeader
+WHERE YEAR(OrderDate) = 2011;
+```
+</p>
+			</li>
+			<li>See exercise <b>Chapter4/FunctionPerformance</b></li>
 		</ul>
 	</li>
 </ol>
