@@ -1022,8 +1022,7 @@ SELECT
 FROM  <table1> a
 LEFT JOIN <table1> b ON a.<col1> = b.<col2>;
 ```
-</p>
-				
+</p>				
 			</li>
 			<li>See exercise <b>Chapter5/SelfJoin</b></li>
 		</ul>
