@@ -848,7 +848,7 @@ WHERE YEAR(OrderDate) = 2011;
 </ol>
 
 ## Chapter 5: Joining Tables ##
-### Concatenating Strings ###
+### Types of JOINs ###
 <ol>
 	<li><b>INNER JOINS</b>
 		<ul>
@@ -1022,6 +1022,91 @@ WHERE c.CustomerID IN (11028, 11029, 1, 2, 3, 4);
 					</li>
 				</ul>
 			</li>
+		</ul>
+	</li>
+	<li><b>FULL OUTER JOIN</b>
+		<ul>
+			<li>This essentially will do a LEFT and RIGHT JOIN on the two tables on the specified column
+				<ul>
+					<li>This means that all rows from the left side are returned, even if there is not a matching record on the right side</li>
+					<li>And all the rows on the right side are returned even if there is not a matching column on the left side</li>
+				</ul>
+			</li>
+			<li>For the most part, avoid doing this type of JOIN
+				<ul>
+					<li>If this type of JOIN is needed often when working with a database, it could indicate some problems with database design</li>
+					<li><b>NOTE:</b> This type of JOIN can be useful whenever you are importing data from a client's database into your own
+						<ul>
+							<li>A query like this can be used to find problems in data so that it can be cleaned up before loading it into a production system or data warehouse</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			<li>Follows the format:
+<p>
+
+```SQL
+SELECT 
+	<column list>
+FROM <table1>
+FULL [OUTER] JOIN <table2> ON <table1>.<col1> = <table2>.<col2>
+```
+</p>
+			</li>
+			<li>See exercise <b>Chapter5/FullOuterJoin</b></li>
+		</ul>
+	</li>
+	<li><b>CROSS JOIN</b>
+		<ul>
+			<li>This is also a rarely used JOIN type in that it is actually the same as the <b>Cartesian Product</b></li>
+			<li>This type of query is used whenever you intend to multiply two tables together
+				<ul>
+					<li>Every row form one table is matched to every row from another table</li>
+				</ul>
+			</li>
+			<li>You might write a <b>CROSS JOIN</b> query to populate a table for a special purpose such as an inventory worksheet</li>
+			<li>Follows the format:
+<p>
+
+```SQL
+SELECT 
+	<select list>
+FROM <table1> 
+CROSS JOIN <table2>;
+```
+</p>
+			</li>
+		</ul>
+	</li>
+	<li><b>Self-Joins</b>
+		<ul>
+			<li>A query that joins a table back to itself</li>
+			<li>This type of query works on tables that have a column aside from the primary key of the table that is a foreign key back to the same table's primary key
+				<ul>
+					<li>An example would be a <b>Person.Employee</b> table that had <b>EmployeeID</b> as the primary key and then another column named <b>ManagerID</b></li>
+					<li>The <b>MangerID</b> column would then have a <b>FOREIGN KEY</b> constraint pointed at the <b>EmployeeID</b> column of the same table</li>
+				</ul>
+			</li>
+			<li>The 2012 edition of AdventureWorks does not have tables structured in this fashion because it was designed to leverage the <b>HIERARCHYID</b> data type</li>
+			<li>You can actually join any table to itself even if it doesn't have a foreign key pointing back to the primary key of the table
+				<ul>
+					<li>This type of relationship is called a <b>unary relationship</b></li>
+				</ul>
+			</li>
+			<li>Follows the format:
+<p>
+
+```SQL
+SELECT
+	 <a.col1>
+	,<b.col1>
+FROM  <table1> a
+LEFT JOIN <table1> b ON a.<col1> = b.<col2>;
+```
+</p>
+				
+			</li>
+			<li>See exercise <b>Chapter5/SelfJoin</b></li>
 		</ul>
 	</li>
 </ol> 
