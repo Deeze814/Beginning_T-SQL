@@ -966,7 +966,7 @@ WHERE c.CustomerID IN (11028, 11029, 1, 2, 3, 4);
 
 ```SQL
 SELECT 
-	<column list>
+  <column list>
 FROM <table1>
 FULL [OUTER] JOIN <table2> ON <table1>.<col1> = <table2>.<col2>
 ```
@@ -989,7 +989,7 @@ FULL [OUTER] JOIN <table2> ON <table1>.<col1> = <table2>.<col2>
 
 ```SQL
 SELECT 
-	<select list>
+  <select list>
 FROM <table1> 
 CROSS JOIN <table2>;
 ```
@@ -1017,8 +1017,8 @@ CROSS JOIN <table2>;
 
 ```SQL
 SELECT
-	 <a.col1>
-	,<b.col1>
+   <a.col1>
+  ,<b.col1>
 FROM  <table1> a
 LEFT JOIN <table1> b ON a.<col1> = b.<col2>;
 ```
