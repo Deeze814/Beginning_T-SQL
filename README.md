@@ -1114,6 +1114,7 @@ JOIN Sales.SalesOrderHeader soh ON c.CustomerID = soh.CustomerID;
 							<li>This means we will loop through the larger input (<b>s</b> records) exactly once</li>
 						</ul>
 					</li>
+					<li>See exercise <b>Chpater5/HashMatch</b></li>
 				</ul>
 			</li>
 		</ul>
