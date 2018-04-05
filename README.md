@@ -1027,6 +1027,97 @@ LEFT JOIN <table1> b ON a.<col1> = b.<col2>;
 			<li>See exercise <b>Chapter5/SelfJoin</b></li>
 		</ul>
 	</li>
+	<li><b>Optimizer Join Types</b>
+		<ul>
+			<li>When joining tables in SQL Server, the database engine will employ one of three join strategies: (1) Merge Join, (2) Has Match, (3) and Nested Loop</li>
+			<li><b>There is no one way that is best</b>
+				<ul>
+					<li>The optimizer will choose the join type based on its expectations of the data being queried</li>
+				</ul>
+			</li>
+			<li><b>MERGE JOIN</b>
+				<ul>
+					<li>This type of join strategy is used when the optimizer estimates that the join will result in a <b>large</b> number of rows on <b>both</b> tables, <b>AND</b> each table's data is <b>sorted</b> by the <b>joined column</b></li>
+					<li>An example of this would be the following query run against the AdventureWorkd 2012 database
+<p>
+
+```SQL
+SELECT
+	soh.SalesOrderID
+	,sod.OrderQty
+	,sod.ProductID
+FROM Sales.SalesOrderHeader soh
+JOIN Sales.SalesOrderDetail sod ON soh.SalesOrderID = sod.SalesOrderID;
+```
+</p>
+					</li>
+					<li>Since both <b>soh</b> and <b>sod</b> have a primary key column of <b>SalesOrderID</b>, the tables are already sorted on this index (the clustered indext)</li>
+					<li><b>Important:</b> A merge join will sort <b>both</b> sides before starting its comparison</li>
+					<li>See exercise <b>Chapter5/MergeJoin</b></li>
+				</ul>
+			</li>
+			<li><b>Nested Loop</b>
+				<ul>
+					<li>This type of join is used when the optimizer <b>estimates</b> one side of the join has a small number of rows to join</li>
+					<li>It doesn't matter if the two sides of the join are sorted
+						<ul>
+							<li>The DB engine will loop through all the rows from the small side of the join looking for a match in the rows of the larger side</li>
+							<li>Since the join looping over a small data set, the data does not need to be sorted</li>
+						</ul>
+					</li>
+					<li>An example of this would be the following query run against the AdventureWorkd 2012 database
+<p>
+
+```SQL
+SELECT
+	soh.SalesOrderID
+	,sod.OrderQty
+	,sod.ProductID
+FROM Sales.SalesOrderHeader soh
+JOIN Sales.SalesOrderDetail sod ON soh.SalesOrderID = sod.SalesOrderID
+WHERE soh.CustomerID = 11000;
+```
+</p>
+					</li>
+					<li>The filter of <b>soh.CustomerID</b> reduces the number of rows from <b>soh</b>, so the optimizer uses a nested loop on the small data set from <b>soh</b> looking for matches in <b>sod</b>
+						<ul>
+							<li>The process loops through the smaller side of the join, comparing each value to the values of the larger side of the join</li>
+							<li>The process loops through the smaller input one time, but loops through the larger input one time for each iteration of the small loop</li>
+						</ul>
+					</li>
+					<li>See exercise <b>Chapter5/NestedLoop</b></li>
+				</ul>
+			</li>
+			<li><b>Hash Match</b>
+				<ul>
+					<li>This type of join is used when the optimizer estimates that a <b>large</b> number of rows will be returned from <b>both</b> sides of the join and the input is <b>not sorted</b> on the joining column</li>
+					<li>The database engine will actually create hash tables in memory to get this work done</li>
+					<li>An example of this would be the following query run against the AdventureWorkd 2012 database
+<p>
+
+```SQL
+SELECT
+	c.CustomerID
+	,soh.TotalDue
+FROM Sales.Customer c 
+JOIN Sales.SalesOrderHeader soh ON c.CustomerID = soh.CustomerID;
+```
+</p>
+					</li>
+					<li>Only <b>c</b> is sorted on <b>CustomerID</b> column.
+						<ul>
+							<li>And since <b>soh</b> is not sorted on <b>CustomerID</b>, a <b>Merge Join</b> cannot be used</li>
+						</ul>
+					</li>
+					<li>We build the has table(s) with <b>c</b> records (since it is the smaller input) and then probe the hash tables(s) with <b>soh</b> input
+						<ul>
+							<li>This means we will loop through the larger input (<b>s</b> records) exactly once</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</li>
 </ol>
 
 
