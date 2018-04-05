@@ -1121,7 +1121,25 @@ JOIN Sales.SalesOrderHeader soh ON c.CustomerID = soh.CustomerID;
 	</li>
 </ol>
 
-
+## Chapter 6: Building on Sub-queries, CTEs, and Unions ##
+### Writing Sub-queries ###
+<ol>
+	<li>Using a Subquery containing NULL with NOT IN
+		<ul>
+			<li>You will often get unexpected results if you do not take NULL values into account</li>
+			<li>If the subquery contains any NULL values, using NOT IN will incorrectly produce no rows</li>
+			<li>An example:
+				<ul>
+					<li>A subquery returns values NULL, 1, 2, and 3</li>
+					<li>The values from the outer query (1,2, and 10) must be compared with the subquery list</li>
+					<li>The database engine can tell 10 is not 1,2, or 3, but it cannot tell that 10 is not NULL (because NULL represents an unknown value)</li>
+					<li>The intended result is 10 because it doesn't match any of the values from the subquery, but because of NULL, the comparison returns no results.</li>
+				</ul>
+			</li>
+			<li>See exercise <b>Chapter6/NotInSubqueryContainingNull</b></li>
+		</ul>
+	</li>
+</ol>
 
 
 
