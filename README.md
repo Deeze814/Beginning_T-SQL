@@ -1139,6 +1139,71 @@ JOIN Sales.SalesOrderHeader soh ON c.CustomerID = soh.CustomerID;
 			<li>See exercise <b>Chapter6/NotInSubqueryContainingNull</b></li>
 		</ul>
 	</li>
+	<li>Using <b>UNION</b>s
+		<ul>
+			<li>A UNION query is not really a join, but a way to combine results of two queries with the same structure</li>
+			<li>Follows the format:
+<p>
+
+```SQL
+SELECT
+	<col1>
+	,<col2>
+	,<col3>
+FROM <table1>
+
+UNION [ALL]
+
+SELECT
+	<col1>
+	,<col2>
+	,<col3>
+FROM <table2>
+```
+</p>
+			</li>
+			<li>In a UNION, the first query sets the <b>number</b> and <b>name</b> of each column
+				<ul>
+					<li>All subsequent queries must return columns of the same name and type as the first.</li>
+				</ul>
+			</li>
+			<li>The difference between <b>UNION</b> and <b>UNION ALL</b>, is that <b>UNION</b> will not remove duplicate records from the result set whereas <b>UNION ALL</b> will return all records (including duplicates)
+				<ul>
+					<li><b>UNION ALL</b> has increased performance benefits and should be used when possible, or within queries where duplicates are not possible or the presence of duplicates does not affect the caller</li>
+				</ul>
+			</li>
+			<li>See exercise <b>Chapter6/Unions</b></li>
+		</ul>
+	</li>
+	<li>Derived Tables and Common Table Expressions (CTE)
+		<ul>
+			<li>A <b>Derived Table</b> is a subquery that appears in the <b>FROM</b> clause of a query
+				<ul>
+					<li>A Derived table allows the ability to join to a query instead of a table so that the logic of the query is isolated.</li>
+					<li>Follows the format:
+<p>
+
+```SQL
+SELECT 
+	<select list>
+FROM <table1>
+JOIN (SELECT <select list>
+	  FROM <table2>) AS <alias> ON <table1>.<col1> = <table2>.<col2>;
+```
+</p>						
+					</li>
+					<li>One interesting thing about derived tables is that they must <b>ALWAYS</b> be aliased</li>
+					<li>See exercise <b>Chapter6/DerivedTable</b></li>
+					<li><b>LIMITATIONS</b> of Derived Tables
+						<ul>
+							<li>You can use an <b>ORDER BY</b> clause in the derived table only if you use TOP</li>
+							<li>A derived table cannot contain a CTE</li>
+						</ul>
+					</li>
+				</ul>
+			</li>			
+		</ul>
+	</li>
 </ol>
 
 
