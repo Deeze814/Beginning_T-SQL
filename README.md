@@ -1167,7 +1167,7 @@ FROM <table2>
 					<li>All subsequent queries must return columns of the same name and type as the first.</li>
 				</ul>
 			</li>
-			<li>The difference between <b>UNION</b> and <b>UNION ALL</b>, is that <b>UNION</b> will not remove duplicate records from the result set whereas <b>UNION ALL</b> will return all records (including duplicates)
+			<li>The difference between <b>UNION</b> and <b>UNION ALL</b>, is that <b>UNION</b> will remove duplicate records from the result set whereas <b>UNION ALL</b> will return all records (including duplicates)
 				<ul>
 					<li><b>UNION ALL</b> has increased performance benefits and should be used when possible, or within queries where duplicates are not possible or the presence of duplicates does not affect the caller</li>
 					<li>When evaluating the execution plan of <b>UNION</b> vs <b>UNION ALL</b>, the <b>UNION</b> will always have an extra step of a <b>Hash Match</b> being performed in order to remove duplicates</li>
