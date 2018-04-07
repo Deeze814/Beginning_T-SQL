@@ -1170,6 +1170,7 @@ FROM <table2>
 			<li>The difference between <b>UNION</b> and <b>UNION ALL</b>, is that <b>UNION</b> will not remove duplicate records from the result set whereas <b>UNION ALL</b> will return all records (including duplicates)
 				<ul>
 					<li><b>UNION ALL</b> has increased performance benefits and should be used when possible, or within queries where duplicates are not possible or the presence of duplicates does not affect the caller</li>
+					<li>When evaluating the execution plan of <b>UNION</b> vs <b>UNION ALL</b>, the <b>UNION</b> will always have an extra step of a <b>Hash Match</b> being performed in order to remove duplicates</li>
 				</ul>
 			</li>
 			<li>See exercise <b>Chapter6/Unions</b></li>
@@ -1192,16 +1193,66 @@ JOIN (SELECT <select list>
 ```
 </p>						
 					</li>
-					<li>One interesting thing about derived tables is that they must <b>ALWAYS</b> be aliased</li>
-					<li>See exercise <b>Chapter6/DerivedTable</b></li>
+					<li>One interesting thing about derived tables is that they must <b>ALWAYS</b> be aliased</li>				
 					<li><b>LIMITATIONS</b> of Derived Tables
 						<ul>
 							<li>You can use an <b>ORDER BY</b> clause in the derived table only if you use TOP</li>
 							<li>A derived table cannot contain a CTE</li>
 						</ul>
 					</li>
+					<li>See exercise <b>Chapter6/DerivedTable</b></li>
 				</ul>
-			</li>			
+			</li>
+			<li><b>Common Table Expressions</b> (CTE)
+				<ul>
+					<li>Introduced in 2005, CTEs give developers a way to separated out the logic of part of the query
+						<ul>
+							<li>There are 2 ways to write CTEs:
+								<ul>
+									<li>(1) Specify alias column names upfront
+<p>
+
+```SQL
+WITH <cteName> [(<colname1>, <colname2>, ...<colnameN>)]
+AS 
+(
+	SELECT
+		<select list>
+	FROM <table1>	
+)
+SELECT
+	<select list>
+FROM <table2>
+JOIN <cteName> ON <table2>.<col1> = <ctename>.<col1>
+```
+</p>
+									</li>
+									<li>(2) Specify the column names within the CTE column declaration
+<p>
+
+```SQL
+WITH <cteName>
+AS 
+(
+	SELECT
+		<select list>
+	FROM <table1>	
+)
+SELECT
+	<select list>
+FROM <table2>
+JOIN <cteName> ON <table2>.<col1> = <ctename>.<col1>
+```
+</p>
+									</li>
+								</ul>
+							</li>
+							<li>If aliases are defined upfront, they will be used instead of column names</li>
+							<li>See exercise <b>Chapter6/CTEs</b></li>
+						</ul>
+					</li>
+				</ul>
+			</li>
 		</ul>
 	</li>
 </ol>
