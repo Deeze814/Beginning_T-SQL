@@ -1139,6 +1139,7 @@ JOIN Sales.SalesOrderHeader soh ON c.CustomerID = soh.CustomerID;
 			<li>See exercise <b>Chapter6/NotInSubqueryContainingNull</b></li>
 		</ul>
 	</li>
+</ol>
 ### UNIONs ###
 <ol>
 	<li>Using <b>UNION</b>s
