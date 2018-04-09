@@ -1265,7 +1265,78 @@ JOIN <cteName> ON <table2>.<col1> = <ctename>.<col1>
 	</li>
 </ol>
 
+## Chapter 7: Grouping and Summarizing Data ##
+### Aggregate Functions ###
+<ol>
+	<li>Aggregate functions operate on sets of values from multiple rows all at once and with that knowledge keep the following items in mind:
+		<ul>
+			<li>The functions <b>AVG</b> and <b>SUM</b> will operate only on numeric and money data columns</li>
+			<li>The functions <b>MIN</b>, <b>MAX</b>, and <b>COUNT</b> will work numeric, money, string, and temporal data columns</li>
+			<li>The aggregate functions will not operate on <b>TEXT</b>, <b>NTEXT</b>, and <b>IMAGE</b>columns
+				<ul>
+					<li>These data types are deprecated.</li>
+				</ul>
+			</li>
+			<li>The aggregate functions will not operate on some special data types like <b>HierarchyID</b> AND <b>Spatial</b></li>
+			<li>The aggregate functions will not work on <b>BIT</b> columns except for <b>COUNT</b>
+				<ul>
+					<li>Note: You can always cast a <b>BIT</b> into an <b>INT</b> if you need to</li>
+				</ul>
+			</li>
+			<li>The aggregate functions ignore NULL values except for the case of <b>COUNT(*)</b>
+				<ul>
+					<li>Using typical SSMS settings, you will get a warning about NULLs</li>
+				</ul>
+			</li>
+			<li><b>IMPORTANT:</b> Once any aspect of aggregate queries are used in a query, the query becomes an aggregate query.</li>
+		</ul>
+	</li>
+	<li>The <b>GROUP BY</b> clause
+		<ul>
+			<li>When you add non-aggregated columns to the select list containing an aggregated column, you add grouping levels to the query
+				<ul>
+					<li>This requires the query to have the <b>GROUP BY</b> clause</li>
+					<li>The aggregate functions then operate on the grouping levels instead of on the entire result set</li>
+				</ul>
+			</li>
+			<li>Grouping on Columns
+				<ul>
+					<li>You can use the <b>GROUP BY</b> clause to group data so that the aggregate functions apply to groups of values instead of the entire result set</li>
+					<li>The format for this:
+<p>
 
+```SQL
+SELECT
+	<aggregate function>(<col1>)
+	,<col2>
+FROM <table>
+GROUP BY <col2>;
+```
+</p>						
+					</li>
+					<li><b>IMPORTANT:</b> If you dont want to group on a column, dont list it in the SELECT list</li>
+					<li>See exercise <b>Chapter6/GroupBy</b></li>
+				</ul>
+			</li>
+			<li>Grouping on Expressions
+				<ul>
+					<li>It is also possible to use an expression when indicating the grouping to be used
+						<ul>
+							<li>You can use <b>Scalar expressions</b> in the Group By clause</li>
+						</ul>
+					</li>
+					<li><b>IMPORTANT:</b> When using scalar expressions in the GROUP BY clause, you must list the expression in the GROUP BY declaration <b>EXACTLY</b> as it appears in the select list</li>
+					<li>See exercise <b>Chapter6/GroupBy</b></li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+	<li>The <b>ORDER BY</b> clause
+		<ul>
+			<li></li>
+		</ul>
+	</li>
+</ol>
 
 
 # Appendix A: Notepad++ custom setup
