@@ -1299,7 +1299,7 @@ JOIN <cteName> ON <table2>.<col1> = <ctename>.<col1>
 					<li>The aggregate functions then operate on the grouping levels instead of on the entire result set</li>
 				</ul>
 			</li>
-			<li>Grouping on Columns
+			<li><b>Grouping on Columns</b>
 				<ul>
 					<li>You can use the <b>GROUP BY</b> clause to group data so that the aggregate functions apply to groups of values instead of the entire result set</li>
 					<li>The format for this:
@@ -1318,7 +1318,7 @@ GROUP BY <col2>;
 					<li>See exercise <b>Chapter6/GroupBy</b></li>
 				</ul>
 			</li>
-			<li>Grouping on Expressions
+			<li><b>Grouping on Expressions</b>
 				<ul>
 					<li>It is also possible to use an expression when indicating the grouping to be used
 						<ul>
