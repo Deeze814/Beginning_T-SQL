@@ -1139,6 +1139,8 @@ JOIN Sales.SalesOrderHeader soh ON c.CustomerID = soh.CustomerID;
 			<li>See exercise <b>Chapter6/NotInSubqueryContainingNull</b></li>
 		</ul>
 	</li>
+### UNIONs ###
+<ol>
 	<li>Using <b>UNION</b>s
 		<ul>
 			<li>A UNION query is not really a join, but a way to combine results of two queries with the same structure</li>
@@ -1176,6 +1178,9 @@ FROM <table2>
 			<li>See exercise <b>Chapter6/Unions</b></li>
 		</ul>
 	</li>
+</ol>
+### Common Table Expressions ###
+<ol>
 	<li>Derived Tables and Common Table Expressions (CTE)
 		<ul>
 			<li>A <b>Derived Table</b> is a subquery that appears in the <b>FROM</b> clause of a query
