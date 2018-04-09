@@ -1140,6 +1140,7 @@ JOIN Sales.SalesOrderHeader soh ON c.CustomerID = soh.CustomerID;
 		</ul>
 	</li>
 </ol>
+
 ### UNIONs ###
 <ol>
 	<li>Using <b>UNION</b>s
@@ -1180,6 +1181,7 @@ FROM <table2>
 		</ul>
 	</li>
 </ol>
+
 ### Common Table Expressions ###
 <ol>
 	<li>Derived Tables and Common Table Expressions (CTE)
