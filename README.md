@@ -1333,7 +1333,25 @@ GROUP BY <col2>;
 	</li>
 	<li>The <b>ORDER BY</b> clause
 		<ul>
-			<li></li>
+			<li>An order by clause can be used outside of an aggregate query, but when it is used within one, aggregate rules apply
+				<ul>
+					<li>If a non-aggregate column appears in the <b>ORDER BY</b>, it must also appear in the <b>GROUP BY</b> clause, just like the select list</li>
+				</ul>
+			</li>
+			<li>The syntax is as follows:
+<p>
+
+```SQL
+SELECT
+	<aggregate function>(<col1>)
+	,<col2>
+FROM <table1>
+GROUP BY <col2>
+ORDER BY <col2>;
+```
+</p>				
+			</li>
+			<li>See Exercise <b>Chapter6/OrderBy</b></li>
 		</ul>
 	</li>
 </ol>
