@@ -1315,7 +1315,7 @@ GROUP BY <col2>;
 </p>						
 					</li>
 					<li><b>IMPORTANT:</b> If you dont want to group on a column, dont list it in the SELECT list</li>
-					<li>See exercise <b>Chapter6/GroupBy</b></li>
+					<li>See exercise <b>Chapter7/GroupBy</b></li>
 				</ul>
 			</li>
 			<li><b>Grouping on Expressions</b>
@@ -1326,7 +1326,7 @@ GROUP BY <col2>;
 						</ul>
 					</li>
 					<li><b>IMPORTANT:</b> When using scalar expressions in the GROUP BY clause, you must list the expression in the GROUP BY declaration <b>EXACTLY</b> as it appears in the select list</li>
-					<li>See exercise <b>Chapter6/GroupBy</b></li>
+					<li>See exercise <b>Chapter7/GroupBy</b></li>
 				</ul>
 			</li>
 		</ul>
@@ -1351,11 +1351,100 @@ ORDER BY <col2>;
 ```
 </p>				
 			</li>
-			<li>See Exercise <b>Chapter6/OrderBy</b></li>
+			<li>See Exercise <b>Chapter7/OrderBy</b></li>
 		</ul>
+	</li>
+	<li>The <b>WHERE</b> and <b>HAVING</b> clause
+		<ul>
+			<li>The <b>WHERE</b> clause in an aggregate query may contain anything allowed in the WHERE clause in any other query type
+				<ul>
+					<li>It may <b>NOT</b>, however, contain an aggregate expression</li>
+					<li>You use the <b>WHERE</b> clause to eliminate rows before the groupings (aggregation) and aggregates are applied</li>
+				</ul>
+			</li>
+			<li>The <b>HAVING</b> clause allows you to eliminate rows within an aggregate grouping
+				<ul>
+					<li>The <b>HAVING</b> clause can include non-aggregated columns as long as the columns appear in the <b>GROUP BY</b> clause
+						<ul>
+							<li>This allows you to eliminate some of the groups with the <b>HAVING</b> clause</li>
+							<li><b>INTERESTING:</b> The DB engine may move this type of filter criteria to the <b>WHERE</b> clause because it is more efficient to eliminate those rows first
+								<ul>
+									<li>As a best practice, criteria involving <b>non-aggregated columns</b> actually belong in the WHERE</li>
+								</ul>
+							</li>
+						</ul>
+						<li>Like the <b>GROUP BY</b> clause, <b>HAVING</b> will only appear in aggregate queries</li>
+						<ul>
+							<li>The <b>HAVING</b> clause follows the format:
+<p>
+
+```SQL
+SELECT
+	<aggregate function1>(<col1>)
+	,<col2>
+FROM <table1>
+GROUP BY <col2>
+HAVING <aggregate function2>(<col3>) = <value>;
+```
+</p>
+							</li>
+						</ul>
+					</li>					
+				</ul>
+			</li>
+			<li><b>IMPORTANT:</b> When considering which clause to use for filtering
+				<ul>
+					<li><b>WHERE</b> filters the results <b>BEFORE</b> grouping and aggregation occurs</li>
+					<li><b>HAVING</b> filters the results <b>AFTER</b> grouping and aggregation occurs</li>
+				</ul>
+			</li>
+			<li>See Exercise <b>Chapter7/WhereVsHaving</b></li>
+		</ul>
+		<li><b>IMPORTANT:</b> Tips on query structure and DB processing
+			<ul>
+				<li>When we write a query, it typically follows the order
+					<ul>
+						<li>SELECT</li>
+						<li>FROM</li>
+						<li>WHERE</li>
+						<li>GROUP BY</li>
+						<li>HAVING</li>
+						<li>ORDER BY</li>
+					</ul>
+				</li>
+				<li>The way the DB engine processes a query
+					<ul>
+						<li>FROM</li>
+						<li>WHERE</li>
+						<li>GROUP BY</li>
+						<li>HAVING</li>
+						<li>SELECT</li>
+						<li>ORDER BY</li>
+					</ul>
+				</li>
+				<li>The database engine process <b>WHERE</b> clause before it processes grouping and aggregates
+					<ul>
+						<li>Use the <b>WHERE</b> clause to eliminate rows <b>BEFORE</b> grouping and aggregation is done</li>
+					</ul>
+				</li>
+				<li>The database engine processes <b>HAVING</b> after it processes the grouping and aggregates
+					<ul>
+						<li>Use the <b>HAVING</b> clause to eliminate rows based on aggregate expression and groupings</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
 	</li>
 </ol>
 
+### DISTINCT Keyword ###
+<ol>
+	<li><b>DISTINCT</b> vs <b>GROUP BY</b>
+		<ul>
+			<li></li>
+		</ul>
+	</li>
+</ol>
 
 # Appendix A: Notepad++ custom setup
 <ol>
