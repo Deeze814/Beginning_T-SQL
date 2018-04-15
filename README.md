@@ -1467,6 +1467,10 @@ FROM <table1>;
 			<li>See exercise <b>Chapter7/AggregateWithDistinct</b></li>
 		</ul>
 	</li>
+</ol>
+
+### Aggregate Queries with More Than One Table ###
+<ol>
 	<li>To see aggregates in action with more than one table, see exercise <b>Chapter7/AggregateMultiTable</b></li>
 	<li>Aggregate Functions and NULL
 		<ul>
