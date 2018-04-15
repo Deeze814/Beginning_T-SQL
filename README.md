@@ -1441,6 +1441,35 @@ HAVING <aggregate function2>(<col3>) = <value>;
 <ol>
 	<li><b>DISTINCT</b> vs <b>GROUP BY</b>
 		<ul>
+			<li>Developers often use the <b>DISTINCT</b> keyword to eliminate duplicate rows from a regular query
+				<ul>
+					<li>Be careful when tempted to do this, as this may be a sign that there is a problem with query logic</li>
+					<li>If duplicate results are valid, using a <b>GROUP BY</b> will yield the same results</li>
+				</ul>
+			</li>			
+			<li>See exercise <b>Chapter7/DistinctVsGroupBy</b></li>
+		</ul>
+	</li>
+	<li>Using <b>DISTINCT</b> within an aggregate expression
+		<ul>
+			<li><b>DISTINCT</b> can be used within aggregate queries to cause the aggregate expression to only operate on unique values</li>
+			<li>Follows the following syntax:
+<p>
+
+```SQL
+SELECT
+	<col1>
+	,<aggregate function>(DISTINCT <col2>)
+FROM <table1>;
+```
+</p>			
+			</li>
+			<li>See exercise <b>Chapter7/AggregateWithDistinct</b></li>
+		</ul>
+	</li>
+	<li>To see aggregates in action with more than one table, see exercise <b>Chapter7/AggregateMultiTable</b></li>
+	<li>Aggregate Functions and NULL
+		<ul>
 			<li></li>
 		</ul>
 	</li>
