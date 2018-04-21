@@ -1494,8 +1494,9 @@ FROM <table1>
 GROUP BY <col1>;
 ```
 </p>						
-						<ul>
-							<li>If <b>col2</b> or <b>col3</b> is NULL, then we will assign a value of 0.00 for that row</li>
+					</li>
+					<li>If <b>col2</b> or <b>col3</b> is NULL, then we will assign a value of 0.00 for that row
+						<ul>							
 							<li>This will allow for the row to be included in the aggregate results</li>
 							<li>If we do not use the <b>NULLIF</b>, we lose any data from rows that have NULL for either <col2> or <col3></li>
 						</ul>
