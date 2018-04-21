@@ -1474,7 +1474,36 @@ FROM <table1>;
 	<li>To see aggregates in action with more than one table, see exercise <b>Chapter7/AggregateMultiTable</b></li>
 	<li>Aggregate Functions and NULL
 		<ul>
-			<li></li>
+			<li>Just as you have to consider NULL values in a normal query, you also have to account for NULL values within aggregate queries
+				<ul>
+					<li>How you view NULL values in the aggregate depends entirely on your interpretation of the data</li>
+					<li>There is not right/wrong way; it will depend on the requirements or situation</li>
+				</ul>
+			</li>
+			<li><b>IMPORTANT:</b> Since NULL is ignored by the aggregate function, you will need to give rows that have a NULL value for the column being aggregated a non-null value
+				<ul>
+					<li>An example of this would be to use the <b>NULLIF</b> or <b>ISNULL</b> function in conjunction with the aggregate function</li>
+					<li>Syntax would look like this:
+<p>
+
+```SQL
+SELECT 
+	<col1>
+	,NULLIF(SUM(<col2> * <col3>), 0.00)
+FROM <table1>
+GROUP BY <col1>;
+```
+</p>						
+							<li>
+								<ul>
+									<li>If <b>col2</b> or <b>col3</b> is NULL, then we will assign a value of 0.00 for that row</li>
+									<li>This will allow for the row to be included in the aggregate results</li>
+									<li>If we do not use the <b>NULLIF</b>, we lose any data from rows that have NULL for either <col2> or <col3></li>
+								</ul>
+							</li>
+					</li>
+				</ul>
+			</li>
 		</ul>
 	</li>
 </ol>
