@@ -1489,19 +1489,20 @@ FROM <table1>;
 ```SQL
 SELECT 
 	<col1>
-	,NULLIF(SUM(<col2> * <col3>), 0.00)
+	,AVG(ISNULL(<col2>, 0))
 FROM <table1>
 GROUP BY <col1>;
 ```
 </p>						
 					</li>
-					<li>If <b>col2</b> or <b>col3</b> is NULL, then we will assign a value of 0.00 for that row
+					<li>If col2 is Null, then the row will be assigned a value of 0 for its Average
 						<ul>							
 							<li>This will allow for the row to be included in the aggregate results</li>
-							<li>If we do not use the <b>NULLIF</b>, we lose any data from rows that have NULL for either <col2> or <col3></li>
+							<li>If we do not use the <b>ISNULL</b>, we lose any data from rows that have NULL for col2</li>
 						</ul>
 					</li>
 				</ul>
+				<li>See exercise <b>Chpater7/AggregateWithNulls</b></li>
 			</li>
 		</ul>
 	</li>
