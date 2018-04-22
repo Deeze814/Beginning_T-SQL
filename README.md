@@ -1507,6 +1507,38 @@ GROUP BY <col1>;
 		</ul>
 	</li>
 </ol>
+### Performance Analysis ###
+<ol>
+	<li>In addition to the execution plan, SQL SERVER also offers the <b>STATISTICS IO</b> tool</li>
+		<ul>
+			<li>This command can be turned on to see the amount of reads/counts being done by each part of the query's execution plan</li>
+			<li>To turn this command on, use the syntax:
+<p>
+
+```SQL
+SET STATISTICS IO ON;
+```
+</p>
+			</li>
+		</ul>
+	</li>
+	<li>Stat IO provides information about how much data is read from disk and memory, the following table summarizes the meaning of each type of read.</li>
+| Date Part | Abbreviation 	|
+| --------- | ------------ 	|
+| Year		| yy, yyyy	   	|
+| Quarter	| qq, q 	   	|
+| Month		| mm, m  	   	|
+| DayofYear	| dy, y   	   	|
+| Day 		| dd, d		   	|
+| Week		| wk, ww       	|
+| Weekday	| Dw 		   	|
+| Hour		| Hh			|
+| Minute	| mi, n			|
+| Second	| ss, s 		|
+| Millisecond | Ms			|
+| Microsecond | Mcs			|
+| Nanosecond | Ns			|		
+</ol>
 
 # Appendix A: Notepad++ custom setup
 <ol>
