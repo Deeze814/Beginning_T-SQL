@@ -1535,6 +1535,107 @@ SET STATISTICS IO ON;
 | Lob Physical Reads| The number of pages read from disk of Large Object Data types       													|
 | Lob Read-ahead	| The number of pages placed into cache of Large Object Data types reads 		   										|
 
+	<li>Basic breakdown of the above information:
+		<ul>
+			<li>Data is stored on disk in a structure called a <b>page</b>
+				<ul>
+					<li>Depending on the size of each row, a page could store more than one row (and most probably will)</li>
+					<li>Say your row of interest is on a page with 99 other rows</li>
+					<li>In order for SQL SERVER to be able to access the data, the page must be read from <b>disk</b> to <b>memory</b>
+						<ul>
+							<li>This means your row plus the other 99 rows of the page all reside within memory after the read is completed</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			<li>The <b>physical reading</b> of pages from disk to memory is usually the <b>most resource-intensive</b> part of the query process and often the source of performance <b>bottlenecks</b>
+				<ul>
+					<li>Given this information, you may think that <b>physical reads</b> would be the most important</li>
+					<li>Instead, when <b>tuning</b> queries, the <b>logical</b> reads value is actually the one to pay attention to.
+						<ul>
+							<li><b>IMPORTANT:</b>The <b>logical</b> reads <b>WILL NOT</b> change from execution to execution of the identical query</li>
+							<li>The physical reads value can change depending on what is currently in memory.</li>
+							<li>Using the <b>logical reads</b> value allows you to establish a common value when comparing difference versions of the same query.</li>
+						</ul>
+					</li>
+					<li>When comparing query performance, the query that performs the <b>lowest</b> number of <b>logical</b> reads will have the best performance.</li>
+				</ul>
+			</li>
+		</ul>
+		<li>See exercise <b>Chapter7/StatIO</b>
+			<ul>
+				<li>Notes from the exercise:
+					<ul>
+						<li>Every <b>NON-CLUSTERED</b> index automatically includes the cluster key, which is used to find the matching clustered index row.</li>
+						<li>Non-clustered indexes are generally much smaller structures than the table itself, so that is why a much smaller number of pages were read.</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+	</li>
+	<li><b>Column Store</b>
+		<ul>
+			<li>Introduced by SQL SERVER 2012, the <b>column store</b> stores individual <b>columns</b> within pages instead of <b>rows</b></li>
+			<li>Microsoft also introduced <b>In-Memory OLTP</b> with SQL SERVER 2014
+				<ul>
+					<li>OLTP - Online Transaction Processing</li>
+					<li>This technology allows entire tables to be loaded into memory automatically for extremely fast data manipulation</li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+</ol>
+
+## Chapter 8: Discovering Windowing Functions ##
+### Windowing Functions ###
+<ol>
+	<li>What is a Windowing function
+		<ul>
+			<li></li>
+		</ul>
+	</li>
+</ol>
+
+### Ranking Functions ####
+<ol>
+	<li>
+		<ul>
+			<li></li>
+		</ul>
+	</li>
+	<li>Defining the Window
+		<ul>
+			<li></li>
+		</ul>
+	</li>
+	<li>Dividing the Window into Partitions
+		<ul>
+			<li></li>
+		</ul>
+	</li>
+	<li>Using <b>NTILE</b>
+		<ul>
+			<li></li>
+		</ul>
+	</li>
+</ol>
+
+### Summarizing Results with Window Aggregates ###
+<ol>
+	<li>
+		<ul>
+			<li></li>
+		</ul>
+	</li>
+</ol>
+
+### Defining the Window with Framing ###
+<ol>
+	<li>
+		<ul>
+			<li></li>
+		</ul>
+	</li>
 </ol>
 
 # Appendix A: Notepad++ custom setup
