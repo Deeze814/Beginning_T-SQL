@@ -1523,7 +1523,7 @@ SET STATISTICS IO ON;
 			</li>
 		</ul>
 	</li>
-	<li>Stat IO provides information about how much data is read from disk and memory, the following table summarizes the meaning of each type of read.</li>
+	<li>Stat IO provides information about how much data is read from disk and memory, the following table summarizes the meaning of each type of read.
 
 | Date Part | Abbreviation 	|
 | --------- | ------------ 	|
@@ -1541,6 +1541,7 @@ SET STATISTICS IO ON;
 | Microsecond | Mcs			|
 | Nanosecond | Ns			|		
 
+	</li>
 </ol>
 # Appendix A: Notepad++ custom setup
 <ol>
