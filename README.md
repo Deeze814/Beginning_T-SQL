@@ -1524,6 +1524,7 @@ SET STATISTICS IO ON;
 		</ul>
 	</li>
 	<li>Stat IO provides information about how much data is read from disk and memory, the following table summarizes the meaning of each type of read.</li>
+</ol>
 
 | Action 			| Meaning	 																											|
 | --------- 		| --------------------------------------------------------------------------------------------------------------------- |
@@ -1535,6 +1536,7 @@ SET STATISTICS IO ON;
 | Lob Physical Reads| The number of pages read from disk of Large Object Data types       													|
 | Lob Read-ahead	| The number of pages placed into cache of Large Object Data types reads 		   										|
 
+<ol start="3">
 	<li>Basic breakdown of the above information:
 		<ul>
 			<li>Data is stored on disk in a structure called a <b>page</b>
