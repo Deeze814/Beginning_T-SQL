@@ -1507,6 +1507,7 @@ GROUP BY <col1>;
 		</ul>
 	</li>
 </ol>
+
 ### Performance Analysis ###
 <ol>
 	<li>In addition to the execution plan, SQL SERVER also offers the <b>STATISTICS IO</b> tool</li>
