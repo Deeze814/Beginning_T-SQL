@@ -1524,25 +1524,17 @@ SET STATISTICS IO ON;
 		</ul>
 	</li>
 	<li>Stat IO provides information about how much data is read from disk and memory, the following table summarizes the meaning of each type of read.</li>
-	<li>
-	
-| Date Part | Abbreviation 	|
-| --------- | ------------ 	|
-| Year		| yy, yyyy	   	|
-| Quarter	| qq, q 	   	|
-| Month		| mm, m  	   	|
-| DayofYear	| dy, y   	   	|
-| Day 		| dd, d		   	|
-| Week		| wk, ww       	|
-| Weekday	| Dw 		   	|
-| Hour		| Hh			|
-| Minute	| mi, n			|
-| Second	| ss, s 		|
-| Millisecond | Ms			|
-| Microsecond | Mcs			|
-| Nanosecond | Ns			|		
 
-	</li>
+| Action 			| Meaning	 																											|
+| --------- 		| --------------------------------------------------------------------------------------------------------------------- |
+| Scan Count		| The number of scans or seeks	   																						|
+| Logical Reads		| The number of pages read from <b>memory</b>. <b>This is the most useful value</b> 	   								|
+| Physical Reads	| The number of pages read from disk into memory  	   																	|
+| Read-ahead Reads	| The number of pages placed into cache. This number will often be inflated when an <b>index is fragmented</b>  	   	|
+| Lob logical Reads	| The number of pages read from memory of <b>Large Object Data</b> types	   											|
+| Lob Physical Reads| The number of pages read from disk of Large Object Data types       													|
+| Lob Read-ahead	| The number of pages placed into cache of Large Object Data types reads 		   										|
+
 </ol>
 # Appendix A: Notepad++ custom setup
 <ol>
