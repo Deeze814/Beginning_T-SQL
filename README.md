@@ -1536,6 +1536,7 @@ SET STATISTICS IO ON;
 | Lob Read-ahead	| The number of pages placed into cache of Large Object Data types reads 		   										|
 
 </ol>
+
 # Appendix A: Notepad++ custom setup
 <ol>
 	<li><b>IMPORTANT:</b> Regardless of what directory you tell the installer to place the Notepad++ files, it will create most of the required file directories in:
