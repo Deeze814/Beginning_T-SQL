@@ -1523,8 +1523,9 @@ SET STATISTICS IO ON;
 			</li>
 		</ul>
 	</li>
-	<li>Stat IO provides information about how much data is read from disk and memory, the following table summarizes the meaning of each type of read.
-
+	<li>Stat IO provides information about how much data is read from disk and memory, the following table summarizes the meaning of each type of read.</li>
+	<li>
+	
 | Date Part | Abbreviation 	|
 | --------- | ------------ 	|
 | Year		| yy, yyyy	   	|
