@@ -1524,7 +1524,7 @@ SET STATISTICS IO ON;
 	</li>
 	<li>Stat IO provides information about how much data is read from disk and memory, the following table summarizes the meaning of each type of read.</li>
 </ol>
-	| Date Part | Abbreviation 	|
+| Date Part | Abbreviation 	|
 | --------- | ------------ 	|
 | Year		| yy, yyyy	   	|
 | Quarter	| qq, q 	   	|
