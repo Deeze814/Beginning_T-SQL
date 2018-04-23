@@ -1593,21 +1593,102 @@ SET STATISTICS IO ON;
 <ol>
 	<li>What is a Windowing function
 		<ul>
-			<li></li>
+			<li>A <b>"Window"</b> function performs calculations over a set of rows
+				<ul>
+					<li>The set of rows define the "window"</li>
+				</ul>
+			</li>
+			<li>For each row of the results of a query, the windowing function will perform a specific calculation over a window of rows</li>
+			<li>The window is defined with the <b>OVER</b> clause</li>
+			<li>Windowing functions are allowed only in the <b>SELECT</b> or <b>ORDER BY</b> clauses
+				<ul>
+					<li>Another way they can be used is within a CTE to separate out the logic and filter in the outer query</li>
+				</ul>
+			</li>
+			<li>The types of windowing functions fall into the following categories
+				<ul>
+					<li><b>Ranking functions</b>
+						<ul>
+							<li>This type of function adds a ranking to each row or divides the rows into buckets</li>
+						</ul>
+					</li>
+					<li><b>Window aggregates</b>
+						<ul>
+							<li>This function allows you to calculate summary values in a non-aggregated query</li>
+						</ul>
+					</li><b>Accumulating aggregates</b>
+					<li>
+						<ul>
+							<li>Enables the calculation of running totals</li>
+						</ul>
+					</li>
+					<li><b>Analytic functions</b>
+						<ul>
+							<li>Several new <b>scalar</b> functions</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
 		</ul>
 	</li>
 </ol>
 
 ### Ranking Functions ####
 <ol>
-	<li>
+	<li>The Ranking functions (<b>ROW_NUMBER, RANK, DENSE_RANK, NTILE</b>) were added in SQL SERVER 2005.
 		<ul>
-			<li></li>
+			<li>The first three assign a ranking to each row in the result set (window)</li>
+			<li>The <b>NTILE</b> function divides the set of rows into buckets</li>
 		</ul>
 	</li>
 	<li>Defining the Window
 		<ul>
-			<li></li>
+			<li>The <b>OVER</b> clause defines the window for the ranking function</li>
+			<li>The <b>OVER</b> clause must specify the order or rows, which then determines how the function is applied to the data</li>
+			<li><b>ROW_NUMBER</b>
+<p>
+
+```SQL
+SELECT
+	<col1>
+	,<col2>
+	,ROW_NUMBER() OVER(ORDER BY  <col1>[,<col2>]) AS RowNum
+FROM <table1>;
+```
+</p>				
+			</li>
+			<li><b>RANK</b>
+<p>
+
+```SQL
+SELECT
+	<col1>
+	,<col2>
+	,RANK() OVER (ORDER BY <col1>[,<col2>]) AS RankNum
+FROM <table1>;
+```
+</p>				
+			</li>
+			<li><b>DENSE_RANK</b>
+<p>
+
+```SQL
+SELECT
+	<col1>
+	,<col2>
+	,DENSE_RANK() OVER(ORDER BY  <col1>[,<col2>]) AS DenseRankNum
+FROM <table1>;
+```
+</p>				
+			</li>
+			<li>These functions differ in how they process <b>ties</b> or <b>duplicates</b> in the ORDER BY.
+				<ul>
+					<li>If the values of the column or combination of columns are unique, then all 3 return identical results</li>
+					<li>The difference is that <b>ROW_NUMBER</b> will always return a unique value within the window</li>
+					<li><b>RANK</b> and <b>DENSE_RANK</b> will return unique values if the ORDER BY is unique</li>
+				</ul>
+			</li>
+			<li>See exercise <b>Chapter8/RankingFunc</b></li>
 		</ul>
 	</li>
 	<li>Dividing the Window into Partitions
