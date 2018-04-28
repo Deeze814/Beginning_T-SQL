@@ -1693,7 +1693,15 @@ FROM <table1>;
 	</li>
 	<li>Dividing the Window into Partitions
 		<ul>
-			<li></li>
+			<li>Much like the panes in a normal window split the view of the window into sections, The window of the windowing function can be split into <b>partitions</b></li>
+			<li>This may sound similar to the <b>GROUP BY</b>, but in reality it is quiet different
+				<ul>
+					<li>When using <b>GROUP BY</b>, you end up with one row in the results for each unique group</li>
+					<li>When <b>partitioning</b> in the <b>OVER</b> clause, you retain all the detail rows in the result</li>
+				</ul>
+			</li>
+			<li>For <b>Ranking Functions</b>, partitioning means you will start over for each partition</li>
+			<li>See exercise <b>Chapter8/Partitions</b></li>
 		</ul>
 	</li>
 	<li>Using <b>NTILE</b>
@@ -1796,6 +1804,24 @@ FROM <table1>;
 		</ul>
 	</li>
 </ol> 
+
+# Appendix B: Default Query template
+<ol>
+	<li>In order for SQL Server to launch a new query window with default code (such as common comments), we have to modify the base template file
+	<li>Navigate to the directory:
+		<ul>
+			<li><b>C:\Program Files (x86)\Microsoft SQL Server\140\Tools\Binn\ManagementStudio\SqlWorkbenchProjectItems\Sql</b></li>
+			<li>Open the file named <b>SQLFile.sql</b>
+				<ul>
+					<li><b>NOTE:</b> You need to open the editor this launches in (such as notepad++) in Admin mode</li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+	<li>Once the file is opened, enter the default SQL you want in any file launched in SSMS using the <b>New Query</b> toolbar option.</li>
+	<li>For more information, see this [article](https://sqlstudies.com/2015/06/11/modifying-the-new-query-template/)</li>
+</ol>
+
 
 
 
