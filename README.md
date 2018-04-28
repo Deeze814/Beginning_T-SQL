@@ -1706,18 +1706,43 @@ FROM <table1>;
 	</li>
 	<li>Using <b>NTILE</b>
 		<ul>
-			<li></li>
+			<li>The <b>NTILE</b> functions a bit differently from the other ranking functions</li>
+			<li>It assigns a number to sections of rows and evenly distributes the data into these sections (buckets)</li>
+			<li>Syntax:
+<p>
+
+```SQL
+SELECT
+	<col1>
+	,NTILE(<number of buckets>) OVER([PARTITION BY <col2>] ORDER BY <col3>)
+FROM <table>;
+```
+</p>
+			</li>
+			<li>Note that <b>NTILE</b> has a required parameter for specifying the number of buckets
+				<ul>
+					<li>Outside of this parameter, NTILE behaves like other ranking functions in terms of its <b>OVER</b> clause specification</li>
+				</ul>
+			</li>
+			<li>See exercise <b>Chapter8/NTILE</b></li>
 		</ul>
 	</li>
 </ol>
 
 ### Summarizing Results with Window Aggregates ###
 <ol>
-	<li>
+	<li>Window aggregates allow you to add aggregate expressions to non-aggregate queries
 		<ul>
-			<li></li>
+			<li>Window aggregate functions require the <b>OVER</b> clause and support <b>PARTITION BY</b></li>
+			<li>They do <b>NOT</b> support the <b>ORDER BY</b> option</li>
 		</ul>
 	</li>
+	<li><b>IMPORTANT:</b>Keep in mind that aggregate functions and the window functions operate <b>AFTER</b> the <b>WHERE</b> clause
+		<ul>
+			<li>Fancy way of saying that window functions do not change the result set (since the result set is determined by the application of the WHERE clause)</li>
+		</ul>
+	</li>
+	<li>See exercise <b>Chapter8/WindowAggregates</b></li>
 </ol>
 
 ### Defining the Window with Framing ###
