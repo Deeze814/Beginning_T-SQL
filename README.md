@@ -1819,7 +1819,7 @@ FROM <table1>;
 		</ul>
 	</li>
 	<li>Once the file is opened, enter the default SQL you want in any file launched in SSMS using the <b>New Query</b> toolbar option.</li>
-	<li>For more information, see this article: (https://sqlstudies.com/2015/06/11/modifying-the-new-query-template/)</li>
+	<li>For more information, see this article: https://sqlstudies.com/2015/06/11/modifying-the-new-query-template </li>
 </ol>
 
 
