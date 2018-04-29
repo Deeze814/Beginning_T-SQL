@@ -1747,6 +1747,74 @@ FROM <table>;
 
 ### Defining the Window with Framing ###
 <ol>
+	<li>Starting with SQL Server 2012, you can further define the window for certain window functions with <b>frames</b>
+		<ul>
+			<li>With <b>frames</b>, each row in the results will have a different window for the calculation
+				<ul>
+					<li><b>Framing</b> allows the window to consider a subset of the overall data set for a particular row window</li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+	<li>There are three keyword phrases that we use when dealing with framing:
+		<ul>
+			<li><b>UNBOUNDED PRECEDING</b></li>
+			<li><b>UNBOUNDED FOLLOWING</b></li>
+			<li><b>CURRENT ROW</b></li>
+		</ul>
+		<li>The chart below explains
+			<ul>
+				<li><b>n</b> = last row</li>
+				<li><b>i</b> = 10th row</li>
+			</ul>
+		</li>
+	</li>
+</ol>
+
+| Frame Definition	| Rows in Frame for Row 10	(100 row result set)				   |
+| -----------------	| ---------------------------------------------------------------- |
+| ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW			| Rows 1 - 10 	=> 1...i   |
+| ROWS BETWEEN CURRENT ROW AND UNBOUNDED FOLLOWING			| Rows 10 - 100	=> i...n   |
+| ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLWING 	| Rows 1 - 100 	=> 1...n   |
+
+<ol start="2">
+	<li>When using <b>frames</b>, you can also specify an <b>offset</b> value to further refine your rows
+		<ul>
+			<li>The <b>offset</b> is the specification of the actual number of rows you want removed from the current row</li>
+		</ul>
+	</li>
+	<li>The chart below explains
+		<ul>
+			<li><b>n</b> = last row</li>
+			<li><b>i</b> = 10th row</li>
+		</ul>
+	</li>
+	<li>Remember that each row has its own <b>frame</b>, so if you were to look at this from the perspective of row 9, the frame will shift left one row<li>
+</ol>
+
+| Frame Definition	| Rows in Frame for Row 10	(100 row result set)				   	|
+| -----------------	| ---------------------------------------------------------------- 	|
+| ROWS BETWEEN 3 PRECEDING AND CURRENT ROW			| Rows 7 - 10 	=> (i-3)...i  		|
+| ROWS BETWEEN CURRENT ROW AND 5 FOLLOWING			| Rows 10 - 15	=> i...(i+5)	  	|
+| ROWS BETWEEN UNBOUNDED PRECEDING AND 5 FOLLOWING 	| Rows 1 - 15 	=> 1...(i+5)  		|
+| ROWS BETWEEN 3 PRECEDING AND 5 FOLLOWING 			| Rows 7 - 15 	=> (i-3)...(i+5)   	|
+
+<ol start="3">
+	</li>The example above demonstrate <b>framing</b> using <b>ROWS</b>, but there is also another keyword <b>RANGE</b>
+		<ul>
+			<li>For the most part <b>ROWS</b>and <b>RANGE</b> do the same thing, however there are some subtle differences</li>
+			<li>Window functions are part of the ANSI standard for the SQL language</li>
+			<li>Microsoft has <b>NOT</b> fully implemented everything that the ANSI standards have specified for <b>RANGE</b>
+				<ul>
+					<li>So at this time, it is best to use <b>ROWS</b></li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+</ol>
+
+### Calculating Running Totals ###
+<ol>
 	<li>
 		<ul>
 			<li></li>
