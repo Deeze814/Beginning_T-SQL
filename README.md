@@ -1815,11 +1815,16 @@ FROM <table>;
 
 ### Calculating Running Totals ###
 <ol>
-	<li>
+	<li>By adding an <b>ORDER BY</b> to a window aggregate expression, you can calculate a running total
 		<ul>
-			<li></li>
+			<li>The window aggregate function requires a frame, it it is <b>RANGE BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW</b> if nothing is specified
+				<ul>
+					<li>Again, it is better to use <b>ROWS</b> in place of <b>RANGE</b>, so specify the expression explicitly using <b>ROWS</b></li>
+				</ul>
+			</li>
 		</ul>
 	</li>
+	<li>See exercise <b>Chapter8/RunningTotal</b></li>
 </ol>
 
 # Appendix A: Notepad++ custom setup
