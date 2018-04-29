@@ -1777,7 +1777,7 @@ FROM <table>;
 | ROWS BETWEEN CURRENT ROW AND UNBOUNDED FOLLOWING			| Rows 10 - 100	=> i...n   |
 | ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLWING 	| Rows 1 - 100 	=> 1...n   |
 
-<ol start="2">
+<ol start="4">
 	<li>When using <b>frames</b>, you can also specify an <b>offset</b> value to further refine your rows
 		<ul>
 			<li>The <b>offset</b> is the specification of the actual number of rows you want removed from the current row</li>
@@ -1799,7 +1799,7 @@ FROM <table>;
 | ROWS BETWEEN UNBOUNDED PRECEDING AND 5 FOLLOWING 	| Rows 1 - 15 	=> 1...(i+5)  		|
 | ROWS BETWEEN 3 PRECEDING AND 5 FOLLOWING 			| Rows 7 - 15 	=> (i-3)...(i+5)   	|
 
-<ol start="3">
+<ol start="7">
 	</li>The example above demonstrate <b>framing</b> using <b>ROWS</b>, but there is also another keyword <b>RANGE</b>
 		<ul>
 			<li>For the most part <b>ROWS</b>and <b>RANGE</b> do the same thing, however there are some subtle differences</li>
