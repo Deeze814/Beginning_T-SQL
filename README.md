@@ -1800,7 +1800,7 @@ FROM <table>;
 | ROWS BETWEEN 3 PRECEDING AND 5 FOLLOWING 			| Rows 7 - 15 	=> (i-3)...(i+5)   	|
 
 <ol start="7">
-	<li>The example above demonstrate <b>framing</b> using <b>ROWS</b>, but there is also another keyword <b>RANGE</b>
+	<li>The examples above demonstrate <b>framing</b> using <b>ROWS</b>, but there is also another keyword <b>RANGE</b>
 		<ul>
 			<li>For the most part <b>ROWS</b>and <b>RANGE</b> do the same thing, however there are some subtle differences</li>
 			<li>Window functions are part of the ANSI standard for the SQL language</li>
