@@ -1789,7 +1789,7 @@ FROM <table>;
 			<li><b>i</b> = 10th row</li>
 		</ul>
 	</li>
-	<li>Remember that each row has its own <b>frame</b>, so if you were to look at this from the perspective of row 9, the frame will shift left one row<li>
+	<li>Remember that each row has its own <b>frame</b>, so if you were to look at this from the perspective of row 9, the frame will shift left one row</li>
 </ol>
 
 | Frame Definition	| Rows in Frame for Row 10	(100 row result set)				   	|
