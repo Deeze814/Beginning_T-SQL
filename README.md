@@ -1841,8 +1841,76 @@ FROM <table>;
 				<ul>
 					<li><b>RANGE</b> will operate on logical values</li>
 					<li>This means <b>duplicates</b> are treated as a <b>single</b> value</li>
+					<li>The resulting value is not a true running total calculation</li>
 				</ul>
 			</li>
+		</ul>
+	</li>
+	<li>See exercise <b>Chapter8/RowsVsRange</b></li>
+</ol>
+
+### Window Analytic Functions ###
+<ol>
+	<li><b>LAG</b> and <b>LEAD</b>
+		<ul>
+			<li>These two functions can be used to determine first and last occurrences of an element</li>
+			<li>The performance of the functions is superb, but framing is not supported (but partitioning is)</li>			
+			<li><b>LAG</b> lets you pull any column from a previous row
+				<ul>
+					<li>Syntax for <b>LAG</b>
+<p>
+
+```SQL
+SELECT
+	<col1>
+	[,<col2>]
+	,LAG(<column to view>) OVER(ORDER BY <col1>[,<col2>]) AS <alias>
+FROM <table>;
+```
+</p>
+					</li>
+					<li>Syntax for <b>LAG</b> with partitioning 
+<p>
+
+```SQL
+SELECT
+	<col1>
+	[,<col2>]
+	,LAG(<column to view>[,<number of rows>][,<default value>]) OVER(ORDER BY <col1>[,<col2>]) AS <alias>
+FROM <table>;
+```
+</p>					
+					</li>
+				</ul>
+			</li>
+			<li><b>LEAD</b> lets you pull column from a following row
+				<ul>
+					<li>Syntax for <b>LEAD</b>
+<p>
+
+```SQL
+SELECT
+	<col1>
+	[,<col2>]
+	,LEAD(<column to view>) OVER(ORDER BY <col1>[,<col2>]) AS <alias>
+FROM <table>;
+```
+</p>					
+					</li>
+					<li>Syntax for <b>LEAD</b> with partitioning 
+<p>
+
+```SQL
+SELECT
+	<col1>
+	[,<col2>]
+	,LEAD(<column to view>[,<number of rows>][,<default value>]) OVER(ORDER BY <col1>[,<col2>]) AS <alias>
+FROM <table>;
+```
+</p>					
+					</li>
+				</ul>
+			</li>			
 		</ul>
 	</li>
 </ol>
