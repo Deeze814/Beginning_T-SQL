@@ -1827,6 +1827,26 @@ FROM <table>;
 	<li>See exercise <b>Chapter8/RunningTotal</b></li>
 </ol>
 
+### Difference between ROWS and RANGE ###
+<ol>
+	<li>Besides RANGE not being fully implemented to the ANSI standards, there are core differences between ROWS and RANGE
+		<ul>
+			<li><b>ROWS</b> is a <b>physical</b> operator
+				<ul>
+					<li><b>ROWS</b> will operate over the physical rows of a result set</li>
+					<li>This means that <b>ROWS</b> will return a running total based on the <i>physical position</i> of the row</li>
+				</ul>
+			</li>
+			<li><b>RANGE</b> is a <b>logical</b> operator
+				<ul>
+					<li><b>RANGE</b> will operate on logical values</li>
+					<li>This means <b>duplicates</b> are treated as a <b>single</b> value</li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+</ol>
+
 # Appendix A: Notepad++ custom setup
 <ol>
 	<li><b>IMPORTANT:</b> Regardless of what directory you tell the installer to place the Notepad++ files, it will create most of the required file directories in:
