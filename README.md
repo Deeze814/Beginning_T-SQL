@@ -1910,19 +1910,16 @@ FROM <table>;
 </p>					
 					</li>
 				</ul>
-			</li>			
+			</li>
+			<li>See exercise <b>Chapter8/LagLead</b></li>			
 		</ul>
-	</li>
-	<li>See exercise <b>Chapter8/LagLead</b></li>
-</ol>
-<ol>
+	</li>	
 	<li><b>FIRST_VALUE</b> and <b>LAST_VALUE</b>
 		<ul>
 			<li></li>
 		</ul>
 	</li>
 </ol>
-
 
 
 # Appendix A: Notepad++ custom setup
