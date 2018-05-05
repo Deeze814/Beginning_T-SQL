@@ -1953,6 +1953,22 @@ FROM <table1>;
 	</li>
 </ol>
 
+### Applying Windowing Functions ###
+<ol>
+	<li><b>Removing Duplicates</b>
+		<ul>
+			<li>One of the applications of <b>ROW_NUMBER</b> is to remove duplicate rows from data</li>
+			<li><b>ROW_NUMBER</b> returns a unique number for each row in the window or set of rows returned</li>
+			<li>By adding a row number, you can turn data with duplicates into unique rows temporarily</li>
+			<li>See exercise <b>Chapter8/RemoveDupWithRowNum</b></li>
+		</ul>
+	</li>
+	<li><b>Solving the <i>Islands Problem</i></b>
+		<ul>
+			<li></li>
+		</ul>
+	</li>
+</ol>
 
 # Appendix A: Notepad++ custom setup
 <ol>
