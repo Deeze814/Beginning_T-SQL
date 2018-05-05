@@ -1916,8 +1916,40 @@ FROM <table>;
 	</li>	
 	<li><b>FIRST_VALUE</b> and <b>LAST_VALUE</b>
 		<ul>
-			<li></li>
+			<li>These functions work similar to <b>LAG</b> and <b>LEAD</b> but pull values from either the very first row or very last row of the window</li>
+			<li>Syntax for <b>FIRST_VALUE</b>
+<p>
+
+```SQL
+SELECT
+	<col1>
+	[,<col2>]
+	,FIRST_VALUE(<column to view>) OVER(ORDER BY <col1>) [frame specification]
+FROM <table1>;
+```
+</p>
+			</li>
+			<li>Syntax for <b>LAST_VALUE</b>
+<p>
+
+```SQL
+SELECT
+	<col1>
+	[,<col2>]
+	,LAST_VALUE(<column to view>) OVER(ORDER BY <col1>) frame specification
+FROM <table1>;
+```
+</p>
+				<ul>
+					<li><b>NOTE:</b> The frame specification is not optional on <b>LAST_VALUE</b>
+						<ul>
+							<li>While you will not get an error message if you do not include a frame specification, the query will not work as expected because the default frame only goes up to the current row</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
 		</ul>
+		<li>See exercise <b>Chapter8/FirstLastValue</b></li>
 	</li>
 </ol>
 
