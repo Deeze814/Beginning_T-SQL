@@ -2014,6 +2014,12 @@ FROM <table1>;
 			<li>You shouldn't add this many indexes for every window function you write, but if you observe the function is having performance issues, this is a good place to start.</li>
 		</ul>
 	</li>
+	<li><b>The Trouble with Window Aggregates</b>
+		<ul>
+			<li>While window aggregates are easier to write than the traditional logic counterparts, they also routinely experience worse performance</li>
+			<li>See exercise <b>Chapter8/TroubleWithWindAgg</b></li>
+		</ul>
+	</li>
 </ol>
 
 
