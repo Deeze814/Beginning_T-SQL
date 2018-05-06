@@ -1965,10 +1965,57 @@ FROM <table1>;
 	</li>
 	<li><b>Solving the <i>Islands Problem</i></b>
 		<ul>
-			<li></li>
+			<li>The <i>islands problem</i> is a classic example of a problem that SQL developers face routinely
+				<ul>
+					<li>The crux of the issue is that we must identify boundaries that represent breaks in sequence within a data set</li>
+					<li>For Example:
+						<ul>
+							<li>You have a data set of records with the values of 1,2,3,5,5,9,10,11</li>
+							<li>The <i>islands</i> (boundaries) would be 1-3, 5, 8-11</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			<li>One way to solve the problem is to use windowing functions (such as <b>DENSE_RANK</b>) to identify each island</li>
+			<li>See exercise <b>Chapter8\Islands</b></li>
 		</ul>
 	</li>
 </ol>
+
+### Thinking About Performance with Window Functions ###
+<ol>
+	<li><b>Indexing</b>
+		<ul>
+			<li>A specific type of index can help the performance of most queries that make use of window functions
+				<ul>
+					<li>This index is commonly termed as a <b>POC</b> index (Partition, Order, Covering)</li>
+					<li>See the article below for more information on the POC index
+						<ul>
+							<li>http://www.itprotoday.com/microsoft-sql-server/sql-server-2012-how-write-t-sql-window-functions-part-3</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			<li>This index is composed of the <b>PARTITION BY </b> and <b>OVER BY</b> columns from the <b>OVER</b> clause (POC index)
+				<ul>
+					<li>The <b>P</b> and <b>O</b> columns need to be defined as the index key elements</li>
+					<li>The <b>C</b> columns need to be included in the index leaf, using an <b>INCLUDE</b> clause in a non-clustered index
+						<ul>
+							<li>It the index is clustered, everything is implicitly covered</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			<li>The author suggests that other columns listed in the SELECT list also be added as included columns to the index
+				<ul>
+					<li>Also, any columns listed in the WHERE clause should also be added as index keys in front of the PARTITION BY columns.</li>
+				</ul>
+			</li>
+			<li>You shouldn't add this many indexes for every window function you write, but if you observe the function is having performance issues, this is a good place to start.</li>
+		</ul>
+	</li>
+</ol>
+
 
 # Appendix A: Notepad++ custom setup
 <ol>
