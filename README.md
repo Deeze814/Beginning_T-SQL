@@ -2020,6 +2020,17 @@ FROM <table1>;
 			<li>See exercise <b>Chapter8/TroubleWithWindAgg</b></li>
 		</ul>
 	</li>
+	<li><b>Framing</b>
+		<ul>
+			<li>Aside from the fact that <b>ROWS</b> is a physical operator and <b>RANGE</b> is a logical operator, there is also a performance difference between the two
+				<ul>
+					<li>Due to how the database engine implements the worktable used to perform the calculations, <b>RANGE</b> will have worse performance than <b>ROWS</b></li>
+					<li>Since <b>RANGE</b> defines your window frame on a <b>logical</b> level, your frame can consist of more rows than when the frame is defined at the <b>physical</b> level with <b>ROWS</b></li>
+				</ul>
+			</li>
+			<li>See exercise <b>Chapter8/RowRangePerformance</b></li>
+		</ul>
+	</li>
 </ol>
 
 
