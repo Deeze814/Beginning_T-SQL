@@ -2034,6 +2034,66 @@ FROM <table1>;
 </ol>
 
 
+## Chapter 9: Advanced WHERE clauses ##
+### Pattern Matching ###
+<ol>
+	<li><b>Using LIKE</b>
+		<ul>
+			<li>Most of the time you will see <b>LIKE</b> using in conjunction with the percent sign(%) to signal wildcard usage to represent zero or more characters</li>
+			<li>You may also see the usage of an underscore(_) to denote the replacement of exactly ONE character</li>
+		</ul>
+	</li>
+	<li><b>Restricting the Characters in Pattern Matches</b>
+		<ul>
+			<li>The value matching a wildcard may be restricted to a list or range of characters</li>
+			<li>To do this, surround the possible values or range by square brackets([])
+				<ul>
+					<li>Here is the syntax:
+<p>
+
+```SQL
+SELECT 
+	<col1>
+	,<col2>
+FROM <schema>.<table>
+WHERE <column> LIKE 'value[a-c]';
+```
+</p>
+
+<p>
+
+```SQL
+SELECT 
+	<col1>
+	,<col2>
+FROM <schema>.<table>
+WHERE <column> LIKE 'value[abc]';
+```
+</p>
+					</li>
+				</ul>
+			</li>
+			<li>Alternatively, you can use the caret(^) to list characters or the range of characters you do NOT want to use as replacements.
+				<ul>
+					<li>Here is the syntax:
+<p>
+
+```SQL
+SELECT 
+	<col1>
+	,<col2>
+FROM <schema>.<table>
+WHERE <column> LIKE 'value[^d]';
+```
+</p>
+					</li>
+				</ul>
+			</li>
+			<li>See exercise <b>Chapter9/PatternRestricting</b></li>
+		</ul>
+	</li>
+</ol>
+
 # Appendix A: Notepad++ custom setup
 <ol>
 	<li><b>IMPORTANT:</b> Regardless of what directory you tell the installer to place the Notepad++ files, it will create most of the required file directories in:
@@ -2110,67 +2170,7 @@ FROM <table1>;
 	</li>
 </ol> 
 
-## Chapter 9: Advanced WHERE clauses ##
-### Pattern Matching ###
-<ol>
-	<li><b>Using LIKE</b>
-		<ul>
-			<li>Most of the time you will see <b>LIKE</b> using in conjunction with the percent sign(%) to signal wildcard usage to represent zero or more characters</li>
-			<li>You may also see the usage of an underscore(_) to denote the replacement of exactly ONE character</li>
-		</ul>
-	</li>
-	<li><b>Restricting the Characters in Pattern Matches</b>
-		<ul>
-			<li>The value matching a wildcard may be restricted to a list or range of characters</li>
-			<li>To do this, surround the possible values or range by square brackets([])
-				<ul>
-					<li>Here is the syntax:
-<p>
-
-```SQL
-SELECT 
-	<col1>
-	,<col2>
-FROM <schema>.<table>
-WHERE <column> LIKE 'value[a-c]';
-```
-</p>
-
-<p>
-
-```SQL
-SELECT 
-	<col1>
-	,<col2>
-FROM <schema>.<table>
-WHERE <column> LIKE 'value[abc]';
-```
-</p>
-					</li>
-				</ul>
-			</li>
-			<li>Alternatively, you can use the caret(^) to list characters or the range of characters you do NOT want to use as replacements.
-				<ul>
-					<li>Here is the syntax:
-<p>
-
-```SQL
-SELECT 
-	<col1>
-	,<col2>
-FROM <schema>.<table>
-WHERE <column> LIKE 'value[^d]';
-```
-</p>
-					</li>
-				</ul>
-			</li>
-			<li>See exercise <b>Chapter9/PatternRestricting</b></li>
-		</ul>
-	</li>
-</ol>
-
-# Appendix B: Default Query template
+# Appendix B: Default Query template #
 <ol>
 	<li>In order for SQL Server to launch a new query window with default code (such as common comments), we have to modify the base template file
 	<li>Navigate to the directory:
