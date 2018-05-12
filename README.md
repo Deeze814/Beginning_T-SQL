@@ -2185,7 +2185,6 @@ WHERE CONTAINS(<index column>, <searchterm1 [AND][OR][searchterm2]>);
 	</li>
 	<li><b>Thinking about Performance</b>
 		<ul>
-			<li></li>
 			<li>See exercise <b>Chapter9/Performance</b> for a comparison of <b>LIKE</b> vs. <b>CHARINDEX</b></li>
 		</ul>
 	</li>
