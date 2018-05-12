@@ -2092,6 +2092,103 @@ WHERE <column> LIKE 'value[^d]';
 			<li>See exercise <b>Chapter9/PatternRestricting</b></li>
 		</ul>
 	</li>
+	<li><b>Using PATINDEX</b>
+		<ul>
+			<li><b>PATINDEX</b> works similar to the <b>CHARINDEX</b>, but includes the use of wildcards in the search condition</li>
+			<li>Has the following syntax:
+<p>
+
+```SQL
+PATINDEX('%pattern%', expression)
+```
+</p>
+			</li>
+			<li>See exercise <b>Chapter9/PatIndex</b></li>
+		</ul>
+	</li>
+	<li><b>Performing a Full-Text Search</b>
+		<ul>
+			<li>Much like <b>LIKE</b> and <b>PATINDEX</b> allow you to find character matches within data, Full-text search provides the ability to search for words or phrases within string of binary data columns</li>
+			<li>Full-Text search is especially beneficial when documents are stored as binary data in the database</li>
+			<li><b>NOTE:</b> Full-Text search must be installed either during SQL Server installation or added later
+				<ul>
+					<li>You will also need to create a special full-text index on the table</li>
+					<li>Below are a few tables in <b>AdventureWorks2012</b> that contain full-text search indexes
+						<ol>
+							<li>Production.ProductReview  --  Comments  --  NVARCHAR(3850)</li>
+							<li>Production.Document --  DocumentSummary  --  NVARCHAR(MAX)</li>
+							<li>Production.Document --  Document  --  VARBINARY(MAX)</li>
+							<li>HumanResources.JobCandidate  --  Resume  --  XML</li>
+						</ol>
+					</li>
+				</ul>
+			</li>	
+			<li>Using <b>CONTAINS</b>
+				<ul>
+					<li>The syntax for using <b>CONTAINS</b> in a full-text search:
+<p>
+
+```SQL
+SELECT 
+	<column1>
+	,<column2>
+FROM <schema>.<table>
+WHERE CONTAINS(<index column>, <searchterm>);
+```
+</p>
+					</li>
+					<li>See exercise <b>Chapter9/FullTextSearch</b></li>
+				</ul>
+			</li>
+			<li><b>Using <b>CONTAINS</b> with multiple terms</b>
+				<ul>
+					<li>You can use <b>CONTAINS</b> to find terms within a search column that are not adjacent in the record value</li>
+					<li>The syntax is as follows:
+<p>
+
+```SQL
+SELECT 
+	<column1>
+	,<column2>
+FROM <schema>.<table>
+WHERE CONTAINS(<index column>, <searchterm1 [AND][OR][searchterm2]>);
+```
+</p>
+					</li>
+					<li>See exercise <b>Chapter9/FullTextSearch</b></li>
+				</ul>
+			</li>
+			<li><b>FREETEXT</b>
+				<ul>
+					<li><b>FREETEXT</b> is similar to <b>CONTAINS</b> except that it returns rows that do not exactly match</li>
+					<li>It will return rows that have similar meanings to your search terms by using a <b>thesaurus</b></li>
+					<li><b>FREETEXT</b> is less precises than <b>CONTAINS</b> and less flexible
+						<ul>
+							<li>You cannot use <b>AND</b>, <b>OR</b>, and <b>NEAR</b> with <b>FREETEXT</b></li>
+							<li>Avoid using double quotes</li>
+						</ul>
+					</li>
+					<li>See exercise <b>Chapter9/FullTextSearch</b></li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+	<li><b>SARGABLE</b>
+		<ul>
+			<li><b>Sargable</b> is a term that may appear in various SQL literature
+				<ul>
+					<li>It is a term that describes the condition where the optimizer can take full advantage of an index</li>
+					<li>The term <b>sarg</b> is short for <b>search argument</b>, which is then turned into the adjective (sargable) to describe the search predicate.</li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+	<li><b>Thinking about Performance</b>
+		<ul>
+			<li></li>
+			<li>See exercise <b>Chapter9/Performance</b> for a comparison of <b>LIKE</b> vs. <b>CHARINDEX</b></li>
+		</ul>
+	</li>
 </ol>
 
 # Appendix A: Notepad++ custom setup
