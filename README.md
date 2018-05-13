@@ -2190,6 +2190,97 @@ WHERE CONTAINS(<index column>, <searchterm1 [AND][OR][searchterm2]>);
 	</li>
 </ol>
 
+## Chapter 10: Manipulating Data ##
+### Inserting New Rows ###
+<ol>
+	<li><b>Check table for existence</b>
+		<ul>
+			<li><b>Option 1:</b> SSMS can create the script and will check the <b>sys.objects.table</b> table to see if a specified table exists on the database</li>
+			<li><b>Option 2: You can check the results of the <b>OBJECT_ID</b> function to see if a table(or other DDL objects) exist</b>
+				<ul>
+					<li>Syntax for <b>OBJECT_ID</b>
+<p>
+
+```SQL
+IF OBJECT_ID('dbo.demoCustomer', 'U') IS NOT NULL
+BEGIN
+	DROP TABLE dbo.demoCustomer
+END;
+```
+</p>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+	<li><b>Adding rows with literal values</b>
+		<ul>
+			<li>When you add a hardcoded string literal to an insert statement, you can add a <b>N</b> to the front of the string declaration (outside of the string's single quotes)
+				<ul>
+					<li>This will convert the string to an <b>NVARCHAR</b> value to match the data type of the column</li>
+					<li>Remember that <b>NVARCHAR</b> has more support for a wider array of character representation
+						<ul>
+							<li><b>NVARCHAR</b> can store <b>UNICODE</b> characters as well as <b>ASCII</b></li>
+							<li><b>VARCHAR</b> can only store <b>ASCII</b></li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+	<li><b>Inserting multiple rows using row constructors</b>
+		<ul>
+			<li>Starting with SQL Server 2008, you can insert multiple rows by specifying multiple values in a single insert statement</li>
+			<li>Example:
+<p>
+
+```SQL
+INSERT INTO dbo.demoCustomer(CustomerID, FirstName, MiddleName, LastName)
+VALUES (12, N'Johnny', N'A.', N'Capino')
+	  ,(16. N'Chris', N'R.', N'Beck');
+```
+</p>
+			</li>
+		</ul>
+	</li>
+	<li><b>Common pitfall when combining creation/insertion into a table in a single step</b>
+		<ul>
+			<li>Often, you will see SQL in which the SELECT INTO statement to create an empty table has a nonsensical predicate, such as WHERE 1=2
+				<ul>
+					<li>Even if your intent is to just create an empty table, the DB performance is helped if you have an explicit CREATE TABLE statement and then your INSERT INTO statement.</li>
+					<li>Whenever a SQL statement creates a table(implicitly or explicitly), the DB will lock the system table</li>
+					<li>If you separate your Create and Insert statements, then the DB will only lock the system tables during the create statement
+						<ul>
+							<li>Otherwise, if the statements are combined, the system tables stay locked until the entire query finishes(creation and insert)</li>
+						</ul>
+					</li>
+				</ul>
+			</li>			
+		</ul>
+	</li>
+	<li><b>Inserting rows into tables with Automatically populating columns</b>
+		<ul>
+			<li>There are column types for which a value is computed based on the value of the row and (generally) should not be specified by the insert
+				<ul>
+					<li><b>Rowversion</b>: Formally <b>TIMESTAMP</b>, this contains a binary number that is unique within a database.
+						<ul>
+							<li>This column is generally checked to see if a change has occurred to a record since it was retrieved</li>
+						</ul>
+					</li>
+					<li><b>Identity:</b> This contains an auto-incrementing numeric value.</li>
+					<li><b>Computed Columns:</b> These have a definition that is usually based on other column values in the same row
+						<ul>
+							<li>The values in the computed column can be stored in the table by specifying the <b>PERSISTED</b> keyword in the column definition</li>
+							<li>If the column does not specify <b>PERSISTED</b>, its value will be calculated each time it is accessed</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+	<li>See exercise <b>Chapter10/DataInsertion</b></li>
+</ol>
+
 # Appendix A: Notepad++ custom setup
 <ol>
 	<li><b>IMPORTANT:</b> Regardless of what directory you tell the installer to place the Notepad++ files, it will create most of the required file directories in:
