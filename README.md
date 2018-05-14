@@ -2281,6 +2281,73 @@ VALUES (12, N'Johnny', N'A.', N'Capino')
 	<li>See exercise <b>Chapter10/DataInsertion</b></li>
 </ol>
 
+## Chapter 11: Writing Advanced Queries ##
+### Advanced CTE Queries ###
+<ol>
+	<li><b>Effective Sequence</b>
+		<ul>
+			<li>This is a technique in which we define two CTEs and have one call the other for the purpose of keeping track of the most recent column value</li>
+			<li>This allows us to determine the most recent record when the column being used to determine that has the same value for multiple records
+				<ul>
+					<li>An example would be a <b>Effective Date</b> column of type <b>DATE</b></li>
+					<li>The system could insert multiple rows for the same person with the same data value</li>
+					<li>How would you know which record is the most recent if a person had multiple records for the same date value?</li>
+					<li>To display information valid on a particular date, you first have to figure out the latest effective date before the date in mind and then figure out the <b>effective sequence for that date.</b></li>
+				</ul>
+			</li>
+			<li>See exercise <b>Chapter11/EffectiveSequence</b></li>
+		</ul>
+	</li>
+	<li><b>Recursive CTEs</b>
+		<ul>
+			<li>Recursion via a CTE is possible using an <b>Anchor member</b> that is UNION ALL'ed to the <b>Recursive member</b>
+				<ul>
+					<li>The <b>anchor member</b>, which is a statement that returns to the top of your intended results, behaves as the root of the directory</li>
+					<li>The <b>recursive member</b> actually joins the CTE that contains it to the same table used in the anchor member.</li>
+					<li>The results of the anchor member and recursive member join in a UNION ALL</li>
+				</ul>
+			</li>
+			<li>General syntax:
+<p>
+
+```SQL
+WITH <cteName>(<col1>, <col2>, <col3>, level)
+AS
+(
+	--Anchor member
+	SELECT 
+		<primaryKey>
+		,<foreignKey>
+		,<col3>
+		,0 AS level
+	FROM <table1>
+	WHERE <foreignKey> = <startingValue>
+	
+	UNION ALL
+	
+	--Recursive member
+	SELECT 
+		a.<primaryKey>
+		,a.<foreignKey>
+		,a.<col3>
+		,b.level + 1 AS level
+	FROM <table1>
+	JOIN <cteName> b ON a.<foreignKey> = b.<primaryKey>
+)
+SELECT 
+	<col1>
+	,<col2>
+	,<col3>
+	,level
+FROM <cteName> [OPTION (MAXRECURSION <nubmer>)];
+```
+</p>				
+			</li>
+			<li>See exercise <b>Chapter11/RecursiveCTE</b></li>
+		</ul>
+	</li>
+</ol>
+
 # Appendix A: Notepad++ custom setup
 <ol>
 	<li><b>IMPORTANT:</b> Regardless of what directory you tell the installer to place the Notepad++ files, it will create most of the required file directories in:
