@@ -2348,6 +2348,72 @@ FROM <cteName> [OPTION (MAXRECURSION <nubmer>)];
 	</li>
 </ol>
 
+### Isolating Aggregate Query Logic ###
+<ol>
+	<li>There are several techniques that allow you to separate an aggregate query from the rest of the statement
+		<ul>
+			<li>This is needed because the grouping levels and the columns that must be displayed are not compatible</li>
+		</ul>
+	</li>
+	<li><b>Correlated sub-queries in the SELECT list</b>
+		<ul>
+			<li>It is best to avoid this technique because if the query contains more than one <b>correlated subquery</b>, performance will quickly deteriorate</li>
+			<li>They syntax for this technique:
+<p>
+
+```SQL
+SELECT
+	<select list>,
+	(SELECT <aggregate function>(<col1>)
+	 FROM <table2> WHERE <col2> = <table1>.<col3>) AS <alias name>
+FROM <table1>;
+		
+```
+</p>
+			</li>
+			<li><b>IMPORTANT:</b> The subquery must produce only one row for each row of the outer query, and only one expression may be returned from the subquery
+				<ul>
+					<li>The subquery executes once for each row of the outer query</li>
+				</ul>
+			</li>		
+			<li>See exercise <b>Chapter11/IsolatingAggregateLogic</b></li>
+		</ul>
+	</li>
+	<li><b>Using Derived Tables</b>
+		<ul>
+			<li>Derived tables are a way for you to treat the results of a query as a table itself in the context of the <b>JOIN</b> clause for the outer select statement of a query</li>
+			<li>The syntax for a derived table:
+<p>
+
+```SQL
+SELECT
+	<col1>
+	,<col2>
+	,<col3>
+FROM <table1> a
+JOIN (SELECT 
+		<col3>
+		,<aggregate function>(<col2>) AS <col4>
+	  FROM <table2>
+	  GROUP BY <col3>) AS <alias> ON a.<col1> = b.<col3>;
+```
+</p>				
+			</li>
+			<li>The derived table technique generally has much better performance than the same correlated subquery</li>
+			<li>See exercise <b>Chapter11/IsolatingAggregateLogic</b></li>
+		</ul>
+	</li>
+	<li><b>Using CROSS APPLY and OUTER APPLY</b>
+		<ul>
+			<li>The <b>CROSS APPLY</b> and <b>OUTER APPLY</b> were originally intended to enable joining to <b>table-valued functions</b>, but they can be used similarly to join to a derived table</li>
+			<li>The function(or subquery) on the right will be called once for every row from the table on the left</li>
+			<li>Use <b>OUTER APPLY</b> like a <b>LEFT JOIN</b> to return a row from the left even if there is nothing returned on the right.</li>
+			<li>This technique generally does not perform well for large tables</li>
+			<li>See exercise <b>Chapter11/IsolatingAggregateLogic</b></li>
+		</ul>
+	</li>
+</ol>
+
 # Appendix A: Notepad++ custom setup
 <ol>
 	<li><b>IMPORTANT:</b> Regardless of what directory you tell the installer to place the Notepad++ files, it will create most of the required file directories in:
