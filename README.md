@@ -2414,6 +2414,141 @@ JOIN (SELECT
 	</li>
 </ol>
 
+### The OUTPUT Clause ###
+<ol>
+	<li>The <b>OUTPUT</b> clause gives you access to special tables, <b>DELETED</b> and <b>INSERTED</b>
+		<ul>
+			<li>There is no <b>UPDATED</b> table, instead you will find the previous record values in <b>DELETED</b> and the new values within <b>INSERTED</b></li>
+		</ul>
+		<li>Here are some of the examples of using the OUTPUT CLAUSE
+<p>
+
+```SQL
+--Update style 1 
+UPDATE a
+SET <col1> = <value>
+OUTPUT deleted.<col1>, inserted.<col1>
+FROM <table1> a;
+
+--Update style 2
+UPDATE <table1>
+SET <col1> = <value>
+OUTPUT deleted.<col1>, inserted.<col1>
+WHERE <criteria>;
+
+--Insert style 1
+INSERT INTO <table1>(<col1>,<col2>)
+OUTPUT inserted.<col1>, inserted.<col2>
+SELECT
+	<col1>
+	,<col2>
+FROM <table2>;
+
+--Insert style 2
+INSERT INTO <table1>(<col1>,<col2>)
+OUPUT inserted.<col1>, inserted.<col2>
+VALUES(<value1>,<value2>);
+
+--Delete style 1
+DELETE [FROM] <table1>
+OUTPUT deleted.<col1>, deleted.<col2>
+WHERE <criteria>;
+
+--Delete style 2 
+DELETE [FROM] a
+OUTPUT deleted.<col1>, deleted.<col2>
+FROM <table1> a;
+```
+</p>			
+		</li>
+		<li>Another use of the OUTPUT clause is to use it to insert data into a table:
+<p>
+
+```SQL
+INSERT [INTO] <table1>(<col1>,<col2>)
+OUTPUT inserted.<col1>, inserted.<col2>
+INTO <table2>
+SELECT
+	<col3>
+	,<col4>
+FROM <table3>;
+```
+</p>			
+		</li>
+	</li>
+</ol>
+
+### The MERGE Statement ###
+<ol>
+	<li>The <b>MERGE</b> statement, also known as the <b>upsert</b>, allows you to bundle INSERT, UPDATE, and DELETE operations into a single statement 
+		<ul>
+			<li>This can be used to perform complex operations such as synchronizing the contents of one table with another</li>
+			<li>Can also be used for Data Warehouse operations to sync one DB's tables with another's</li>
+		</ul>
+	</li>
+	<li>The syntax <b>MERGE</b>
+<p>
+
+```SQL
+MERGE <target table>
+USING <source table name>|<query> AS alias [(column names)]
+ON (<join criteria>)
+WHEN MATCHED [AND <other criteria>]
+THEN UPDATE SET <col1> = alias.<value>
+WHEN NOT MATCHED BY TARGET [AND <other criteria>]
+THEN INSERT (<column list>) VALUES (<values>) --rows inserted into the target
+WHEN NOT MATCHED BY SOURCE [AND <other criteria>]
+THEN DELETE --row is deleted from target
+[OUTPUT $action, DELETED.*, INSERTED.*];
+```
+</p>	
+		<ul>
+			<li>The syntax (albeit a bit daunting), can be thought of in 3 parts
+				<ul>
+					<li><b>WHEN MATCHED</b>: Specifies the action to be performed if a row from the <b>source</b> table matches the <b>target</b> table</li>
+					<li><b>WHEN NOT MATCHED BY TARGET</b>: Specifies the action to be performed when a row is missing in the <b>target</b> table but is present in the source table</li>
+					<li><b>WHEN NOT MATCHED BY SOURCE</b>: Specifies the action to be performed when the row is in the <b>target</b> table but is missing in the <b>source</b> table</li>
+				</ul>
+			</li>
+			<li>The <b>$action</b> option shows you which action is performed on each row (from the above 3 options).</li>
+		</ul>
+	</li>
+	<li>See exercise <b>Chapter11/Merge</b></li>
+</ol>
+
+### GROUPING SETS ###
+<ol>
+	<li>An alternative to combining multiple aggregate queries with a <b>UNION</b>, is to use <b>GROUPING SETS</b>
+		<ul>
+			<li>This allows you to combine different grouping levels within one statement</li>
+			<li>Follows the syntax:
+<p>
+
+```SQL
+SELECT
+	<col1>
+	,<col2>
+	,<aggregate function>(<col3>)
+FROM <table1>
+WHERE <criteria>
+GROUP BY GROUPING SETS(<col1>,<col2>);
+```
+</p>
+			</li>
+		</ul>
+	</li>
+	<li>See exercise <b>Chapter11/GroupingSets</b></li>
+</ol>
+
+### CUBE and ROLLUP ###
+<ol>
+	<li>
+		<ul>
+			<li></li>
+		</ul>
+	</li>
+</ol>
+
 # Appendix A: Notepad++ custom setup
 <ol>
 	<li><b>IMPORTANT:</b> Regardless of what directory you tell the installer to place the Notepad++ files, it will create most of the required file directories in:
