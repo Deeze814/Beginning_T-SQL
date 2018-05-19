@@ -2511,6 +2511,7 @@ THEN DELETE --row is deleted from target
 				</ul>
 			</li>
 			<li>The <b>$action</b> option shows you which action is performed on each row (from the above 3 options).</li>
+			<li><b>IMPORTANT:</b> when reading through the logic of a MERGE statement, remember that all INSERTS and DELETES are happening with respect to the <b>target</b> table</li>
 		</ul>
 	</li>
 	<li>See exercise <b>Chapter11/Merge</b></li>
