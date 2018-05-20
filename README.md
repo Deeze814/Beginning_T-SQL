@@ -2543,9 +2543,86 @@ GROUP BY GROUPING SETS(<col1>,<col2>);
 
 ### CUBE and ROLLUP ###
 <ol>
-	<li>
+	<li>These functions allow you to add subtotals to your aggregate queries within the GROUP BY
 		<ul>
-			<li></li>
+			<li><b>CUBE</b> will give subtotals for every possible combination of the grouping levels</li>
+			<li><b>ROLLUP</b> will give subtotals for the hierarchy</li>
+			<li>Example of the difference:
+				<ul>
+					<li>If you are grouping by three columns, CUBE will provide subtotals for every grouping column</li>
+					<li>ROLLUP will provide subtotals for the first two columns but not the last column in the GROUP BY</li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+	<li>Syntax for CUBE and ROLLUP:
+<p>
+
+```SQL
+SELECT 
+	<col1>
+	,<col2>
+	,<aggregate expression>
+FROM <table1>
+GROUP BY <CUBE or ROLLUP>(<col1>,<col2>);
+```
+</p>	
+	</li>
+	<li>See exercise <b>Chapter11/CubeRollup</b></li>
+</ol>
+
+### Pivoted Queries ###
+<ol>
+	<li>A pivoted query displays the values of one column as column headers instead</li>
+	<li><b>Pivoting Data with CASE</b>
+		<ul>
+			<li>Essentially you use sever CASE expressions in the query, one for each pivoted column header.</li>
+			<li>The syntax:
+<p>
+
+```SQL
+SELECT <col1>
+	CASE <col1>
+		,SUM(CASE <col3> WHEN <value1> THEN <col2> ELSE 0 END) AS <alias1>
+		,SUM(CASE <col3> WHEN <value2> THEN <col2> ELSE 0 END) AS <alias2>
+		,SUM(CASE <col3> WHEN <value3> THEN <col2> ELSE 0 END) AS <alias3>
+FROM <table1>
+GROUP BY <col1>
+```
+</p>
+			</li>
+			<li>See exercise <b>Chapter11/CasePivot</b></li>
+		</ul>
+	</li>
+	<li><b>Pivoting Data with Pivot function</b>
+		<ul>
+			<li>Introduced in SQL Server 2005, SSMS also has a Pivot function that can be used</li>
+			<li>The syntax:
+<p>
+
+```SQL
+SELECT 
+	<groupingCol>
+	,<pivotedValue1> [AS <alias1>]
+	,<pivotedValue2> [AS <alias2>]
+FROM (SELECT 
+		<groupingCol1>
+		,<value column>
+		,<pivoted column>) AS <queryAlias>
+PIVOT
+(
+	<aggregate function>(<value column>)
+	FOR <pivoted column> 
+	IN(<pivotedValue1>,<pivotedValue2>)
+) AS <pivotAliasa>
+[ORDER BY <groupingCol>];
+```
+</p>
+			</li>
+			<li>The SELECT part of the query lists any non-pivoted columns along with the values from pivoted columns</li>
+			<li>The values from pivoted columns will become the column names in your query</li>
+			<li>Honestly, I would rather use the CASE version of PIVOT because the function syntax is hard for me to wrap my head around</li>
+			<li>See exercise <b>Chapter11/PivotFunction</b></li>
 		</ul>
 	</li>
 </ol>
