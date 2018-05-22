@@ -2627,6 +2627,89 @@ PIVOT
 	</li>
 </ol>
 
+### Paging ###
+<ol>
+	<li><b>Paging</b> is a SQL technique that allows you to display a certain amount of data at a time</li>
+	<li>Paging via <b>ROW_NUMBER</b>
+		<ul>
+			<li>This technique uses the window framing function to partition the data into frames based on the page size</li>
+		</ul>
+	</li>
+	<li>Paging via <b>OFFSET/FETCH NEXT</b>
+		<ul>
+			<li><b>OFFSET</b> specifies how many rows to skip</li>
+			<li><b>FETCH NEXT</b> specifies how many rows to return</li>
+			<li>When used in conjunction, the two keywords tell the DB engine how many rows to skip over(previous pages) and then how many rows to return(current page size)</li>
+			<li>A simple example
+				<ul>
+					<li>
+<p>
+
+```SQL
+OFFSET @PageSize * (@PageNo -1) ROWS FETCH NEXT @PageSize ROWS ONLY
+```
+</p>
+					</li>
+					<li>Lets say <b>@PageSize = 5</b> and <b>@PageNo = 2</b>
+						<ul>
+							<li>This would evaluate to OFFSET (5 * 1) ROWS FETCH NEXT 5 ROWS ONLY</li>
+							<li>This would give us records starting with record 6-10
+								<ul>
+									<li>5 rows skipped (1-5), 5 rows returned (6-10)</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+	<li>See exercise <b>Chapter11/Paging</b></li>
+</ol>
+
+## Chapter 12: Understanding T-SQL Logic ##
+### Temporary Tables and Table Variables ###
+<ol>
+	<li>Temporary Tables
+		<ul>
+			<li>Local Temp Tables
+				<ul>
+					<li></li>
+				</ul>
+			</li>
+			<li>Global Temp Tables
+				<ul>
+					<li></li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+	<li>Table Variables
+		<ul>
+			<li></li>
+		</ul>
+	</li>
+	<li>Using a Temp Table or a Table Variable
+		<ul>
+			<li></li>
+		</ul>
+	</li>
+	<li>Using a Temp Table or Table Variable Like an Array
+		<ul>
+			<li></li>
+		</ul>
+	</li>
+</ol>
+
+### Cursors ###
+<ol>
+	<li>
+		<ul>
+			<li></li>
+		</ul>
+	</li>
+</ol>
+
 # Appendix A: Notepad++ custom setup
 <ol>
 	<li><b>IMPORTANT:</b> Regardless of what directory you tell the installer to place the Notepad++ files, it will create most of the required file directories in:
