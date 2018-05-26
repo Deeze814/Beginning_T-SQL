@@ -2674,29 +2674,92 @@ OFFSET @PageSize * (@PageNo -1) ROWS FETCH NEXT @PageSize ROWS ONLY
 		<ul>
 			<li>Local Temp Tables
 				<ul>
-					<li></li>
+					<li>Scope:
+						<ul>								
+							<li>When creating a <b>local</b> temp table, you limit access to the table to be only within the connection where it was created</li>
+							<li>When the connection closes, the DB engine destroys the temp table</li>							
+						</ul>
+					</li>
+					<li>Local temp tables live in <b>tempdb</b> instead of a user database like AdventureWorks</li>
+					<li>To create local temp tables you place a <b>#</b> in front of the table name</li>
 				</ul>
 			</li>
 			<li>Global Temp Tables
 				<ul>
-					<li></li>
+					<li>Scope:
+						<ul>
+							<li>When creating a <b>global</b> temp table, ANY connection can see the temp table</li>
+							<li>When the <b>LAST</b> connection that can see the temp table closes (even if that connection did not create it), then the DB engine will destroy it.</li>
+						</ul>
+					</li>
+					<li>To create local temp tables you place <b>##</b> in front of the table name</li>
 				</ul>
+			</li>
+			<li>Syntax for temp tables:
+<p>
+
+```SQL
+CREATE TABLE [#]#tableName(<col1> <datatype>, <col2> <datatype>)
+```
+</p>
 			</li>
 		</ul>
 	</li>
 	<li>Table Variables
 		<ul>
-			<li></li>
+			<li>A common misconception about table variables is that they live in memory instead of tempdb
+				<ul>
+					<li>This is not true, table variables also live in tempdb</li>
+				</ul>
+			</li>
+			<li>Scope:
+				<ul>
+					<li>Table variables go out of scope at the end of the batch, not when the connection closes</li>
+				</ul>
+			</li>
+			<li>Syntax for table variable:
+<p>
+
+```SQL
+DECLARE [@]@tableName TABLE(<col1> <datatype> [PRIMARY KEY], <col2> <datatype>)
+```
+</p>				
+			</li>
 		</ul>
 	</li>
 	<li>Using a Temp Table or a Table Variable
 		<ul>
-			<li></li>
+			<li>Table variables do <b>NOT</b> contain statistics
+				<ul>
+					<li>Statistics help the optimizer come up with a good query plan</li>
+				</ul>
+			</li>
+			<li><b>IMPORTANT:</b>Temp tables are a better choice for tables with large numbers of rows that could benefit from statistics or when you need the table after the batch is complete</li>
+			<li>One area of table variable use vs temp tables is within a function
+				<ul>
+					<li>Since function only allow <b>idempotent</b> operations, temp tables are not allowed in a function</li>
+					<li>This means that table variables are your construct of choice when writing logic for a function</li>
+				</ul>
+			</li>
+			<li>Starting with SQL Server 2014, memory-optimized table variables are available with the new <b>In-Memory OLTP</b> (aka <b>Hekaton</b>) features
+				<ul>
+					<li>https://www.red-gate.com/simple-talk/sql/learn-sql-server/introducing-sql-server-in-memory-oltp/
+						<ul>
+							<li>Taken form the above article:
+
+>As well as the “Durability” setting in the memory-optimized table definitions, you also need to take non-clustered indexes into consideration. Memory-optimized tables do not support clustered indexes but do however support non-clustered indexes (currently up to eight). Along with each index specification you will also need to specify the BUCKET_COUNT value. The recommended value for this, is to be between 1.5 and 2 times the estimated number of unique values (500 unique products in this example) for the column indexed by the non-clustered index. If you estimate that you are going to have large tables (i.e. with over 5 million unique values or more), then for saving up memory consumption you can set the Bucket_Count value to 1.5 times the number of unique values. In the opposite case you can set the Bucket_Count value to 2 times the number of unique values.
+							</li>
+						</ul>
+					</li>
+					<li>For configuration: https://www.sqlpassion.at/archive/2014/06/16/configuring-the-in-memory-oltp-file-group-for-high-performance/</li>
+					<li>See exercise <b>Chapter12\Hekaton</b></li>
+				</ul>
+			</li>
 		</ul>
 	</li>
 	<li>Using a Temp Table or Table Variable Like an Array
 		<ul>
-			<li></li>
+			<li>See exercise <b>Chapter12\TableVarAsArray</b></li>
 		</ul>
 	</li>
 </ol>
