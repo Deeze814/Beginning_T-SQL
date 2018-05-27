@@ -2885,6 +2885,7 @@ SET XACT_ABORT ON;
 				<ul>
 					<li>These values can be accessed as many times as needed</li>
 					<li>Once outside of the CATCH block, the values of the error functions will revert to NULL</li>
+					<li>See the table below for common error functions that are accessible in the CATCH BLOCK</li>
 				</ul>
 			</li>
 			<li>Syntax for the TRY...CATCH block
@@ -2904,6 +2905,15 @@ END CATCH
 		</ul>
 	</li>
 </ol>
+
+| Function			| Purpose				   																						|
+| ------------------| ------------------------------------------------------------------------------------------------------------ 	|
+| ERROR_NUMBER()	| Provides the error number. This was the only information you could get in previous SQL Server releases		|
+| ERROR_SEVERITY()	| Provides the severity of the error. <b>The severity must exceed 10 in order to be trapped</b>	 				|
+| ERROR_STATE()		| Provides the state code of the error. This refers to the cause of the error									|
+| ERROR_PROCEDURE	| Returns the name of the stored procedure or trigger that caused the error										|
+| ERROR_LINE()		| Returns the line number that caused the error																	|
+| ERROR_MESSAGE()	| Returns the actual text message describing the error															|
 
 #### Viewing Untrappable Errors ####
 <ol>
