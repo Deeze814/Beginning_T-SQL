@@ -2905,6 +2905,15 @@ END CATCH
 	</li>
 </ol>
 
+#### Viewing Untrappable Errors ####
+<ol>
+	<li>
+		<ul>
+			<li></li>
+		</ul>
+	</li>
+</ol>
+
 # Appendix A: Notepad++ custom setup
 <ol>
 	<li><b>IMPORTANT:</b> Regardless of what directory you tell the installer to place the Notepad++ files, it will create most of the required file directories in:
