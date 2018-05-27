@@ -2829,6 +2829,79 @@ COMMIT [TRAN|TRANSACTION];
 			</li>
 		</ul>
 	</li>
+	<li>Rolling back a transaction
+		<ul>
+			<li>Before rolling back a transaction, you can also check the <b>@@TRANCOUNT</b> variable
+				<ul>
+					<li>This is a count of the BEGIN TRAN statements and it resets to 0 after a COMMIT or ROLLBACK</li>
+				</ul>
+			</li>
+			<li>Common syntax for rolling back a transaction:
+<p>
+
+```SQL
+BEGIN TRAN|Transaction
+	<statement1>
+	<statement2>
+ROLLBACK [TRAN|TRANSACTION]
+```
+</p>
+			</li>
+			<li>You can also use the <b>XACT_ABORT</b> setting to automatically rollback a transaction should an error occurred
+				<ul>
+					<li>Enable the XACT_ABORT option with the following syntax:
+<p>
+
+```SQL
+SET XACT_ABORT ON;
+```
+</p>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+</ol>
+
+### Error Handling ###
+<ol>
+	<li>T-SQL has two ways of dealing with errors
+		<ul>
+			<li>The legacy way was by checking the value of the <b>@@ERROR</b> function
+				<ul>
+					<li>This is typically messy and inefficient (hence the <b>legacy</b> designation)</li>
+				</ul>
+			</li>
+			<li>TRY...CATCH blocks</li>
+		</ul>
+	</li>
+</ol>
+#### TRY...CATCH ####
+<ol>
+	<li>Using the <b>TRY...CATCH</b> approach
+		<ul>
+			<li>One benefit gained by this approach is that functions retain their values while in the CATCH block
+				<ul>
+					<li>These values can be accessed as many times as needed</li>
+					<li>Once outside of the CATCH block, the values of the error functions will revert to NULL</li>
+				</ul>
+			</li>
+			<li>Syntax for the TRY...CATCH block
+<p>
+
+```SQL
+BEGIN TRY
+	<statements that may cause an error>
+END TRY
+BEGIN CATCH
+	<statments to access error information and deal with error>
+END CATCH
+```
+</p>
+			</li>
+			<li>See Exercise <b>Chapter13/TryCatch</b></li>
+		</ul>
+	</li>
 </ol>
 
 # Appendix A: Notepad++ custom setup
