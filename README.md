@@ -2766,9 +2766,67 @@ DECLARE [@]@tableName TABLE(<col1> <datatype> [PRIMARY KEY], <col2> <datatype>)
 
 ### Cursors ###
 <ol>
-	<li>
+	<li>Cursors provide another way to loop through a result set
 		<ul>
-			<li></li>
+			<li>This concept is often overused and results in poorly performing code because it forces execution to be iterative (row by row) instead of set based</li>
+			<li>When working with a cursor, you must declare a variable for each column the cursor returns for each row (based on the cursor definition)</li>
+			<li>When you include the <b>FAST_FORWARD</b> option in the cursor declaration, it makes the cursor read-only and you can only go forward in the data
+				<ul>
+					<li>This helps improve cursor performance</li>
+				</ul>
+			</li>
+			<li>An example of a cursor definition:
+<p>
+
+```SQL
+DECLARE @ProductID INT
+	   ,@Name VARCHAR(25)
+
+DECLARE products CURSOR FAST_FORWARD FOR 
+SELECT 
+	ProductID
+	,Name
+FROM Production.Product;
+
+OPEN products
+
+FETCH NEXT FROM products INTO @ProductID, @Name;
+```
+</p>
+			</li>
+		</ul>
+	</li>
+	<li>See Exercise <b>Chapter12/Cursor</b></li>
+</ol>
+
+## Chapter 13: Managing Transactions ##
+### ACID Properties ###
+<ol>
+	<li>One of the most common questions asked during a interview for database developer jobs is to explain the ACID principals of a DB</li>
+</ol>
+
+| Property		| Purpose				   																												|
+| --------------| ---------------------------------------------------------------------------------------------------------------------------------- 	|
+| Atomicity		| 	A transaction is one unit of work																									|
+| Consistency	| 	A transaction must leave the DB in a consistent state. A transaction must follow the rules, like constraints, defined in the DB  	|
+| Isolation		| 	A transaction cannot affect other transactions																						|
+| Durability	|	Once a transaction has been committed, it will not be lost, even after a reboot or power outage  									|
+
+### Writing Explicit Transactions ###
+<ol>
+	<li>Once a transaction starts, the DB engine puts locks on rows or tables involved within the transaction so that rows usually may not be accessed by another query when the default settings are in place
+		<ul>
+			<li>Common syntax for a transaction:
+<p>
+
+```SQL
+BEGIN TRAN|Transaction	
+	<statement1>
+	<statement2>
+COMMIT [TRAN|TRANSACTION];
+```
+</p>
+			</li>
 		</ul>
 	</li>
 </ol>
