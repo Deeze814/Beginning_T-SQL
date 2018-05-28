@@ -2917,9 +2917,93 @@ END CATCH
 
 #### Viewing Untrappable Errors ####
 <ol>
-	<li>
+	<li>Some errors are not caught within the context of a TRY...CATCH block
 		<ul>
-			<li></li>
+			<li>An example would be if a SQL batch has an incorrect table or column name or the DB is not available, then the entire batch will fail and the error will not be trapped</li>
+			<li>An interesting workaround to see these untrappable errors is to encapsulate the logic within the offending stored procedure and then call the procedure
+				<ul>
+					<li>Essentially, go and add TRY...CATCH block to the potential error throwing parts of the stored procedure logic and then call the SP to see if the TRY...CATCH will then report the error.</li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+	<li>See exercise <b>Chapter13/UntrappableError</b></li>
+</ol>
+
+#### Using RAISEERROR ####
+<ol>
+	<li>Whenever you need to DB to fire an error even if the logic did not result in a database error, you will use the <b>RAISEERROR</b> function
+		<ul>
+			<li>This function allows you to check a logic condition and then create an error that will be raised back to the calling client application</li>
+			<li>The syntax for RAISEERROR:
+<p>
+
+```SQL
+RAISEERROR(<message>,<severity>,<state>)
+```
+</p>
+			</li>
+			<li>You can also create a reusable custom error message by using the <b>sp_addmessage</b> stored procedure
+				<ul>
+					<li>Alternatively, you can use a variable or hard-coded string with RAISEERROR</li>
+				</ul>
+			</li>
+			<li>In terms of the <b>severity</b> indicated when invoking RAISEERROR, you will normally use <b>16</b> for errors correctable by the user</li>
+		</ul>
+	</li>
+	<li>See exercise <b>Chapter13/RaiseError</b></li>
+</ol>
+
+#### Using THROW Instead of RAISEERROR ####
+<ol>
+	<li>Staring with SQL SERVER 2012, The THROW statement can also be used to generate errors
+		<ul>
+			<li>Using <b>THROW</b> is generally much simpler than using RAISEERROR</li>
+			<li>The syntax for THROW:
+<p>
+
+```SQL
+THROW [{error_number| message | state}] [;]
+```
+</p>
+			</li>
+			<li>Any error occurring in the THROW statement will cause the batch to end</li>
+			<li>The THROW severity will always be <b>16</b></li>
+		</ul>
+	</li>
+	<li>See exercise <b>Chapter13/Throw</b></li>
+</ol>
+
+### Isolation Levels ###
+<ol>
+	<li>SQL SERVER has several <b>isolation levels</b> to control how transactions from one connection affect statements from another connection.
+		<ul>
+			<li>The default isolation level is <b>Read Committed</b>
+				<ul>
+					<li>This means that while a transaction happens, other connections cannot see the data that the transaction has locked</li>
+				</ul>
+			</li>
+			<li>Some prefer to use the <b>Read Uncommitted</b> isolation level lock
+				<ul>
+					<li>This isolation level allows other connections to see data that another connection has modified but HAS NOT committed yet
+						<ul>
+							<li>This results in what is called a <b>dirty read</b>, in that the data being viewed by another connection is data that has yet to be committed to the DB</li>
+						</ul>
+					</li>
+					<li>This is the least restrictive level available</li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+	<li>Starting with SQL SERVER 2005, Microsoft introduced a new type of isolation level called <b>Snapshot</b>
+		<ul>
+			<li>This isolation level creates copies of the data in tempdb before the data is changed
+				<ul>
+					<li>This is called <b>row versioning</b></li>
+				</ul>
+			</li>
+			<li>Any reads of the data during the transaction comes from the row version copies</li>
+			<li>That way updates to the data do not block reads of the data</li>
 		</ul>
 	</li>
 </ol>
