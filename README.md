@@ -3008,6 +3008,87 @@ THROW [{error_number| message | state}] [;]
 	</li>
 </ol>
 
+## Chapter 14: Implementing Logic in the Database ##
+<ol>
+	<li>Previous chapters worked with tables using <b>Data Manipulation Language (DML)</b>
+		<ul>
+			<li>DML based logic was seen when you insert/update/delete rows</li>
+		</ul>
+	</li>
+	<li>This chapter focuses on <b>Data Definition Language (DDL)</b>
+		<ul>
+			<li>This type of SQL logic defines database objects and constraints that can then be interacted with via DML queries</li>
+		</ul>
+	</li>
+</ol>
+
+### Tables ###
+<ol>
+	<li>Adding Check Constraints on to a Table
+		<ul>
+			<li>A <b>CHECK</b> constraint allows you to ensure that a value inserted into a table column is within an acceptable defined range of values</li>
+			<li>Syntax for a Check constraint:
+<p>
+
+```SQL
+--Adding during Create Table
+CREATE TABLE <table name>(<col1> <data type>, <col2> <data type>)
+CONSTRAINT <constraint name> CHECK(<condition>);
+
+--Adding during Alter Table
+ALTER TABLE <table name> ADD CONSTRAINT <constraint name> CHECK(<condition>);
+```
+</p>
+			</li>
+			<li>See exercise <b>Chapter14/CheckConstraint</b></li>
+		</ul>
+	</li>
+	<li>Adding <b>UNIQUE</b> constraints
+		<ul>
+			<li><b>IMPORTANT:</b>Unlike primary keys, UNIQUE columns may contain <b>only one NULL value</b></li>
+			<li>The syntax for adding UNIQUE Constraints:
+<p>
+
+```SQL
+--Adding a unique constraint to individual columns
+CREATE TABLE <table name> (<col1> <data type> UNIQUE, <col2> <data type> UNIQUE);
+
+--Adding a unique constraint, but including a constraint name
+CREATE TABLE <table name> (<col1> <data type>, <col2> <data type>,
+	CONSTRAINT <constraint name1> UNIQUE (col1),
+	CONSTRAINT <constraint name2> UNIQUE (col2));
+	
+--Adding a combination constraint
+CREATE TABLE <table name> (<col1> <data type>, <col2> <data type>,
+	CONSTRAINT <constraint name> UNIQUE (<col1>, <col2>));
+
+--Add a constraint with ALTER table
+CREATE TABLE  <table name> (<col1> <data type>, <col2> <data type>);-
+ALTER TABLE [<table name>] 
+ADD CONSTRAINT <constraint name> UNIQUE (<col1, <col2>);
+
+```
+</p>
+			</li>
+			<li>An interesting note about <b>UNIQUE</b> constraints is that they are listed under the <b>Indexes and Keys</b> sections within SSMS
+				<ul>
+					<li>This is a directory under the <b>Tables</b> directory</li>
+					<li>They are under this section as opposed to the <b>Constraint</b> section</li>
+					<li><b>IMPORTANT:</b> When you create a UNIQUE constraint, you are actually creating a unique <b>INDEX</b>
+						<ul>
+							<li>The below statement was take from: https://docs.microsoft.com/en-us/sql/relational-databases/indexes/create-unique-indexes?view=sql-server-2017
+>When you create a UNIQUE constraint, a unique <b>nonclustered</b> index is created to enforce a UNIQUE constraint by default. You can specify a unique clustered index if a clustered index on the table does not already exist.
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			<li>See exercise <b>Chapter14/UniqueConstraint</b></li>
+		</ul>
+	</li>
+</ol>
+
+
 # Appendix A: Notepad++ custom setup
 <ol>
 	<li><b>IMPORTANT:</b> Regardless of what directory you tell the installer to place the Notepad++ files, it will create most of the required file directories in:
