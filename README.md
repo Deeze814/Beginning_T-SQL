@@ -3076,7 +3076,7 @@ ADD CONSTRAINT <constraint name> UNIQUE (<col1, <col2>);
 					<li>They are under this section as opposed to the <b>Constraint</b> section</li>
 					<li><b>IMPORTANT:</b> When you create a UNIQUE constraint, you are actually creating a unique <b>INDEX</b>
 						<ul>
-							<li>The below statement was take from [here](https://docs.microsoft.com/en-us/sql/relational-databases/indexes/create-unique-indexes?view=sql-server-2017)
+							<li>The below statement was take from [here][https://docs.microsoft.com/en-us/sql/relational-databases/indexes/create-unique-indexes?view=sql-server-2017]
 							
 >When you create a UNIQUE constraint, a unique <b>nonclustered</b> index is created to enforce a UNIQUE constraint by default. You can specify a unique clustered index if a clustered index on the table does not already exist.
 							</li>
