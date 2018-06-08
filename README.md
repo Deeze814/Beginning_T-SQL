@@ -3087,6 +3087,90 @@ ADD CONSTRAINT <constraint name> UNIQUE (<col1, <col2>);
 			<li>See exercise <b>Chapter14/UniqueConstraint</b></li>
 		</ul>
 	</li>
+	<li>Adding Primary Key to a Table
+		<ul>
+			<li>A primary key for table must have the following traits:
+				<ul>
+					<li>Must be made of one column or multiple columns (called a composite key)</li>
+					<li>A table can have only <b>ONE</b> primary key</li>
+					<li>The values of the primary key must be <b>unique</b></li>
+					<li>If the primary key is a composite key, the combination of values must be unique</li>
+					<li>None of the columns contained within the primary key can have a value of NULL</li>
+				</ul>
+			</li>
+			<li>The main purpose of a primary key is to ensure data consistency</li>
+			<li>By default, if no clustered index already exists on the table, the primary key will become a clustered index
+				<ul>
+					<li>You will often see the clustered index composed of a smaller column, such as an single INT column</li>
+					<li>This technique normally uses the <b>IDENTITY</b> keyword to make the INT column a surrogate key for the table</li>
+					<li>Surrogate keys allow your primary keys to remain small and "narrow"
+						<ul>
+							<li>Remember the "wider" the index, the more reads SQL SERVER will have to perform to retrieve results</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			<li>Syntax for creating Primary keys:
+<p>
+
+```SQL
+--Single column key
+CREATE TABLE <table name> 
+(
+	<column1> <data type> NOT NULL PRIMARY KEY [CLUSTERED|NONCLUSTERED], 
+	<column2> <data type>
+);
+
+--Single column key with name
+CREATE TABLE <table name> 
+(
+	<column1> <data type> NOT NULL, 
+	<column2> <data type>,
+	CONSTRAINT <constraint name> PRIMARY KEY  [CLUSTERED|NONCLUSTERED] (<column1>)
+);
+
+--Composite key
+CREATE TABLE <table name> 
+(
+	<column1> <data type> NOT NULL, 
+	<column2> <data type> NOT NULL,
+	<column3> <data type>,
+	CONSTRAINT <constraint name> PRIMARY KEY  [CLUSTERED|NONCLUSTERED] (<column1>,<column2>)
+);
+
+--Using ALTER table
+ALTER TABLE <table name> ADD CONSTRAINT <primary key name>
+PRIMARY KEY [CLUSTERED|NONCLUSTERED](<column1>);
+```
+</p>				
+			</li>
+			<li>See exercise <b>Chapter14/PrimaryKey</b></li>
+		</ul>
+	</li>
+	<li>Defining Automatically Populated Columns
+		<ul>
+			<li><b>IDENTITY</b>
+				<ul>
+					<li></li>
+				</ul>
+			</li>
+			<li><b>ROWVERSION</b>, originally TIMESTAMP
+				<ul>
+					<li></li>
+				</ul>
+			</li>
+			<li><b>COMPUTED</b>
+				<ul>
+					<li></li>
+				</ul>
+			</li>
+			<li><b>DEFAULT</b>
+				<ul>
+					<li></li>
+				</ul>
+			</li>
+		</ul>
+	</li>
 </ol>
 
 
