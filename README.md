@@ -3251,7 +3251,7 @@ CREATE TABLE <table name>
 					<li>You can give the end user permission to select from a view without giving permission to the underlying tables that the view pulls from</li>
 				</ul>
 			</li>
-			<li>An <b>indexed view</b> (also known as a <b>materialized view</b>, actually does contain data
+			<li>An <b>indexed view</b> (also known as a <b>materialized view</b>) actually does contain data
 				<ul>
 					<li>To create an indexed view, add a clustered index to the view</li>
 				</ul>
