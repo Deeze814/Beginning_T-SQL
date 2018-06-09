@@ -3241,83 +3241,6 @@ CREATE TABLE <table name>
 	</li>
 </ol>
 
-
-# Appendix A: Notepad++ custom setup
-<ol>
-	<li><b>IMPORTANT:</b> Regardless of what directory you tell the installer to place the Notepad++ files, it will create most of the required file directories in:
-		<ul>
-			<li><b>C:\Users\&lt;user&gt;\AppData\Roaming\Notepad++</b></li>
-		</ul>
-	</li>
-	<li><b>THEMES</b>
-		<ul>
-			<li>In order to get a dark themed NPP, I had to download the <b>VSNotepadTheme</b> 
-				<ul>
-					<li>I then placed this in the <b>themes</b> folder underneath the AppData folder created during installation</li>
-				</ul>
-			</li>
-			<li>To use this once NPP is open, go to <b>Settings --> Style Configurator --> Select Theme</b></li>
-			<li>I also turned on html tag highlighting by going to <b>Language --> XML</b></li>
-		</ul>
-	</li>
-	<li>MACROS
-		<ul>
-			<li>I imported macros I had on another computer's NPP installation</li>
-			<li>To do this, I copied the <b>shortcuts.xml</b> file within the installed <b>Notepad++</b> directory</li>
-			<li>I can either replace everything in the new Notepad++ installation's <b>shortcuts.xml</b> file or simply paste in the <b>&lt;Macros&gt;</b> section.</li>
-		</ul>
-	</li>
-	<li>I also had to downgrade to NPP 6.9 (32 bit)
-		<ul>
-			<li>The current (7.5.5) was 64 bit and did not have support for <b>Plugin Manager</b></li>
-			<li>The macros also did not recognize the <b>auto indent</b> functionality</li>
-		</ul> 
-	</li>
-	<li>SPELL CHECKER
-		<ul>
-			<li>In order to get a spell checker that I could get (1)real-time spell checking as I typed and (2)ability to have the checker "learn" words like SQL
-				<ul>
-					<li>I installed <b>DSpellCheck</b>
-						<ul>
-							<li>This plugin allows the real-time checking of words in the document as you type</li>
-							<li>It will underline misspelled words</li>
-						</ul>
-					</li>
-					<li>I also installed <b>Spell-checker</b>
-						<ul>
-							<li>This is a more traditional spell checker in that you click the button and it will then check the entire document for spelling errors</li>
-							<li>When a misspelling is encountered, the plugin gives you a chance to Replace, Ignore, or <b>Learn</b>
-								<ul>
-									<li>It is the ability to <b>Learn</b> that will allow you to no longer have to keep correcting the same word that the dictionary does not recognize (like SQL)</li>
-								</ul>
-							</li>
-							<li>This plugin needs an additional .dll file that serves as its dictionary
-								<ul>
-									<li>I downloaded the <b>Aspell</b> dictionary from http://aspell.net/win32/
-										<ul>
-											<li>I took both the full installer and then the English exe</li>
-										</ul>
-									</li>
-								</ul>
-							</li>
-						</ul>
-					</li>
-					<li>You can point <b>DSpellCheck</b> to using the <b>Aspell</b> dictionary as well
-						<ul>
-							<li>Under <b>Plugins --> DSpellCheck --> Settings</b>
-								<ul>
-									<li>Path the <b>Aspell Location</b> to the path you downloaded the dictionary .dll</li>
-								</ul>
-							</li>
-							<li>This means you can use <b>Spell-Checker</b> to add words to your dictionary that then <b>DSpellCheck</b> will recognize and no longer underline the same word.</li>
-						</ul>
-					</li>
-				</ul>
-			</li>
-		</ul>
-	</li>
-</ol> 
-
 ### Views ###
 <ol>
 	<li>Important notes on VIEWS
@@ -3436,6 +3359,84 @@ DROP VIEW <view name>;
 		</ul>
 	</li>
 </ol>
+
+
+
+# Appendix A: Notepad++ custom setup
+<ol>
+	<li><b>IMPORTANT:</b> Regardless of what directory you tell the installer to place the Notepad++ files, it will create most of the required file directories in:
+		<ul>
+			<li><b>C:\Users\&lt;user&gt;\AppData\Roaming\Notepad++</b></li>
+		</ul>
+	</li>
+	<li><b>THEMES</b>
+		<ul>
+			<li>In order to get a dark themed NPP, I had to download the <b>VSNotepadTheme</b> 
+				<ul>
+					<li>I then placed this in the <b>themes</b> folder underneath the AppData folder created during installation</li>
+				</ul>
+			</li>
+			<li>To use this once NPP is open, go to <b>Settings --> Style Configurator --> Select Theme</b></li>
+			<li>I also turned on html tag highlighting by going to <b>Language --> XML</b></li>
+		</ul>
+	</li>
+	<li>MACROS
+		<ul>
+			<li>I imported macros I had on another computer's NPP installation</li>
+			<li>To do this, I copied the <b>shortcuts.xml</b> file within the installed <b>Notepad++</b> directory</li>
+			<li>I can either replace everything in the new Notepad++ installation's <b>shortcuts.xml</b> file or simply paste in the <b>&lt;Macros&gt;</b> section.</li>
+		</ul>
+	</li>
+	<li>I also had to downgrade to NPP 6.9 (32 bit)
+		<ul>
+			<li>The current (7.5.5) was 64 bit and did not have support for <b>Plugin Manager</b></li>
+			<li>The macros also did not recognize the <b>auto indent</b> functionality</li>
+		</ul> 
+	</li>
+	<li>SPELL CHECKER
+		<ul>
+			<li>In order to get a spell checker that I could get (1)real-time spell checking as I typed and (2)ability to have the checker "learn" words like SQL
+				<ul>
+					<li>I installed <b>DSpellCheck</b>
+						<ul>
+							<li>This plugin allows the real-time checking of words in the document as you type</li>
+							<li>It will underline misspelled words</li>
+						</ul>
+					</li>
+					<li>I also installed <b>Spell-checker</b>
+						<ul>
+							<li>This is a more traditional spell checker in that you click the button and it will then check the entire document for spelling errors</li>
+							<li>When a misspelling is encountered, the plugin gives you a chance to Replace, Ignore, or <b>Learn</b>
+								<ul>
+									<li>It is the ability to <b>Learn</b> that will allow you to no longer have to keep correcting the same word that the dictionary does not recognize (like SQL)</li>
+								</ul>
+							</li>
+							<li>This plugin needs an additional .dll file that serves as its dictionary
+								<ul>
+									<li>I downloaded the <b>Aspell</b> dictionary from http://aspell.net/win32/
+										<ul>
+											<li>I took both the full installer and then the English exe</li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li>You can point <b>DSpellCheck</b> to using the <b>Aspell</b> dictionary as well
+						<ul>
+							<li>Under <b>Plugins --> DSpellCheck --> Settings</b>
+								<ul>
+									<li>Path the <b>Aspell Location</b> to the path you downloaded the dictionary .dll</li>
+								</ul>
+							</li>
+							<li>This means you can use <b>Spell-Checker</b> to add words to your dictionary that then <b>DSpellCheck</b> will recognize and no longer underline the same word.</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+</ol> 
 
 # Appendix B: Default Query template #
 <ol>
