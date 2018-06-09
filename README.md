@@ -3151,24 +3151,92 @@ PRIMARY KEY [CLUSTERED|NONCLUSTERED](<column1>);
 		<ul>
 			<li><b>IDENTITY</b>
 				<ul>
-					<li></li>
+					<li>A table may contain only one <b>IDENTITY</b> column</li>
+					<li>By default, IDENTITY columns begin with the value 1 and increment by 1</li>
+					<li>You can specify different values by specifying seed and increment values</li>
+					<li>You may not insert values into IDENTITY columns unless you use the IDENTITY_INSERT setting</li>
+					<li>Syntax for Identity columns:
+<p>
+
+```SQL
+--IDENTITY
+CREATE TABLE <table name>
+(
+	<col1> INT NOT NULL IDENTITY[(<seed>,<increment>)]
+	,<col2> <data type>
+);
+```
+</p>
+					</li>
 				</ul>
 			</li>
 			<li><b>ROWVERSION</b>, originally TIMESTAMP
 				<ul>
-					<li></li>
+					<li>The ROWVERSION value will be unique within the database</li>
+					<li>A table may contain only one ROWVERSION column</li>
+					<li>You may not insert values into ROWVERSION columns</li>
+					<li>Each time you update the row, the ROWVERSION value changes
+						<ul>
+							<li>This can be used by applications to check if a value has been updated since the last time they pulled data</li>
+						</ul>
+					</li>
+					<li>Syntax for ROWVERSION:
+<p>
+
+```SQL
+--ROWVERSION, originally TIMESTAMP
+CREATE TABLE <table name>
+(
+	<col1> <data type>
+	,<col2> ROWVERSION
+);
+```
+</p>
+					</li>
 				</ul>
 			</li>
 			<li><b>COMPUTED</b>
 				<ul>
-					<li></li>
+					<li>A table may contain multiple COMPUTED columns</li>
+					<li>Do not specify a data type for COMPUTED columns</li>
+					<li>You may not insert values int COMPUTED columns</li>
+					<li>By specifying the option PERSISTED, the database engine stores the value in the table</li>
+					<li>You can define indexes on deterministic COMPUTED columns</li>
+					<li>You an specify other non-Computed columns, literal values, and scalar functions in the COMPUTED column definition</li>
+					<li>Syntax for COMPUTED columns:
+<p>
+
+```SQL
+CREATE TABLE <table name>
+(
+	<col1> <data type>
+	,<col2> AS <computed column definition> [PERSISTED]
+);
+```
+</p>
+					</li>
 				</ul>
 			</li>
 			<li><b>DEFAULT</b>
 				<ul>
-					<li></li>
+					<li>When inserting rows, you do not need to specify a value for a column with a DEFAULT value defined</li>
+					<li>You can use expressions with literal values and scalar functions, but not other column names with DEFAULT value columns</li>
+					<li>If a column with a DEFAULT value specified allows NULL values, you can still specify NULL for the column</li>
+					<li>You can use the new SEQUENCE object and the NEXT VALUE FOR function as a default to insert incrementing values</li>
+					<li>Syntax for DEFAULT columns:
+<p>
+
+```SQL
+CREATE TABLE <table name>
+(
+	<col1> <data type> DEFAULT <defualt value or function>
+);
+```
+</p>
+					</li>
 				</ul>
 			</li>
+			<li>See exercise <b>Chpater14/AutoPopulatingColumns</b></li>
 		</ul>
 	</li>
 </ol>
@@ -3249,6 +3317,125 @@ PRIMARY KEY [CLUSTERED|NONCLUSTERED](<column1>);
 		</ul>
 	</li>
 </ol> 
+
+### Views ###
+<ol>
+	<li>Important notes on VIEWS
+		<ul>
+			<li>Vies do not store data, they are just saved query definitions</li>
+			<li>You can use views as a security layer
+				<ul>
+					<li>You can give the end user permission to select from a view without giving permission to the underlying tables that the view pulls from</li>
+				</ul>
+			</li>
+			<li>An <b>indexed view</b> (also known as a <b>materialized view</b>, actually does contain data
+				<ul>
+					<li>To create an indexed view, add a clustered index to the view</li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+	<li>Creating Views
+		<ul>
+			<li>To create a view you need only specify the name as well as the query that the view represents</li>
+			<li>Syntax for working with Views:
+<p>
+
+```SQL
+CREATE VIEW <view name> AS
+SELECT 
+	<col1>
+	,<col2> 
+FROM <table>;
+
+ALTER VIEW <view name> As
+SELECT 
+	<col1>
+	,<col2> 
+FROM <table>;
+
+DROP VIEW <view name>;
+```
+</p>				
+			</li>
+			<li><b>IMPORTANT:</b> Any time you create or alter a VIEW, the code must be contained within a batch that has not other code except for comments
+				<ul>
+					<li>If wish to include CREATE/ALTER statements for views within a larger script, put GO statements before and after the CREATE/ALTER statements</li>
+				</ul>
+			</li>
+			<li>See Exercise <b>Chapter14/Views</b></li>
+		</ul>
+	</li>
+	<li>Common problems with Views
+		<ul>
+			<li>While views provide a consolidated way to retrieve data from multiple tables, it is generally unwise to retrieve data through many layers of views
+				<ul>
+					<li>Meaning a view that calls a view that also calls a view and so on.</li>
+					<li>Multiple layers of views can also make it difficult for SQL Server to come up with a good execution plan</li>
+				</ul>
+			</li>
+			<li>If the underlying table structure changes, the views may produce strange results
+				<ul>
+					<li>To avoid this particular problem, you can define a view with the <b>SCHEMABINDING</b> option
+						<ul>
+							<li>This prevents the underlying table the view is dependent upon from changing</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			<li>Avoid adding an ORDER BY to the view definition
+				<ul>
+					<li>This is actually disallowed except under certain specific conditions and does not make sense because the ORDER BY can always be added to the outer query that referenced the view</li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+	<li>Manipulating data with Views
+		<ul>
+			<li>You can modify the data of a table by updating a view as long as the view meets the below criteria:
+				<ul>
+					<li>Modifying the data of a view by inserting or updating may affect only one base table</li>
+					<li>You may not delete data from a view that consists of more than one table</li>
+					<li>The columns updated must be directly linked to modifiable table columns
+						<ul>
+							<li>You a cannot update a view based on an expression or an otherwise non-modifiable column (like IDENTITY for instance)</li>
+						</ul>
+					</li>
+					<li>Inserts into views are possible only if all columns that require a value are exposed through the view</li>
+				</ul>
+			</li>
+			<li>See exercise <b>Chapter14/ModifyDataViaView</b></li>
+		</ul>
+	</li>
+</ol>
+
+### User-Defined Functions ###
+<ol>
+	<li>Important Notes on User-Defined Functions
+		<ul>
+			<li></li>
+		</ul>
+	</li>
+	<li>Creating User-Defined Functions
+		<ul>
+			<li></li>
+		</ul>
+	</li>
+	<li>Using Table-Valued User-Defined Functions
+		<ul>
+			<li></li>
+		</ul>
+	</li>
+</ol>
+
+### Stored Procedures ###
+<ol>
+	<li>Important notes on Stored Procedures
+		<ul>
+			<li></li>
+		</ul>
+	</li>
+</ol>
 
 # Appendix B: Default Query template #
 <ol>
