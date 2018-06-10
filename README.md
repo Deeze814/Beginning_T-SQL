@@ -3336,17 +3336,71 @@ DROP VIEW <view name>;
 <ol>
 	<li>Important Notes on User-Defined Functions
 		<ul>
-			<li></li>
+			<li>By creating a User-Defined Function (UDF), you can reuse code to simplify development and hide complex logic</li>
+			<li><b>CAUTION:</b> using a UDF can negatively impact performance due to the overhead of calling the function on each row</li>
 		</ul>
 	</li>
 	<li>Creating User-Defined Functions
 		<ul>
-			<li></li>
+			<li>One type of UDF is the <b>scalar</b> UDF
+				<ul>
+					<li>The scalar UDF returns one parameter and may take one or more parameters</li>
+					<li>Some useful facts about scalar UDFs to keep in mind:
+						<ul>
+							<li>They can be used almost anywhere in a T-SQL statement</li>
+							<li>They can accept one or more parameters</li>
+							<li>The return <b>one</b> value</li>
+							<li>They can use logic such as IF blocks and WHILE loops</li>
+							<li>They can access data, though this is sometimes not a good idea
+								<ul>
+									<li>Scalar UDFs should generally not be dependent on the tables in a particular database</li>
+								</ul>
+							</li>
+							<li>They <b>cannot</b> update data</li>
+							<li>They can call other functions</li>
+							<li>Their definition must include a return value3</li>
+						</ul>
+					</li>
+					<li>Syntax for scalar UDF:
+<p>
+
+```SQL
+CREATE FUNCTION <scalar function name> (<@param1> <data type>, <@param2> <data type>)
+RETURNS <data type> AS
+BEGIN
+	<statements>
+	RETURN <value>
+END;
+
+
+ALTER FUNCTION <scalar function name> ([<@param1> <data type>, <@param2> <data type>])
+RETURNS <data type> AS
+BEGIN
+	<statements>
+	RETURN <value>
+END;
+
+DROP FUNCTION <scalar function name>;
+```
+</p>
+					</li>
+					<li>See exercise <b>Chapter14/ScalarUDF</b></li>
+				</ul>
+			</li>
 		</ul>
 	</li>
 	<li>Using Table-Valued User-Defined Functions
 		<ul>
-			<li></li>
+			<li>The second type of UDF is the <b>table-valued</b>UDF</li>
+			<li>You cannot use this UDF in the SELECT statement of a query, but you can use it in place of a table within the JOIN logic</li>
+			<li>There are two types of table-valued UDFs
+				<ul>
+					<li>The <b>inline table-valued UDF</b> contains only a SELECT statement</li>
+					<li>The other type contains multiple statements</li>
+				</ul>
+			</li>
+			<li>The sample AdventureWorks DB has one example of this type of UDF (<b>dbo.ufnGetContactInformation</b>)</li>
+			<li>Look at <b>Chapter14/TabledValuedUDF</b> for this UDF's create logic</li>
 		</ul>
 	</li>
 </ol>
@@ -3360,7 +3414,24 @@ DROP VIEW <view name>;
 	</li>
 </ol>
 
+### Key Differences of Views, UDFs, and Stored Procedures ###
 
+| Feature 						| SP 	|	Scalar UDF	|	Table UDF	|	View	|
+| ----------------------------- | -----	| ------------- | ------------- | --------- |
+| Return Tabular Data			| Yes	|	No			|	Yes			|	Yes		|	
+| Return multiple sets of data	| Yes	|	N/A			|	No			|	No		|	
+| Update data					| Yes	|	No			|	No			|	No		|	
+| Create other objects			| Yes	|	No			|	No			|	No		|	
+| Call from a procedure			| Yes	|	Yes			|	Yes			|	Yes		|	
+| Can call a procedure			| Yes	|	No			|	Yes			|	Yes		|	
+| Can call a function			| Yes	|	Yes			|	Yes			|	Yes		|	
+| Can call within a SELECT list	| No	|	Yes			|	No			|	No		|	
+| Use to populate multiple
+  columns in a table			| Yes	|	No			|	Yes			|	Yes		|	
+| Return value required			| No	|	Yes			|	Yes (table)	|	N/A		|	
+| Return value optional			| Yes	|	No			|	No			|	No		|	
+| Takes parameters				| Yes	|	Yes			|	Yes			|	No		|	
+| Output parameters				| Yes	|	No			|	No			|	No		|	
 
 # Appendix A: Notepad++ custom setup
 <ol>
