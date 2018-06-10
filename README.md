@@ -3407,9 +3407,39 @@ DROP FUNCTION <scalar function name>;
 
 ### Stored Procedures ###
 <ol>
-	<li>Important notes on Stored Procedures
+	<li>Using Default Values with Parameters
 		<ul>
-			<li></li>
+			<li>SQL Server requires that you supply a value for each parameter unless you define a default value for the parameter</li>
+			<li>Whenever the parameter has a default value, you can skip sending that value when making the SP call</li>
+		</ul>
+	</li>
+	<li>Using the OUTPUT parameter
+		<ul>
+			<li>You can use the OUPUT parameter to get back a value form a stored procedure directly into a variable</li>
+			<li>This is one of those grey areas where you may decided to use a scalar UDF unless the SP has other logic that is not possible in a scalar UDF</li>
+			<li><b>IMPORTANT:</b> If the logic is not portable to any database, use a stored procedure
+				<ul>
+					<li>Scalar UDFs are for database agnostic functionality</li>
+				</ul>
+			</li>
+			<li>Syntax for creating a SP with an OUTPUT clause:
+<p>
+
+```SQL
+CREATE PROC[EDURE] <proc name> <@param> <data type> OUTPUT 
+AS
+<statements>
+[<return value>];
+GO
+
+--Sample call to OUTPUT based SP
+DECLARE <@variable> <data type>
+EXEC <proc name> [<param> =] <@variable> Output --@variable will hold the value returned from the SP OUPUT logic
+PRINT <variable>;
+```
+</p>				
+			</li>
+			<li>See exercise <b>Chapter14/ProcOutput</b></li>
 		</ul>
 	</li>
 </ol>
