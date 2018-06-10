@@ -3416,22 +3416,21 @@ DROP FUNCTION <scalar function name>;
 
 ### Key Differences of Views, UDFs, and Stored Procedures ###
 
-| Feature 						| SP 	|	Scalar UDF	|	Table UDF	|	View	|
-| ----------------------------- | -----	| ------------- | ------------- | --------- |
-| Return Tabular Data			| Yes	|	No			|	Yes			|	Yes		|	
-| Return multiple sets of data	| Yes	|	N/A			|	No			|	No		|	
-| Update data					| Yes	|	No			|	No			|	No		|	
-| Create other objects			| Yes	|	No			|	No			|	No		|	
-| Call from a procedure			| Yes	|	Yes			|	Yes			|	Yes		|	
-| Can call a procedure			| Yes	|	No			|	Yes			|	Yes		|	
-| Can call a function			| Yes	|	Yes			|	Yes			|	Yes		|	
-| Can call within a SELECT list	| No	|	Yes			|	No			|	No		|	
-| Use to populate multiple
-  columns in a table			| Yes	|	No			|	Yes			|	Yes		|	
-| Return value required			| No	|	Yes			|	Yes (table)	|	N/A		|	
-| Return value optional			| Yes	|	No			|	No			|	No		|	
-| Takes parameters				| Yes	|	Yes			|	Yes			|	No		|	
-| Output parameters				| Yes	|	No			|	No			|	No		|	
+| Feature 										| SP 	|	Scalar UDF	|	Table UDF	|	View	|
+| --------------------------------------------- | -----	| ------------- | ------------- | --------- |
+| Return Tabular Data							| Yes	|	No			|	Yes			|	Yes		|	
+| Return multiple sets of data					| Yes	|	N/A			|	No			|	No		|	
+| Update data									| Yes	|	No			|	No			|	No		|	
+| Create other objects							| Yes	|	No			|	No			|	No		|	
+| Call from a procedure							| Yes	|	Yes			|	Yes			|	Yes		|	
+| Can call a procedure							| Yes	|	No			|	Yes			|	Yes		|	
+| Can call a function							| Yes	|	Yes			|	Yes			|	Yes		|	
+| Can call within a SELECT list					| No	|	Yes			|	No			|	No		|	
+| Use to populate multiple columns in a table	| Yes	|	No			|	Yes			|	Yes		|	
+| Return value required							| No	|	Yes			|	Yes (table)	|	N/A		|	
+| Return value optional							| Yes	|	No			|	No			|	No		|	
+| Takes parameters								| Yes	|	Yes			|	Yes			|	No		|	
+| Output parameters								| Yes	|	No			|	No			|	No		|	
 
 # Appendix A: Notepad++ custom setup
 <ol>
