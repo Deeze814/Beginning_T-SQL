@@ -3442,6 +3442,23 @@ PRINT <variable>;
 			<li>See exercise <b>Chapter14/ProcOutput</b></li>
 		</ul>
 	</li>
+	<li>Saving the Results of a SP to a Table
+		<ul>
+			<li>One use of calling a stored procedure is to save the results in a temp table to work with latter in the batch</li>
+			<li>In order for this to work, the column data types of the temp table must match <b>EXACTLY</b> what is being returned from the SP
+				<ul>
+					<li>This means the columns must match in column numbers, Order, and Type or else it will generate an error</li>
+				</ul>
+			</li>
+			<li>To me (Dennis not the author), this is a very brittle solution
+				<ul>
+					<li>If the SELECT of the SP changes in anyway, you will break any logic that is saving calls to that SP into temp tables.</li>
+					<li>I personally will use a tabled-valued UDF since you can choose to insert only what you want from the returned data of the UDF and ignore other parts returned.</li>
+				</ul>
+			</li>
+			<li>See exercise <b>Chapter14/ProcTableInsert</b></li>
+		</ul>
+	</li>
 </ol>
 
 ### Key Differences of Views, UDFs, and Stored Procedures ###
