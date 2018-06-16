@@ -3561,7 +3561,7 @@ AS TABLE
 	<li>See exercise <b>Chapter14/CreateTableType</b></li>
 </ol>
 
-## Working with XML##
+## Working with XML ##
 ### Converting XML using OPENXML ##
 <ol>
 	<li>There are two primary reasons for handling XML in SQL
