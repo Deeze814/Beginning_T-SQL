@@ -3479,6 +3479,189 @@ PRINT <variable>;
 | Takes parameters								| Yes	|	Yes			|	Yes			|	No		|	
 | Output parameters								| Yes	|	No			|	No			|	No		|	
 
+### User-Defined Data Types ###
+<ol>
+	<li>A <b>User-Defined data type</b> (UDTs), are nothing more that native data types that have been given a specific name or alias
+		<ul>
+			<li>This ability enables you to make sure that a particular type of column is consistently defined throughout the database</li>
+			<li>In reality, UDTs are not used very often</li>
+			<li>Syntax for a UDT:
+<p>
+
+```SQL
+CREATE TYPE <type name> FROM <native type and size> [NULL|NOT NULL];
+```
+</p>
+			</li>
+			<li>Checking for custom UDTs:
+<p>
+
+```SQL
+IF EXISTS
+(
+	SELECT NULL 
+	FROM sys.types st
+	JOIN sys.schemas ss ON st.schema_id = ss.schema_id
+	WHERE st.name = N'CustomerID'
+	  AND ss.name = 'dbo'
+)
+BEGIN
+	DROP TYPE dbo.CustomerID;
+END;
+```
+</p>
+			</li>
+		</ul>
+	</li>
+</ol>
+
+### User-Defined Types ###
+<ol>
+	<li>This type of object is not a <b>data</b> type, in that it defines its own type using the .NET language's CLR data type
+		<ul>
+			<li>These CLR types can contain multiple properties and can contain methods</li>
+		</ul>
+	</li>
+</ol>
+
+#### Table Types ####
+<ol>
+	<li>A table type allows you to pass tabular data to a stored procedure in the form of a table variable
+		<ul>
+			<li>Starting with 2008, the table type is available to enable stored procedures to accept multiple rows at once and treat the variable inside the procedure as a table
+				<ul>
+					<li>This can be leveraged to join to other tables, insert rows, or update existing data</li>
+					<li>When a table variable is used to pass data to a stored procedure that is of a User-defined table type, that variable is referred to as a <b>table-valued parameter</b>
+						<ul>
+							<li><b>IMPORTANT:</b> When calling a SP with a table-valued parameter, the SP definition must define the table-valued parameter as <b>READONLY</b></li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			<li>As part of the In-Memory OLTP (Hekaton) feature in 2014, the table types can be configured to reside only in memory
+				<ul>
+					<li>Traditional table variables are actually created on disk in tempdb</li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+	<li>Syntax for creating a table type:
+<p>
+
+```SQL
+CREATE TYPE <schema>.<tableName> 
+AS TABLE
+(
+	<col1> <data type>,
+	<col2> <data type>
+);
+```
+</p>
+	</li>
+	<li>See exercise <b>Chapter14/CreateTableType</b></li>
+</ol>
+
+## Working with XML##
+### Converting XML using OPENXML ##
+<ol>
+	<li>There are two primary reasons for handling XML in SQL
+		<ul>
+			<li>You want to convert an XML document into a rowset(table)
+				<ul>
+					<li>Converting an XML document into a rowset is called <b>shredding</b></li>
+				</ul>
+			</li>
+			<li>You have a row set and want to convert it to XML</li>
+		</ul>
+	</li>
+	<li><b>OPENXML</b> is a tool that allows you to shred XML documents
+		<ul>
+			<li>You use OPENXML in conjunction with two other built in SQL Server commands
+				<ul>
+					<li><b>sp_xml_preparedocument</b>
+						<ul>
+							<li>This loads the XML document into memory</li>
+							<li>This process is expensive and takes up to one-eighth of the SQL Server's total memory</li>
+						</ul>
+					</li>
+					<li><b>sp_xml_removedocument</b>
+						<ul>
+							<li>This removes the XML document from memory and should be run at the end of the script.</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+	<li>When OPENXML is used, SQL server will predefine the columns of no column specifications are used
+		<ul>
+			<li>These column names are based on the XML <b>edge table format</b>
+				<ul>
+					<li>This format is the default structure for XML represented int table format</li>
+				</ul>
+			</li>
+			<li>See exercise <b>Chapter15/DefaultOpenXML</b></li>
+		</ul>
+	</li>
+	<li>If you want to specify your own column definitions during the shredding, you can use the <b>WITH</b> clause
+		<ul>
+			<li>See exercise <b>Chapter15/CustomOpenXML</b></li>
+		</ul>
+	</li>
+</ol>
+
+### Formatting Data as XML using FOR XML ###
+<ol>
+	<li>
+		<ul>
+			<li></li>
+		</ul>
+	</li>
+</ol>
+
+| Mode 		| Description	|
+| --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| RAW		| Easiest to use but provides the least flexibility, Each row creates a single element.																									  |
+| AUTO		| Similar to <b>RAW</b> but provides more flexibility. Each column returned is an element and each referenced table with a column in the SELECT clause is an element.					  |
+| EXPLICIT	| Difficult to use but provides improved granularity for creating complex XML documents. Allows you to mix attributes and elements but requires specific syntax structure in the SELECT clause |
+| PATH		| It is recommended that PATH mode is used instead of EXPLICIT. This mode provides similar functionality but with less complexity.														  |
+
+#### FOR XML RAW ####
+<ol>
+	<li>
+		<ul>
+			<li></li>
+		</ul>
+	</li>
+</ol>
+
+#### FOR XML AUTO ####
+<ol>
+	<li>
+		<ul>
+			<li></li>
+		</ul>
+	</li>
+</ol>
+
+#### FOR XML EXPLICIT ####
+<ol>
+	<li>
+		<ul>
+			<li></li>
+		</ul>
+	</li>
+</ol>
+
+#### FOR XML PATH ####
+<ol>
+	<li>
+		<ul>
+			<li></li>
+		</ul>
+	</li>
+</ol>
+
 # Appendix A: Notepad++ custom setup
 <ol>
 	<li><b>IMPORTANT:</b> Regardless of what directory you tell the installer to place the Notepad++ files, it will create most of the required file directories in:
