@@ -3628,9 +3628,55 @@ AS TABLE
 
 #### FOR XML RAW ####
 <ol>
-	<li>
+	<li><b>RAW</b> is the simplest mode but provides the least flexibility when generating XML from rowsets.
 		<ul>
-			<li></li>
+			<li><b>RAW</b> mode produces a single node "row" for each row returned and each element has a column-based attribute</li>
+			<li>By default, <b>RAW</b> mode produces an attribute-centric XML document</li>
+			<li>Sample call syntax for <b>FOR XML RAW</b>
+<p>
+
+```SQL
+SELECT TOP(5) 
+	FirstName
+	,LastName
+FROM Person.Person
+FOR XML RAW ('NAME'), ELEMENTS;
+```
+</p>
+				<ul>
+					<li>This would produce:
+						<ul>
+							<li>
+<p>
+
+```XML
+<NAME>
+  <FirstName>Syed</FirstName>
+  <LastName>Abbas</LastName>
+</NAME>
+<NAME>
+  <FirstName>Catherine</FirstName>
+  <LastName>Abel</LastName>
+</NAME>
+<NAME>
+  <FirstName>Kim</FirstName>
+  <LastName>Abercrombie</LastName>
+</NAME>
+<NAME>
+  <FirstName>Kim</FirstName>
+  <LastName>Abercrombie</LastName>
+</NAME>
+<NAME>
+  <FirstName>Kim</FirstName>
+  <LastName>Abercrombie</LastName>
+</NAME>
+```
+</p>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
 		</ul>
 	</li>
 </ol>
