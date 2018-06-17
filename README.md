@@ -3675,37 +3675,229 @@ FOR XML RAW ('NAME'), ELEMENTS;
 							</li>
 						</ul>
 					</li>
+					<li>The <b>ELEMENTS</b> option converts the columns from attributes to elements within the NAME node</li>
 				</ul>
 			</li>
 		</ul>
 	</li>
+	<li>See exercise <b>Chapter15/ForXmlAuto</b></li>
 </ol>
 
 #### FOR XML AUTO ####
 <ol>
-	<li>
+	<li><b>AUTO</b> creates an element for each table in the FROM clause that has a column in the SELECT clause
 		<ul>
-			<li></li>
+			<li>Each column in the SELECT clause is represented as an attribute in the XML document</li>
 		</ul>
 	</li>
+	<li>Sample call for <b>FOR XML AUTO</b>
+<p>
+
+```SQL
+SELECT TOP(5) 
+	Customer.CustomerID
+	,Person.LastName
+	,Person.FirstName
+	,Person.MiddleName
+FROM Person.Person Person
+JOIN Sales.Customer Customer ON Person.BusinessEntityID = Customer.PersonID
+ORDER BY Customer.CustomerID
+FOR XML AUTO;
+
+```
+</p>
+		<ul>
+			<li>Produces:
+				<ul>
+					<li>
+<p>
+
+```XML
+<Customer CustomerID="11000">
+  <Person LastName="Yang" FirstName="Jon" MiddleName="V" />
+</Customer>
+<Customer CustomerID="11001">
+  <Person LastName="Huang" FirstName="Eugene" MiddleName="L" />
+</Customer>
+<Customer CustomerID="11002">
+  <Person LastName="Torres" FirstName="Ruben" />
+</Customer>
+<Customer CustomerID="11003">
+  <Person LastName="Zhu" FirstName="Christy" />
+</Customer>
+<Customer CustomerID="11004">
+  <Person LastName="Johnson" FirstName="Elizabeth" />
+</Customer>
+```
+</p>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+	<li>You can also add the <b>ELEMENTS</b> option to display columns as elements for each node instead of attributes
+		<ul>
+			<li>One difference of the result using ELEMENTS within AUTO from RAW is that the ElementName exclusion (where RAW would note this as: RAW('NAME'))</li>
+			<li>This is because AUTO mode automatically names the nodes after the name of each table</li>
+		</ul>
+	</li>
+	<li>See exercise <b>Chapter15/ForXmlAuto</b></li>
 </ol>
 
 #### FOR XML EXPLICIT ####
 <ol>
-	<li>
+	<li>This mode is the most complicated of the approaches to convert rowsets into XML
 		<ul>
-			<li></li>
+			<li>The complexity lies in the rigorous requirement that you structure your SELECT clause so the output forms a <b>universal table</b></li>
+			<li>This is done by creating two columns: <b>Tag</b> and <b>Parent</b>
+				<ul>
+					<li>The relationship between <b>Tag</b> and <b>Parent</b> can be thought in the same terms of Manager and Employee</li>
+					<li>The manager would have a tag ID of 1, and the employee would have a tag ID of 2</li>
+					<li>The manager would have a parent ID value of 0 but the employee would have a parent ID of 1 (the manager)</li>
+				</ul>
+			</li>
 		</ul>
 	</li>
+	<li>Sample call for <b>FOR XML EXPLICIT</b>
+<p>
+
+```SQL
+SELECT TOP(5) 
+	   1		  AS Tag,
+       NULL       AS Parent,
+       CustomerID AS [Customer!1!CustomerID],
+       NULL       AS [Name!2!FName],
+       NULL       AS [Name!2!LName]
+FROM Sales.Customer AS C
+INNER JOIN Person.Person AS P
+ON  P.BusinessEntityID = C.PersonID
+UNION 
+SELECT TOP(5) 
+	   2 AS Tag,
+       1 AS Parent,
+       CustomerID,
+       FirstName,
+       LastName
+FROM Person.Person P
+INNER JOIN Sales.Customer AS C
+ON P.BusinessEntityID = C.PersonID
+ORDER BY [Customer!1!CustomerID], [Name!2!FName]
+FOR XML EXPLICIT;
+```
+</p>
+		<ul>
+			<li>Would produce:
+				<ul>
+					<li>
+<p>
+
+```XML
+<Customer CustomerID="11000">
+  <Name FName="Jon" LName="Yang" />
+</Customer>
+<Customer CustomerID="11001">
+  <Name FName="Eugene" LName="Huang" />
+</Customer>
+<Customer CustomerID="11002">
+  <Name FName="Ruben" LName="Torres" />
+</Customer>
+<Customer CustomerID="11003">
+  <Name FName="Christy" LName="Zhu" />
+</Customer>
+<Customer CustomerID="11004">
+  <Name FName="Elizabeth" LName="Johnson" />
+</Customer>
+```
+</p>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+	<li>In addition to the <b>Tag</b> and <b>Parent</b> values, the universal table also defines where values exist in the hierarchy using the <b>ElementName!TagNumber!Attribute</b> notation.</li>
+	<li>There is also an optional <b>Directive</b> value when creating the universal table
+		<ul>
+			<li>The format is: <b>ElementName!TagNumber!Attribute!Directive</b></li>
+			<li>This allows you to control how to encode values (ID, IDREF, IDREFS) and how to map string data into XML(hide, element, elementxsinil, xml, xmltext, and cdata)</li>
+		</ul>
+	</li>
+	<li>See Exercise <b>Chapter15/ForXmlExplicit</b></li>
 </ol>
 
 #### FOR XML PATH ####
 <ol>
-	<li>
+	<li>This option represents the best approach if you need to develop complex XML documents
 		<ul>
-			<li></li>
+			<li><b>PATH</b> simplifies the task of creating complex XML document by taking advantage of the <b>XPath</b> standard
+				<ul>
+					<li><b>XPaht</b> is a W3C standard for navigating XML hierarchies</li>
+				</ul>
+			</li>
 		</ul>
 	</li>
+	<li>Sample call for <b>FOR XML PATH</b>:
+<p>
+
+```SQL
+SELECT TOP(3) 
+	p.FirstName
+    ,p.LastName 
+    ,s.Bonus
+    ,s.SalesYTD
+FROM Person.Person p
+JOIN Sales.SalesPerson s ON p.BusinessEntityID = s.BusinessEntityID
+ORDER BY SalesYTD DESC
+FOR XML PATH;
+```
+</p>
+		<ul>
+			<li>Would produce:
+				<ul>
+					<li>
+<p>
+
+```XML
+<row>
+  <FirstName>Linda</FirstName>
+  <LastName>Mitchell</LastName>
+  <Bonus>2000.0000</Bonus>
+  <SalesYTD>4251368.5497</SalesYTD>
+</row>
+<row>
+  <FirstName>Jae</FirstName>
+  <LastName>Pak</LastName>
+  <Bonus>5150.0000</Bonus>
+  <SalesYTD>4116871.2277</SalesYTD>
+</row>
+<row>
+  <FirstName>Michael</FirstName>
+  <LastName>Blythe</LastName>
+  <Bonus>4100.0000</Bonus>
+  <SalesYTD>3763178.1787</SalesYTD>
+</row>
+```
+</p>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+	<li>Without any modification, the XML PATH mode will create simple element-centric XML documents
+		<ul>
+			<li>Producing an element for each row</li>
+		</ul>
+	</li>
+	<li>If you want to enhance the format, you can easily mix and match element and attribute centric XML document styles
+		<ul>
+			<li><b>IMPORTANT:</b>When mapping columns to an XML document:
+				<ul>
+					<li>Any column defined with an at (@) sign becomes an attribute of the node</li>
+					<li>Any column defined with a forward slash (/) becomes a separate element</li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+	<li>See exercise <b>Chapter14/ForXmlPath</b></li>
 </ol>
 
 # Appendix A: Notepad++ custom setup
