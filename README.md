@@ -3894,6 +3894,49 @@ FOR XML PATH;
 </ol>
 
 
+### XML Data Type ###
+<ol>
+	<li>Since SQL Server 2005, you can define a column to have a data type of <b>XML</b>
+		<ul>
+			<li>It cannot be used as a primary or foreign key</li>
+			<li>You cannot convert or cast the column to a <b>text</b> or <b>ntext</b> data type
+				<ul>
+					<li>Use <b>VARCHAR(max)</b> and <b>NVARCHAR(MAX)</b></li>
+				</ul>
+			</li>
+			<li>Column cannot be used in a GROUP BY statement</li>
+			<li>The data cannot exceed 2GB</li>
+		</ul>
+	</li>
+	<li>See exercise <b>Chapter15/XmlDataType</b></li>
+</ol>
+
+### XML Methods ###
+<ol>
+	<li>XML methods provide ways to handle XML in the XML Data type
+		<ul>
+			<li>They allow you to update the XML, convert the XML to rowsets (shred), check whether the XML has nodes, and so on</li>
+		</ul>
+	</li>
+</ol>
+
+| Methods					|	Description																		|
+| query(xquery)				|	Executes an XQuery against the XML data type. Returns an XML type 				|
+| value(xquery, sqltype)	|	Executes an XQuery against the XML data type and returns an SQL scalar value 	|				
+| exist(xquery)				|	Executes an XQuery against the XML data type and returns a bit value representing a criteria of 1 if there is at least one node, 0 if there are no nodes, and NULL if the XML data type in the XQuery is NULL 																		  |
+| modify(xml_dml)			|	Used to update XML stored as the XML data type									|
+| nodes()					|	Used to convert(shred) an XML data type into a rowset(table). If you want to convert XML into a relational form, use this method|
+
+
+
+#### The QUERY method ####
+<ol>
+	<li>
+		<ul>
+			<li></li>
+		</ul>
+	</li>
+</ol>
 
 
 # Appendix A: Notepad++ custom setup
@@ -3971,50 +4014,6 @@ FOR XML PATH;
 		</ul>
 	</li>
 </ol> 
-
-### XML Data Type ###
-<ol>
-	<li>Since SQL Server 2005, you can define a column to have a data type of <b>XML</b>
-		<ul>
-			<li>It cannot be used as a primary or foreign key</li>
-			<li>You cannot convert or cast the column to a <b>text</b> or <b>ntext</b> data type
-				<ul>
-					<li>Use <b>VARCHAR(max)</b> and <b>NVARCHAR(MAX)</b></li>
-				</ul>
-			</li>
-			<li>Column cannot be used in a GROUP BY statement</li>
-			<li>The data cannot exceed 2GB</li>
-		</ul>
-	</li>
-	<li>See exercise <b>Chapter15/XmlDataType</b></li>
-</ol>
-
-### XML Methods ###
-<ol>
-	<li>XML methods provide ways to handle XML in the XML Data type
-		<ul>
-			<li>They allow you to update the XML, convert the XML to rowsets (shred), check whether the XML has nodes, and so on</li>
-		</ul>
-	</li>
-</ol>
-
-| Methods					|	Description																		|
-| query(xquery)				|	Executes an XQuery against the XML data type. Returns an XML type 				|
-| value(xquery, sqltype)	|	Executes an XQuery against the XML data type and returns an SQL scalar value 	|				
-| exist(xquery)				|	Executes an XQuery against the XML data type and returns a bit value representing a criteria of 1 if there is at least one node, 0 if there are no nodes, and NULL if the XML data type in the XQuery is NULL 																		  |
-| modify(xml_dml)			|	Used to update XML stored as the XML data type									|
-| nodes()					|	Used to convert(shred) an XML data type into a rowset(table). If you want to convert XML into a relational form, use this method|
-
-
-
-#### The QUERY method ####
-<ol>
-	<li>
-		<ul>
-			<li></li>
-		</ul>
-	</li>
-</ol>
 
 # Appendix B: Default Query template #
 <ol>
