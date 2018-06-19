@@ -3921,13 +3921,12 @@ FOR XML PATH;
 </ol>
 
 | Methods					|	Description																		|
+|-------------------------- | --------------------------------------------------------------------------------- |
 | query(xquery)				|	Executes an XQuery against the XML data type. Returns an XML type 				|
 | value(xquery, sqltype)	|	Executes an XQuery against the XML data type and returns an SQL scalar value 	|				
 | exist(xquery)				|	Executes an XQuery against the XML data type and returns a bit value representing a criteria of 1 if there is at least one node, 0 if there are no nodes, and NULL if the XML data type in the XQuery is NULL 																		  |
 | modify(xml_dml)			|	Used to update XML stored as the XML data type									|
 | nodes()					|	Used to convert(shred) an XML data type into a rowset(table). If you want to convert XML into a relational form, use this method|
-
-
 
 #### The QUERY method ####
 <ol>
