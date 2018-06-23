@@ -3930,11 +3930,28 @@ FOR XML PATH;
 
 #### The QUERY method ####
 <ol>
-	<li>
+	<li>The <b>QUERY</b> method will extract elements form an XML column or variable
 		<ul>
-			<li></li>
+			<li>When the query method is used, its return value is still of the XML type</li>
+			<li>Sample syntax:
+<p>
+
+```SQL
+CREATE TABLE #Bikes(ProductID INT, ProductDescription XML);
+
+--The Query method is invoked on the XML column and returns all rows in which the sought after node matches the query predicate
+--The returned node is also of the XML data type
+SELECT 
+	ProductID
+	,ProductDescription.query('Product/ListPrice') AS ListPrice
+FROM #Bikes;
+
+```
+</p>
+			</li>
 		</ul>
 	</li>
+	<li>See Exercise <b>[XmlQueryMethod](Chapter15/XmlQueryMethod.sql)</b></li>
 </ol>
 
 
