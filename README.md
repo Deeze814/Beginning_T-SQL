@@ -379,7 +379,7 @@ SUBSTRING(<string>,<start location>, <length>)
 ```
 </p>
 			</li>
-			<li>See Exercise <a href="./Chapter%204/SubString">SubString</a></li>
+			<li>See Exercise <a href="./Chapter%204/SubString.sql">SubString</a></li>
 		</ul>
 	</li>
 	<li><b>CHOOSE</b>
