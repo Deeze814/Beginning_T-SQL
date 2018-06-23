@@ -3958,8 +3958,6 @@ FROM #Bikes;
 	<li>See Exercise <a href="./Chapter%2015/XmlQueryMethod.sql">XmlQueryMethod</a></li>
 </ol>
 
-[XmlQueryMethod](Chapter15/XmlQueryMethod.sql)
-
 # Appendix A: Notepad++ custom setup
 <ol>
 	<li><b>IMPORTANT:</b> Regardless of what directory you tell the installer to place the Notepad++ files, it will create most of the required file directories in:
