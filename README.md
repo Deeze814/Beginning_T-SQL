@@ -398,7 +398,7 @@ CHOOSE(index, val_1, val_2[, val_n])
 ```
 </p>			
 			</li>
-			<li>See Exercise <a href="./Chapter%204/Choose">Choose</a></li>
+			<li>See Exercise <a href="./Chapter%204/Choose.sql">Choose</a></li>
 			<li><b>NOTE:</b> The function takes the highest data type precedence.
 				<ul>
 					<li>This means if there is an integer in the list, the <b>CHOOSE</b> function will try to convert any results to an integer</li>
@@ -453,7 +453,7 @@ DATEADD(<date part>, <number>, <date>)
 </p>
 			</li>
 			<li><b>NOTE:</b> T-SQL does not have a <b>DATESUBTRACT</b> but you can use a negative number to achieve the same effect.</li>
-			<li>See Exercise <a href="./Chapter%20e/DateAdd">DateAdd</a></li>
+			<li>See Exercise <a href="./Chapter%20e/DateAdd.sql">DateAdd</a></li>
 			<li>The values for the <b>Date Part</b> parameter</li>
 		</ul>
 	</li>
@@ -487,7 +487,7 @@ DATEDIFF(<datepart>, <early date>, <later date>)
 ```
 </p>
 			</li>
-			<li>See Exercise <a href="./Chapter%204/DateDiff">DateDiff</a></li>
+			<li>See Exercise <a href="./Chapter%204/DateDiff.sql">DateDiff</a></li>
 		</ul>
 	</li>
 </ol>
@@ -508,7 +508,7 @@ DATEPART(<datepart>, <date>)
 			</li>
 			<li><b>DATENAME</b> will give you the numeric representation of the part of the date specified</li>
 			<li><b>DATEPART</b> will give you the English text description of the part of the date specified</li>
-			<li>See Exercise <a href="./Chapter%204/DateNameDatePart">DateNameDatePart</a></li>
+			<li>See Exercise <a href="./Chapter%204/DateNameDatePart.sql">DateNameDatePart</a></li>
 			<li>Another shorthand way obtain the numeric representation of date parts:
 <p>
 
@@ -536,7 +536,7 @@ CONVERT(<data type, usually a VARCHAR>, <date>[, <style>])
 ```
 </p>
 			</li>
-			<li>See Exercise <a href="./Chapter%204/ConvertDateToString">ConvertDateToString</a></li>
+			<li>See Exercise <a href="./Chapter%204/ConvertDateToString.sql">ConvertDateToString</a></li>
 		</ul>
 	</li>
 </ol>
@@ -556,7 +556,7 @@ FORMAT(value, format[, culture])
 ```
 </p>
 			</li>
-			<li>See Exercise <a href="./Chapter%204/Format">Format</a></li>
+			<li>See Exercise <a href="./Chapter%204/Format.sql">Format</a></li>
 		</ul>
 	</li>
 </ol>
@@ -569,7 +569,7 @@ FORMAT(value, format[, culture])
 					<li>The primary function is called <b>DATEFROMPARTS</b>, but there is also a version of the function for both date or time data types</li>
 				</ul>
 			</li>
-			<li>See Exercise <a href="./Chapter%204/DateFromParts">DateFromParts</a></li>
+			<li>See Exercise <a href="./Chapter%204/DateFromParts.sql">DateFromParts</a></li>
 		</ul>
 	</li>
 </ol>
@@ -580,7 +580,7 @@ FORMAT(value, format[, culture])
 		<ul>
 			<li>Another addition made by SQL Server 2012, <b>EOMONTH</b> will return the date of the last day of the supplied month argument</li>
 			<li>YOu can alternatively supply an <b>offset</b> to return the end of the month for another month</li>			
-			<li>See Exercise <a href="./Chapter%204/EoMonth">EoMonth</a></li>
+			<li>See Exercise <a href="./Chapter%204/EoMonth.sql">EoMonth</a></li>
 		</ul>
 	</li>
 </ol>
@@ -644,7 +644,7 @@ SQRT(<number>)
 			</li>
 		</ul>
 	</li>
-	<li>See Exercise <a href="./Chapter%204/MathFunctions">MathFunctions</a></li>
+	<li>See Exercise <a href="./Chapter%204/MathFunctions.sql">MathFunctions</a></li>
 </ol>
 
 ### Logical Functions and Expressions ###
@@ -670,7 +670,7 @@ END
 </p>
 			</li>
 			<li><b>NOTE:</b> The return values in the CASE statement must be of compatible types</li>			
-			<li>See Exercise <a href="./Chapter%204/SearchCase">SearchCase</a></li>
+			<li>See Exercise <a href="./Chapter%204/SearchCase.sql">SearchCase</a></li>
 		</ul>
 	</li>
 	<li>Listing a Column as the Return value
@@ -695,7 +695,7 @@ FROM schema.tableName;
 ```
 </p>				
 			</li>			
-			<li>See Exercise <a href="./Chapter%204/ColumnAsReturnValue">ColumnAsReturnValue</a></li>
+			<li>See Exercise <a href="./Chapter%204/ColumnAsReturnValue.sql">ColumnAsReturnValue</a></li>
 		</ul>
 	</li>
 	<li><b>IIF</b>
@@ -709,7 +709,7 @@ IIF(boolean_expression, true_value, false_value);
 ```
 </p>
 			</li>			
-			<li>See Exercise <a href="./Chapter%204/IIF">IIF</a></li>
+			<li>See Exercise <a href="./Chapter%204/IIF.sql">IIF</a></li>
 		</ul>
 	</li>
 </ol>
@@ -732,7 +732,7 @@ SELECT
 ```
 </p>
 			</li>			
-			<li>See Exercise <a href="./Chapter%204/AdminFunctions">AdminFunctions</a></li>
+			<li>See Exercise <a href="./Chapter%204/AdminFunctions.sql">AdminFunctions</a></li>
 		</ul>
 	</li>
 	<li>Using functions in <b>WHERE</b> and <b>ORDER BY</b> clauses
@@ -799,7 +799,7 @@ ORDER BY NEWID();
 					<li><b>OFFSET</b> and <b>FETCH</b> also allow for more options, including the use of variables</li>
 				</ul>
 			</li>			
-			<li>See Exercise <a href="./Chapter%204/Top">Top</a></li>
+			<li>See Exercise <a href="./Chapter%204/Top.sql">Top</a></li>
 		</ul>
 	</li>
 	<li><b>Thinking about performance with functions</b>
@@ -842,7 +842,7 @@ WHERE YEAR(OrderDate) = 2011;
 ```
 </p>
 			</li>			
-			<li>See Exercise <a href="./Chapter%204/FunctionPerformance">FunctionPerformance</a></li>
+			<li>See Exercise <a href="./Chapter%204/FunctionPerformance.sql">FunctionPerformance</a></li>
 		</ul>
 	</li>
 </ol>
@@ -940,7 +940,7 @@ WHERE c.CustomerID IN (11028, 11029, 1, 2, 3, 4);
 					<li>This will avoid losing the NULL values of your previous LEFT join</li>
 				</ul>
 			</li>			
-			<li>See Exercise <a href="./Chapter%205/SuccessiveLeftJoins">SuccessiveLeftJoins</a></li>
+			<li>See Exercise <a href="./Chapter%205/SuccessiveLeftJoins.sql">SuccessiveLeftJoins</a></li>
 		</ul>
 	</li>
 		<li><b>FULL OUTER JOIN</b>
@@ -972,7 +972,7 @@ FULL [OUTER] JOIN <table2> ON <table1>.<col1> = <table2>.<col2>
 ```
 </p>
 			</li>			
-			<li>See Exercise <a href="./Chapter%205/FullOuterJoin">FullOuterJoin</a></li>
+			<li>See Exercise <a href="./Chapter%205/FullOuterJoin.sql">FullOuterJoin</a></li>
 		</ul>
 	</li>
 	<li><b>CROSS JOIN</b>
@@ -1024,7 +1024,7 @@ LEFT JOIN <table1> b ON a.<col1> = b.<col2>;
 ```
 </p>				
 			</li>			
-			<li>See Exercise <a href="./Chapter%205/SelfJoin">SelfJoin</a></li>
+			<li>See Exercise <a href="./Chapter%205/SelfJoin.sql">SelfJoin</a></li>
 		</ul>
 	</li>
 	<li><b>Optimizer Join Types</b>
@@ -1053,7 +1053,7 @@ JOIN Sales.SalesOrderDetail sod ON soh.SalesOrderID = sod.SalesOrderID;
 					</li>
 					<li>Since both <b>soh</b> and <b>sod</b> have a primary key column of <b>SalesOrderID</b>, the tables are already sorted on this index (the clustered indext)</li>
 					<li><b>Important:</b> A merge join will sort <b>both</b> sides before starting its comparison</li>					
-					<li>See Exercise <a href="./Chapter%205/MergeJoin">MergeJoin</a></li>
+					<li>See Exercise <a href="./Chapter%205/MergeJoin.sql">MergeJoin</a></li>
 				</ul>
 			</li>
 			<li><b>Nested Loop</b>
@@ -1085,7 +1085,7 @@ WHERE soh.CustomerID = 11000;
 							<li>The process loops through the smaller input one time, but loops through the larger input one time for each iteration of the small loop</li>
 						</ul>
 					</li>					
-					<li>See Exercise <a href="./Chapter%205/NestedLoop">NestedLoop</a></li>
+					<li>See Exercise <a href="./Chapter%205/NestedLoop.sql">NestedLoop</a></li>
 				</ul>
 			</li>
 			<li><b>Hash Match</b>
@@ -1114,7 +1114,7 @@ JOIN Sales.SalesOrderHeader soh ON c.CustomerID = soh.CustomerID;
 							<li>This means we will loop through the larger input (<b>s</b> records) exactly once</li>
 						</ul>
 					</li>					
-					<li>See Exercise <a href="./Chapter%205/HashMatch">HashMatch</a></li>
+					<li>See Exercise <a href="./Chapter%205/HashMatch.sql">HashMatch</a></li>
 				</ul>
 			</li>
 		</ul>
@@ -1136,7 +1136,7 @@ JOIN Sales.SalesOrderHeader soh ON c.CustomerID = soh.CustomerID;
 					<li>The intended result is 10 because it doesn't match any of the values from the subquery, but because of NULL, the comparison returns no results.</li>
 				</ul>
 			</li>
-			<li>See Exercise <a href="./Chapter%206/NotInSubqueryContainingNull">NotInSubqueryContainingNull</a></li>
+			<li>See Exercise <a href="./Chapter%206/NotInSubqueryContainingNull.sql">NotInSubqueryContainingNull</a></li>
 		</ul>
 	</li>
 </ol>
@@ -1177,7 +1177,7 @@ FROM <table2>
 					<li>When evaluating the execution plan of <b>UNION</b> vs <b>UNION ALL</b>, the <b>UNION</b> will always have an extra step of a <b>Hash Match</b> being performed in order to remove duplicates</li>
 				</ul>
 			</li>			
-			<li>See Exercise <a href="./Chapter%206/Unions">Unions</a></li>
+			<li>See Exercise <a href="./Chapter%206/Unions.sql">Unions</a></li>
 		</ul>
 	</li>
 </ol>
@@ -1208,7 +1208,7 @@ JOIN (SELECT <select list>
 							<li>A derived table cannot contain a CTE</li>
 						</ul>
 					</li>					
-					<li>See Exercise <a href="./Chapter%206/DerivedTable">DerivedTable</a></li>
+					<li>See Exercise <a href="./Chapter%206/DerivedTable.sql">DerivedTable</a></li>
 				</ul>
 			</li>
 			<li><b>Common Table Expressions</b> (CTE)
@@ -1256,7 +1256,7 @@ JOIN <cteName> ON <table2>.<col1> = <ctename>.<col1>
 								</ul>
 							</li>
 							<li>If aliases are defined upfront, they will be used instead of column names</li>							
-							<li>See Exercise <a href="./Chapter%206/CTEs">CTEs</a></li>
+							<li>See Exercise <a href="./Chapter%206/CTEs.sql">CTEs</a></li>
 						</ul>
 					</li>
 				</ul>
@@ -1315,7 +1315,7 @@ GROUP BY <col2>;
 </p>						
 					</li>
 					<li><b>IMPORTANT:</b> If you dont want to group on a column, dont list it in the SELECT list</li>					
-					<li>See Exercise <a href="./Chapter%207/GroupBy">GroupBy</a></li>
+					<li>See Exercise <a href="./Chapter%207/GroupBy.sql">GroupBy</a></li>
 				</ul>
 			</li>
 			<li><b>Grouping on Expressions</b>
@@ -1326,7 +1326,7 @@ GROUP BY <col2>;
 						</ul>
 					</li>
 					<li><b>IMPORTANT:</b> When using scalar expressions in the GROUP BY clause, you must list the expression in the GROUP BY declaration <b>EXACTLY</b> as it appears in the select list</li>
-					<li>See Exercise <a href="./Chapter%207/GroupBy">GroupBy</a></li>
+					<li>See Exercise <a href="./Chapter%207/GroupBy.sql">GroupBy</a></li>
 				</ul>
 			</li>
 		</ul>
@@ -1351,7 +1351,7 @@ ORDER BY <col2>;
 ```
 </p>				
 			</li>			
-			<li>See Exercise <a href="./Chapter%207/OrderBy">OrderBy</a></li>
+			<li>See Exercise <a href="./Chapter%207/OrderBy.sql">OrderBy</a></li>
 		</ul>
 	</li>
 	<li>The <b>WHERE</b> and <b>HAVING</b> clause
@@ -1398,7 +1398,7 @@ HAVING <aggregate function2>(<col3>) = <value>;
 					<li><b>HAVING</b> filters the results <b>AFTER</b> grouping and aggregation occurs</li>
 				</ul>
 			</li>			
-			<li>See Exercise <a href="./Chapter%207/WhereVsHaving">WhereVsHaving</a></li>
+			<li>See Exercise <a href="./Chapter%207/WhereVsHaving.sql">WhereVsHaving</a></li>
 		</ul>
 		<li><b>IMPORTANT:</b> Tips on query structure and DB processing
 			<ul>
@@ -1447,7 +1447,7 @@ HAVING <aggregate function2>(<col3>) = <value>;
 					<li>If duplicate results are valid, using a <b>GROUP BY</b> will yield the same results</li>
 				</ul>
 			</li>			
-			<li>See Exercise <a href="./Chapter%207/DistinctVsGroupBy">DistinctVsGroupBy</a></li>
+			<li>See Exercise <a href="./Chapter%207/DistinctVsGroupBy.sql">DistinctVsGroupBy</a></li>
 		</ul>
 	</li>
 	<li>Using <b>DISTINCT</b> within an aggregate expression
@@ -1464,7 +1464,7 @@ FROM <table1>;
 ```
 </p>			
 			</li>			
-			<li>See Exercise <a href="./Chapter%207/AggregateWithDistinct">AggregateWithDistinct</a></li>
+			<li>See Exercise <a href="./Chapter%207/AggregateWithDistinct.sql">AggregateWithDistinct</a></li>
 		</ul>
 	</li>
 </ol>
@@ -1473,7 +1473,7 @@ FROM <table1>;
 <ol>
 	<li>To see aggregates in action with more than one table
 		<ul>
-			<li>See Exercise <a href="./Chapter%207/AggregateMultiTable">AggregateMultiTable</a></li>
+			<li>See Exercise <a href="./Chapter%207/AggregateMultiTable.sql">AggregateMultiTable</a></li>
 		</ul>
 	</li>
 	<li>Aggregate Functions and NULL
@@ -1506,7 +1506,7 @@ GROUP BY <col1>;
 						</ul>
 					</li>
 				</ul>				
-				<li>See Exercise <a href="./Chapter%207/AggregateWithNulls">AggregateWithNulls</a></li>
+				<li>See Exercise <a href="./Chapter%207/AggregateWithNulls.sql">AggregateWithNulls</a></li>
 			</li>
 		</ul>
 	</li>
@@ -1568,7 +1568,7 @@ SET STATISTICS IO ON;
 				</ul>
 			</li>
 		</ul>
-		<li>See Exercise <a href="./Chapter%207/StatIO">StatIO</a>
+		<li>See Exercise <a href="./Chapter%207/StatIO.sql">StatIO</a>
 			<ul>
 				<li>Notes from the exercise:
 					<ul>
@@ -1692,7 +1692,7 @@ FROM <table1>;
 					<li><b>RANK</b> and <b>DENSE_RANK</b> will return unique values if the ORDER BY is unique</li>
 				</ul>
 			</li>			
-			<li>See Exercise <a href="./Chapter%208/RankingFunc">RankingFunc</a></li>
+			<li>See Exercise <a href="./Chapter%208/RankingFunc.sql">RankingFunc</a></li>
 		</ul>
 	</li>
 	<li>Dividing the Window into Partitions
@@ -1705,7 +1705,7 @@ FROM <table1>;
 				</ul>
 			</li>
 			<li>For <b>Ranking Functions</b>, partitioning means you will start over for each partition</li>			
-			<li>See Exercise <a href="./Chapter%208/Partitions">Partitions</a></li>
+			<li>See Exercise <a href="./Chapter%208/Partitions.sql">Partitions</a></li>
 		</ul>
 	</li>
 	<li>Using <b>NTILE</b>
@@ -1728,7 +1728,7 @@ FROM <table>;
 					<li>Outside of this parameter, NTILE behaves like other ranking functions in terms of its <b>OVER</b> clause specification</li>
 				</ul>
 			</li>			
-			<li>See Exercise <a href="./Chapter%208/NTILE">NTILE</a></li>
+			<li>See Exercise <a href="./Chapter%208/NTILE.sql">NTILE</a></li>
 		</ul>
 	</li>
 </ol>
@@ -1746,7 +1746,7 @@ FROM <table>;
 			<li>Fancy way of saying that window functions do not change the result set (since the result set is determined by the application of the WHERE clause)</li>
 		</ul>
 	</li>	
-	<li>See Exercise <a href="./Chapter%208/WindowAggregates">WindowAggregates</a></li>
+	<li>See Exercise <a href="./Chapter%208/WindowAggregates.sql">WindowAggregates</a></li>
 </ol>
 
 ### Defining the Window with Framing ###
@@ -1828,7 +1828,7 @@ FROM <table>;
 			</li>
 		</ul>
 	</li>	
-	<li>See Exercise <a href="./Chapter%208/RunningTotal">RunningTotal</a></li>
+	<li>See Exercise <a href="./Chapter%208/RunningTotal.sql">RunningTotal</a></li>
 </ol>
 
 ### Difference between ROWS and RANGE ###
@@ -1850,7 +1850,7 @@ FROM <table>;
 			</li>
 		</ul>
 	</li>	
-	<li>See Exercise <a href="./Chapter%208/RowsVsRange">RowsVsRange</a></li>
+	<li>See Exercise <a href="./Chapter%208/RowsVsRange.sql">RowsVsRange</a></li>
 </ol>
 
 ### Window Analytic Functions ###
@@ -1915,7 +1915,7 @@ FROM <table>;
 					</li>
 				</ul>
 			</li>			
-			<li>See Exercise <a href="./Chapter%208/LagLead">LagLead</a></li>
+			<li>See Exercise <a href="./Chapter%208/LagLead.sql">LagLead</a></li>
 		</ul>
 	</li>	
 	<li><b>FIRST_VALUE</b> and <b>LAST_VALUE</b>
@@ -1953,7 +1953,7 @@ FROM <table1>;
 				</ul>
 			</li>
 		</ul>
-		<li>See Exercise <a href="./Chapter%208/FirstLastValue">FirstLastValue</a></li>
+		<li>See Exercise <a href="./Chapter%208/FirstLastValue.sql">FirstLastValue</a></li>
 	</li>
 </ol>
 
@@ -1964,7 +1964,7 @@ FROM <table1>;
 			<li>One of the applications of <b>ROW_NUMBER</b> is to remove duplicate rows from data</li>
 			<li><b>ROW_NUMBER</b> returns a unique number for each row in the window or set of rows returned</li>
 			<li>By adding a row number, you can turn data with duplicates into unique rows temporarily</li>			
-			<li>See Exercise <a href="./Chapter%208/RemoveDupWithRowNum">RemoveDupWithRowNum</a></li>
+			<li>See Exercise <a href="./Chapter%208/RemoveDupWithRowNum.sql">RemoveDupWithRowNum</a></li>
 		</ul>
 	</li>
 	<li><b>Solving the <i>Islands Problem</i></b>
@@ -1981,7 +1981,7 @@ FROM <table1>;
 				</ul>
 			</li>
 			<li>One way to solve the problem is to use windowing functions (such as <b>DENSE_RANK</b>) to identify each island</li>			
-			<li>See Exercise <a href="./Chapter%208/Islands">Islands</a></li>
+			<li>See Exercise <a href="./Chapter%208/Islands.sql">Islands</a></li>
 		</ul>
 	</li>
 </ol>
@@ -2021,7 +2021,7 @@ FROM <table1>;
 	<li><b>The Trouble with Window Aggregates</b>
 		<ul>
 			<li>While window aggregates are easier to write than the traditional logic counterparts, they also routinely experience worse performance</li>			
-			<li>See Exercise <a href="./Chapter%208/TroubleWithWindAgg">TroubleWithWindAgg</a></li>
+			<li>See Exercise <a href="./Chapter%208/TroubleWithWindAgg.sql">TroubleWithWindAgg</a></li>
 		</ul>
 	</li>
 	<li><b>Framing</b>
@@ -2032,7 +2032,7 @@ FROM <table1>;
 					<li>Since <b>RANGE</b> defines your window frame on a <b>logical</b> level, your frame can consist of more rows than when the frame is defined at the <b>physical</b> level with <b>ROWS</b></li>
 				</ul>
 			</li>			
-			<li>See Exercise <a href="./Chapter%208/RowRangePerformance">RowRangePerformance</a></li>
+			<li>See Exercise <a href="./Chapter%208/RowRangePerformance.sql">RowRangePerformance</a></li>
 		</ul>
 	</li>
 </ol>
@@ -2093,7 +2093,7 @@ WHERE <column> LIKE 'value[^d]';
 					</li>
 				</ul>
 			</li>			
-			<li>See Exercise <a href="./Chapter%209/PatternRestricting">PatternRestricting</a></li>
+			<li>See Exercise <a href="./Chapter%209/PatternRestricting.sql">PatternRestricting</a></li>
 		</ul>
 	</li>
 	<li><b>Using PATINDEX</b>
@@ -2107,7 +2107,7 @@ PATINDEX('%pattern%', expression)
 ```
 </p>
 			</li>			
-			<li>See Exercise <a href="./Chapter%209/PatIndex">PatIndex</a></li>
+			<li>See Exercise <a href="./Chapter%209/PatIndex.sql">PatIndex</a></li>
 		</ul>
 	</li>
 	<li><b>Performing a Full-Text Search</b>
@@ -2141,7 +2141,7 @@ WHERE CONTAINS(<index column>, <searchterm>);
 ```
 </p>
 					</li>					
-					<li>See Exercise <a href="./Chapter%209/FullTextSearch">FullTextSearch</a></li>
+					<li>See Exercise <a href="./Chapter%209/FullTextSearch.sql">FullTextSearch</a></li>
 				</ul>
 			</li>
 			<li><b>Using <b>CONTAINS</b> with multiple terms</b>
@@ -2159,7 +2159,7 @@ WHERE CONTAINS(<index column>, <searchterm1 [AND][OR][searchterm2]>);
 ```
 </p>
 					</li>
-					<li>See Exercise <a href="./Chapter%209/FullTextSearch">FullTextSearch</a></li>
+					<li>See Exercise <a href="./Chapter%209/FullTextSearch.sql">FullTextSearch</a></li>
 				</ul>
 			</li>
 			<li><b>FREETEXT</b>
@@ -2172,7 +2172,7 @@ WHERE CONTAINS(<index column>, <searchterm1 [AND][OR][searchterm2]>);
 							<li>Avoid using double quotes</li>
 						</ul>
 					</li>
-					<li>See Exercise <a href="./Chapter%209/FullTextSearch">FullTextSearch</a></li>
+					<li>See Exercise <a href="./Chapter%209/FullTextSearch.sql">FullTextSearch</a></li>
 				</ul>
 			</li>
 		</ul>
@@ -2189,7 +2189,7 @@ WHERE CONTAINS(<index column>, <searchterm1 [AND][OR][searchterm2]>);
 	</li>
 	<li><b>Thinking about Performance</b>
 		<ul>
-			<li>See Exercise <a href="./Chapter%209/Performance">Performance</a> for a comparison of <b>LIKE</b> vs. <b>CHARINDEX</b></li>
+			<li>See Exercise <a href="./Chapter%209/Performance.sql">Performance</a> for a comparison of <b>LIKE</b> vs. <b>CHARINDEX</b></li>
 		</ul>
 	</li>
 </ol>
@@ -2282,7 +2282,7 @@ VALUES (12, N'Johnny', N'A.', N'Capino')
 			</li>
 		</ul>
 	</li>	
-	<li>See Exercise <a href="./Chapter%2010/DataInsertion">DataInsertion</a></li>
+	<li>See Exercise <a href="./Chapter%2010/DataInsertion.sql">DataInsertion</a></li>
 </ol>
 
 ## Chapter 11: Writing Advanced Queries ##
@@ -2299,7 +2299,7 @@ VALUES (12, N'Johnny', N'A.', N'Capino')
 					<li>To display information valid on a particular date, you first have to figure out the latest effective date before the date in mind and then figure out the <b>effective sequence for that date.</b></li>
 				</ul>
 			</li>			
-			<li>See Exercise <a href="./Chapter%2011/EffectiveSequence">EffectiveSequence</a></li>
+			<li>See Exercise <a href="./Chapter%2011/EffectiveSequence.sql">EffectiveSequence</a></li>
 		</ul>
 	</li>
 	<li><b>Recursive CTEs</b>
@@ -2347,7 +2347,7 @@ FROM <cteName> [OPTION (MAXRECURSION <nubmer>)];
 ```
 </p>				
 			</li>			
-			<li>See Exercise <a href="./Chapter%2011/RecursiveCTE">RecursiveCTE</a></li>
+			<li>See Exercise <a href="./Chapter%2011/RecursiveCTE.sql">RecursiveCTE</a></li>
 		</ul>
 	</li>
 </ol>
@@ -2380,7 +2380,7 @@ FROM <table1>;
 					<li>The subquery executes once for each row of the outer query</li>
 				</ul>
 			</li>					
-			<li>See Exercise <a href="./Chapter%2011/IsolatingAggregateLogic">IsolatingAggregateLogic</a></li>
+			<li>See Exercise <a href="./Chapter%2011/IsolatingAggregateLogic.sql">IsolatingAggregateLogic</a></li>
 		</ul>
 	</li>
 	<li><b>Using Derived Tables</b>
@@ -2404,7 +2404,7 @@ JOIN (SELECT
 </p>				
 			</li>
 			<li>The derived table technique generally has much better performance than the same correlated subquery</li>			
-			<li>See Exercise <a href="./Chapter%2011/IsolatingAggregateLogic">IsolatingAggregateLogic</a></li>
+			<li>See Exercise <a href="./Chapter%2011/IsolatingAggregateLogic.sql">IsolatingAggregateLogic</a></li>
 		</ul>
 	</li>
 	<li><b>Using CROSS APPLY and OUTER APPLY</b>
@@ -2413,7 +2413,7 @@ JOIN (SELECT
 			<li>The function(or subquery) on the right will be called once for every row from the table on the left</li>
 			<li>Use <b>OUTER APPLY</b> like a <b>LEFT JOIN</b> to return a row from the left even if there is nothing returned on the right.</li>
 			<li>This technique generally does not perform well for large tables</li>
-			<li>See Exercise <a href="./Chapter%2011/IsolatingAggregateLogic">IsolatingAggregateLogic</a></li>
+			<li>See Exercise <a href="./Chapter%2011/IsolatingAggregateLogic.sql">IsolatingAggregateLogic</a></li>
 		</ul>
 	</li>
 </ol>
@@ -2518,7 +2518,7 @@ THEN DELETE --row is deleted from target
 			<li><b>IMPORTANT:</b> when reading through the logic of a MERGE statement, remember that all INSERTS and DELETES are happening with respect to the <b>target</b> table</li>
 		</ul>
 	</li>	
-	<li>See Exercise <a href="./Chapter%2011/Merge">Merge</a></li>
+	<li>See Exercise <a href="./Chapter%2011/Merge.sql">Merge</a></li>
 </ol>
 
 ### GROUPING SETS ###
@@ -2542,7 +2542,7 @@ GROUP BY GROUPING SETS(<col1>,<col2>);
 			</li>
 		</ul>
 	</li>	
-	<li>See Exercise <a href="./Chapter%2011/GroupingSets">GroupingSets</a></li>
+	<li>See Exercise <a href="./Chapter%2011/GroupingSets.sql">GroupingSets</a></li>
 </ol>
 
 ### CUBE and ROLLUP ###
@@ -2572,7 +2572,7 @@ GROUP BY <CUBE or ROLLUP>(<col1>,<col2>);
 ```
 </p>	
 	</li>	
-	<li>See Exercise <a href="./Chapter%2011/CubeRollup">CubeRollup</a></li>
+	<li>See Exercise <a href="./Chapter%2011/CubeRollup.sql">CubeRollup</a></li>
 </ol>
 
 ### Pivoted Queries ###
@@ -2595,7 +2595,7 @@ GROUP BY <col1>
 ```
 </p>
 			</li>			
-			<li>See Exercise <a href="./Chapter%2011/CasePivot">CasePivot</a></li>
+			<li>See Exercise <a href="./Chapter%2011/CasePivot.sql">CasePivot</a></li>
 		</ul>
 	</li>
 	<li><b>Pivoting Data with Pivot function</b>
@@ -2626,7 +2626,7 @@ PIVOT
 			<li>The SELECT part of the query lists any non-pivoted columns along with the values from pivoted columns</li>
 			<li>The values from pivoted columns will become the column names in your query</li>
 			<li>Honestly, I would rather use the CASE version of PIVOT because the function syntax is hard for me to wrap my head around</li>			
-			<li>See Exercise <a href="./Chapter%2011/PivotFunction">PivotFunction</a></li>
+			<li>See Exercise <a href="./Chapter%2011/PivotFunction.sql">PivotFunction</a></li>
 		</ul>
 	</li>
 </ol>
@@ -2668,8 +2668,7 @@ OFFSET @PageSize * (@PageNo -1) ROWS FETCH NEXT @PageSize ROWS ONLY
 			</li>
 		</ul>
 	</li>
-	<li>See exercise <b>Chapter11/Paging</b></li>
-	<li>See Exercise <a href="./Chapter%2011/Paging">Paging</a></li>
+	<li>See Exercise <a href="./Chapter%2011/Paging.sql">Paging</a></li>
 </ol>
 
 ## Chapter 12: Understanding T-SQL Logic ##
@@ -2757,14 +2756,14 @@ DECLARE [@]@tableName TABLE(<col1> <datatype> [PRIMARY KEY], <col2> <datatype>)
 						</ul>
 					</li>
 					<li>For configuration: https://www.sqlpassion.at/archive/2014/06/16/configuring-the-in-memory-oltp-file-group-for-high-performance/</li>					
-					<li>See Exercise <a href="./Chapter%2012/Hekaton">Hekaton</a></li>
+					<li>See Exercise <a href="./Chapter%2012/Hekaton.sql">Hekaton</a></li>
 				</ul>
 			</li>
 		</ul>
 	</li>
 	<li>Using a Temp Table or Table Variable Like an Array
 		<ul>			
-			<li>See Exercise <a href="./Chapter%2012/TableVarAsArray">TableVarAsArray</a></li>
+			<li>See Exercise <a href="./Chapter%2012/TableVarAsArray.sql">TableVarAsArray</a></li>
 		</ul>
 	</li>
 </ol>
@@ -2801,7 +2800,7 @@ FETCH NEXT FROM products INTO @ProductID, @Name;
 			</li>
 		</ul>
 	</li>	
-	<li>See Exercise <a href="./Chapter%2012/Cursor">Cursor</a></li>
+	<li>See Exercise <a href="./Chapter%2012/Cursor.sql">Cursor</a></li>
 </ol>
 
 ## Chapter 13: Managing Transactions ##
@@ -2906,7 +2905,7 @@ END CATCH
 ```
 </p>
 			</li>			
-			<li>See Exercise <a href="./Chapter%2013/TryCatch">TryCatch</a></li>
+			<li>See Exercise <a href="./Chapter%2013/TryCatch.sql">TryCatch</a></li>
 		</ul>
 	</li>
 </ol>
@@ -2932,7 +2931,7 @@ END CATCH
 			</li>
 		</ul>
 	</li>	
-	<li>See Exercise <a href="./Chapter%2013/UntrappableError">UntrappableError</a></li>
+	<li>See Exercise <a href="./Chapter%2013/UntrappableError.sql">UntrappableError</a></li>
 </ol>
 
 #### Using RAISEERROR ####
@@ -2956,7 +2955,7 @@ RAISEERROR(<message>,<severity>,<state>)
 			<li>In terms of the <b>severity</b> indicated when invoking RAISEERROR, you will normally use <b>16</b> for errors correctable by the user</li>
 		</ul>
 	</li>	
-	<li>See Exercise <a href="./Chapter%2013/RaiseError">RaiseError</a></li>
+	<li>See Exercise <a href="./Chapter%2013/RaiseError.sql">RaiseError</a></li>
 </ol>
 
 #### Using THROW Instead of RAISEERROR ####
@@ -2976,7 +2975,7 @@ THROW [{error_number| message | state}] [;]
 			<li>The THROW severity will always be <b>16</b></li>
 		</ul>
 	</li>	
-	<li>See Exercise <a href="./Chapter%2013/Throw">Throw</a></li>
+	<li>See Exercise <a href="./Chapter%2013/Throw.sql">Throw</a></li>
 </ol>
 
 ### Isolation Levels ###
@@ -3045,7 +3044,7 @@ ALTER TABLE <table name> ADD CONSTRAINT <constraint name> CHECK(<condition>);
 ```
 </p>
 			</li>			
-			<li>See Exercise <a href="./Chapter%2014/CheckConstraint">CheckConstraint</a></li>
+			<li>See Exercise <a href="./Chapter%2014/CheckConstraint.sql">CheckConstraint</a></li>
 		</ul>
 	</li>
 	<li>Adding <b>UNIQUE</b> constraints
@@ -3089,7 +3088,7 @@ ADD CONSTRAINT <constraint name> UNIQUE (<col1, <col2>);
 					</li>
 				</ul>
 			</li>			
-			<li>See Exercise <a href="./Chapter%2014/UniqueConstraint">UniqueConstraint</a></li>
+			<li>See Exercise <a href="./Chapter%2014/UniqueConstraint.sql">UniqueConstraint</a></li>
 		</ul>
 	</li>
 	<li>Adding Primary Key to a Table
@@ -3149,7 +3148,7 @@ PRIMARY KEY [CLUSTERED|NONCLUSTERED](<column1>);
 ```
 </p>				
 			</li>			
-			<li>See Exercise <a href="./Chapter%2014/PrimaryKey">PrimaryKey</a></li>
+			<li>See Exercise <a href="./Chapter%2014/PrimaryKey.sql">PrimaryKey</a></li>
 		</ul>
 	</li>
 	<li>Defining Automatically Populated Columns
@@ -3241,8 +3240,7 @@ CREATE TABLE <table name>
 					</li>
 				</ul>
 			</li>
-			<li>See exercise <b>Chpater14/AutoPopulatingColumns</b></li>
-			<li>See Exercise <a href="./Chapter%2014/AutoPopulatingColumns">AutoPopulatingColumns</a></li>
+			<li>See Exercise <a href="./Chapter%2014/AutoPopulatingColumns.sql">AutoPopulatingColumns</a></li>
 		</ul>
 	</li>
 </ol>
@@ -3292,7 +3290,7 @@ DROP VIEW <view name>;
 					<li>If wish to include CREATE/ALTER statements for views within a larger script, put GO statements before and after the CREATE/ALTER statements</li>
 				</ul>
 			</li>			
-			<li>See Exercise <a href="./Chapter%2014/Views">Views</a></li>
+			<li>See Exercise <a href="./Chapter%2014/Views.sql">Views</a></li>
 		</ul>
 	</li>
 	<li>Common problems with Views
@@ -3333,7 +3331,7 @@ DROP VIEW <view name>;
 					<li>Inserts into views are possible only if all columns that require a value are exposed through the view</li>
 				</ul>
 			</li>			
-			<li>See Exercise <a href="./Chapter%2014/ModifyDataViaView">ModifyDataViaView</a></li>
+			<li>See Exercise <a href="./Chapter%2014/ModifyDataViaView.sql">ModifyDataViaView</a></li>
 		</ul>
 	</li>
 </ol>
@@ -3390,7 +3388,7 @@ DROP FUNCTION <scalar function name>;
 ```
 </p>
 					</li>					
-					<li>See Exercise <a href="./Chapter%2014/ScalarUDF">ScalarUDF</a></li>
+					<li>See Exercise <a href="./Chapter%2014/ScalarUDF.sql">ScalarUDF</a></li>
 				</ul>
 			</li>
 		</ul>
@@ -3445,7 +3443,7 @@ PRINT <variable>;
 ```
 </p>				
 			</li>			
-			<li>See Exercise <a href="./Chapter%2014/ProcOutput">ProcOutput</a></li>
+			<li>See Exercise <a href="./Chapter%2014/ProcOutput.sql">ProcOutput</a></li>
 		</ul>
 	</li>
 	<li>Saving the Results of a SP to a Table
@@ -3462,7 +3460,7 @@ PRINT <variable>;
 					<li>I personally will use a tabled-valued UDF since you can choose to insert only what you want from the returned data of the UDF and ignore other parts returned.</li>
 				</ul>
 			</li>			
-			<li>See Exercise <a href="./Chapter%2014/ProcTableInsert">ProcTableInsert</a></li>
+			<li>See Exercise <a href="./Chapter%2014/ProcTableInsert.sql">ProcTableInsert</a></li>
 		</ul>
 	</li>
 </ol>
@@ -3564,7 +3562,7 @@ AS TABLE
 ```
 </p>
 	</li>	
-	<li>See Exercise <a href="./Chapter%2014/CreateTableType">CreateTableType</a></li>
+	<li>See Exercise <a href="./Chapter%2014/CreateTableType.sql">CreateTableType</a></li>
 </ol>
 
 ## Chapter 15: Working with XML ##
@@ -3606,12 +3604,12 @@ AS TABLE
 					<li>This format is the default structure for XML represented int table format</li>
 				</ul>
 			</li>			
-			<li>See Exercise <a href="./Chapter%2015/DefaultOpenXML">DefaultOpenXML</a></li>
+			<li>See Exercise <a href="./Chapter%2015/DefaultOpenXML.sql">DefaultOpenXML</a></li>
 		</ul>
 	</li>
 	<li>If you want to specify your own column definitions during the shredding, you can use the <b>WITH</b> clause
 		<ul>			
-			<li>See Exercise <a href="./Chapter%2015/CustomOpenXML">CustomOpenXML</a></li>
+			<li>See Exercise <a href="./Chapter%2015/CustomOpenXML.sql">CustomOpenXML</a></li>
 		</ul>
 	</li>
 </ol>
@@ -3679,7 +3677,7 @@ FOR XML RAW ('NAME'), ELEMENTS;
 			</li>
 		</ul>
 	</li>	
-	<li>See Exercise <a href="./Chapter%2015/ForXmlAuto">ForXmlAuto</a></li>
+	<li>See Exercise <a href="./Chapter%2015/ForXmlAuto.sql">ForXmlAuto</a></li>
 </ol>
 
 #### FOR XML AUTO ####
@@ -3740,7 +3738,7 @@ FOR XML AUTO;
 			<li>This is because AUTO mode automatically names the nodes after the name of each table</li>
 		</ul>
 	</li>	
-	<li>See Exercise <a href="./Chapter%2015/ForXmlAuto">ForXmlAuto</a></li>
+	<li>See Exercise <a href="./Chapter%2015/ForXmlAuto.sql">ForXmlAuto</a></li>
 </ol>
 
 #### FOR XML EXPLICIT ####
@@ -3820,7 +3818,7 @@ FOR XML EXPLICIT;
 			<li>This allows you to control how to encode values (ID, IDREF, IDREFS) and how to map string data into XML(hide, element, elementxsinil, xml, xmltext, and cdata)</li>
 		</ul>
 	</li>	
-	<li>See Exercise <a href="./Chapter%2015/ForXmlExplicit">ForXmlExplicit</a></li>
+	<li>See Exercise <a href="./Chapter%2015/ForXmlExplicit.sql">ForXmlExplicit</a></li>
 </ol>
 
 #### FOR XML PATH ####
@@ -3896,7 +3894,7 @@ FOR XML PATH;
 			</li>
 		</ul>
 	</li>
-	<li>See Exercise <a href="./Chapter%2015/ForXmlPath">ForXmlPath</a></li>
+	<li>See Exercise <a href="./Chapter%2015/ForXmlPath.sql">ForXmlPath</a></li>
 </ol>
 
 
@@ -3914,7 +3912,7 @@ FOR XML PATH;
 			<li>The data cannot exceed 2GB</li>
 		</ul>
 	</li>	
-	<li>See Exercise <a href="./Chapter%2015/">XmlDataType</a></li>
+	<li>See Exercise <a href="./Chapter%2015/XmlDataType.sql">XmlDataType</a></li>
 </ol>
 
 ### XML Methods ###
