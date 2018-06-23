@@ -3951,7 +3951,7 @@ FROM #Bikes;
 			</li>
 		</ul>
 	</li>
-	<li>See Exercise <b>[XmlQueryMethod](Chapter15/XmlQueryMethod.sql)</b></li>
+	<li>See Exercise <b>[XmlQueryMethod](./Chapter15/XmlQueryMethod.sql)</b></li>
 </ol>
 
 
