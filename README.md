@@ -3952,9 +3952,9 @@ FROM #Bikes;
 		</ul>
 	</li>
 	<li>See Exercise
-		<ul>
-			<li><b>[XmlQueryMethod] (./Chapter15/XmlQueryMethod.sql)</b></li>
-		</ul>
+		<ul><li><b>
+[XmlQueryMethod] (./Chapter15/XmlQueryMethod.sql)
+		</b></li></ul>
 	</li>
 </ol>
 
