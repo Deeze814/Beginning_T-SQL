@@ -3953,11 +3953,12 @@ FROM #Bikes;
 	</li>
 	<li>See Exercise
 		<ul><li><b>
-[XmlQueryMethod](Chapter15/XmlQueryMethod.sql)
+
 		</b></li></ul>
 	</li>
 </ol>
 
+[XmlQueryMethod](Chapter15/XmlQueryMethod.sql)
 
 # Appendix A: Notepad++ custom setup
 <ol>
