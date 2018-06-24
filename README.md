@@ -3936,7 +3936,7 @@ FOR XML PATH;
 <ol>
 	<li>The <b>QUERY</b> method will extract elements form an XML column or variable
 		<ul>
-			<li>When the query method is used, its return value is still of the XML type</li>
+			<li>When the query method is used, its return value is still of the XML type(element and value)</li>
 			<li>Sample syntax:
 <p>
 
@@ -3956,6 +3956,100 @@ FROM #Bikes;
 		</ul>
 	</li>
 	<li>See Exercise <a href="./Chapter%2015/XmlQueryMethod.sql">XmlQueryMethod</a></li>
+</ol>
+
+#### The VALUE Method ####
+<ol>
+	<li>The <b>VALUE</b> method allows you to extract just the sought after element's value
+		<ul>
+			<li>This means you do not return the element tag (like in the <b>QUERY</b>method)</li>
+			<li>The value is returned as a <b>scalar</b> value</li>
+			<li>The Value method takes a second argument that will specify the data type of the returned value
+				<ul>
+					<li>Because this is a scalar function, if you want the first occurrence you will have to specify an index of [1]</li>
+				</ul>
+			</li>
+			<li>If you are working with an XML document that contains <b>attributes</b> instead of nested elements, you can specify the attribute using the <b>@</b> symbol</li>
+			<li>Sample Syntax:
+<p>
+
+```SQL
+CREATE TABLE #Bikes(ProductID INT, ProductDescription XML);
+
+SELECT 
+	ProductID
+	,ProductDescription.query(('Product/ListPrice')[1], 'Money') AS ListPrice
+FROM #Bikes;
+```
+</p>
+			</li>
+		</ul>
+	</li>
+	<li>See Exercise <a href="./Chapter%2015/XmlValueMethod.sql">XmlValueMethod</a></li>
+</ol>
+
+#### The EXISTS Method ####
+<ol>
+	<li>The <b>EXISTS</b> method will allow you to search fro specific values in the XML
+		<ul>
+			<li>The method will return a <b>1</b> if the value is found or a <b>0</b> if it is not present within the XML</li>
+			<li>Similar to the <b>Value</b> method, you must specify the particular instance of the element you are looking for
+				<ul>
+					<li>Denoted with the index designation, [#]</li>
+				</ul>
+			</li>
+			<li>When working with dates in XML along with EXIST, you must cast the XML value to a date</li>
+			<li>Sample Syntax:
+<p>
+
+```SQL
+CREATE TABLE #Bikes(ProductID INT, ProductDescription XML);
+
+--Using exist to filter down the elements that match its predicate statement and then return those elements values
+SELECT ProductID, 
+    ProductDescription.value('(/Product/ListPrice)[1]', 'MONEY') AS ListPrice
+FROM #Bikes
+WHERE ProductDescription.exist('/Product/ListPrice[text()[1] lt 3000]') = 1;
+```
+</p>
+			</li>
+		</ul>
+	</li>
+	<li>See Exercise <a href="./Chapter%2015/XmlExistsMethod.sql">XmlExistsMethod</a></li>
+</ol>
+
+#### The MODIFY Method ####
+<ol>
+	<li>The <b>MODIFY</b> will modify the data stored as an XML Data type
+		<ul>
+			<li>The <b>MODIFY</b> is similar to using update, insert, and delete commands
+				<ul>
+					<li>The primary difference is that the <b>MODIFY</b> method can only be used in a <b>SET</b> clause of an UPDATE statement or the SET statement</li>
+				</ul>
+			</li>
+			<li>Sample syntax:
+<p>
+
+```SQL
+DECLARE @x xml =
+'<Product ProductID = "521487">
+  <ProductType>Paper Towels</ProductType>
+  <Price>15</Price>
+  <Vendor>Johnson Paper</Vendor>
+  <VendorID>47</VendorID>
+  <QuantityOnHand>500</QuantityOnHand>
+</Product>';
+
+--Inserting data into xml with the modify method 
+SET @x.modify('
+INSERT <WarehouseID>77</WarehouseID>
+INTO (/Product)[1]');
+```
+</p>
+			</li>
+		</ul>
+	</li>
+	<li>See Exercise <a href="./Chapter%2015/XmlModifyMethod.sql">XmlModifyMethod</a></li>
 </ol>
 
 # Appendix A: Notepad++ custom setup
