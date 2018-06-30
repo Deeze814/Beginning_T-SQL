@@ -4105,6 +4105,56 @@ FROM @XML.nodes('/Product/ProductID') P(ProdID);
 	<li>See Exercise <a href="./Chapter%2015/Namespaces.sql">Namespaces</a></li>
 </ol>
 
+## Chapter 16: Expanding on Data Type Concepts ##
+### FILESTREAM ###
+<ol>
+	<li><b>FILESTREAM</b> is SQL Server's method of large document storage
+		<ul>
+			<li>This technique stores the file on a file system (network share) and creating a link to it via the filestream data type settings</li>
+			<li>SQL Server recommends using the <b>FILESTREAM</b> type if files are over 1MB ins size</li>
+		</ul>
+	</li>
+	<li>Steps for setting up a FILESTREAM
+		<ol>
+			<li>
+				<li>Launch the SQL Server Configuration Manager</li>
+				<li>Select SQL Server Services and locate the SQL Server instance</li>
+				<li>Click the instance and select the FILESTREAM tab
+					<ul>
+						<li>Make sure all of the options are enabled</li>
+						<li>By checking <b>Enable FILESTREAM for I/O access</b>, you will turn on the FileTable functionality
+							<ul>
+								<li>This allows remote access to users from other systems to access the file</li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+				<li>Click OK, restart SQL Server</li>
+				<li>Right click the database in the Object Explorer and select Properties</li>
+				<li>Select <b>FileGroups</b></li>
+				<li>In the FILESTREAM section, click Add FileGroup</li>
+				<li>Type the name you want for the new Filestream.</li>
+				<li>Select the Files page</li>
+				<li>Click Add, and then type the name you want for the logical file of the file steam</li>
+				<li>Under <b>File Type</b> select FILESTREAM Data </li>
+				<li>Find the <b>Path</b> property of the File you logical file row
+					<ul>
+						<li>Click the ellipsis button to set the location of the new file</li>
+						<li>Make note of this Path property as it will be where data is saved.</li>
+					</ul>
+				</li>
+				<li>Once this is finished and you click OK, your database is now setup to work with FILESTREAM data</li>
+			</li>
+		</ol>
+	</li>
+	<li><b>NOTE:</b> SQL Server Databases have a minimum of two files: the data file and the log file.
+		<ul>
+			<li>To use FILESTREAM functionality in a database, you will add a special <b>filegroup</b> and add a file to the filegroup</li>
+			<li>See step 5-8 above</li>
+		</ul>
+	</li>
+</ol>
+
 # Appendix A: Notepad++ custom setup
 <ol>
 	<li><b>IMPORTANT:</b> Regardless of what directory you tell the installer to place the Notepad++ files, it will create most of the required file directories in:
