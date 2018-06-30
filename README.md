@@ -4052,6 +4052,59 @@ INTO (/Product)[1]');
 	<li>See Exercise <a href="./Chapter%2015/XmlModifyMethod.sql">XmlModifyMethod</a></li>
 </ol>
 
+#### The NODES Method ####
+<ol>
+	<li>The <b>NODES</b> method can be used in conjunction with the VALUES method to <b>shred</b> XML documents
+		<ul>
+			<li>An example of using NODES with VALUE:
+<p>
+
+```SQL
+DECLARE @XML XML = '
+<Product>
+	<ProductID>749</ProductID>
+	<ProductID>749</ProductID>
+	<ProductID>750</ProductID>
+	<ProductID>751</ProductID>
+	<ProductID>752</ProductID>
+	<ProductID>753</ProductID>
+	<ProductID>754</ProductID>
+	<ProductID>755</ProductID>
+	<ProductID>756</ProductID>
+	<ProductID>757</ProductID>
+	<ProductID>758</ProductID>
+</Product>';
+
+--Shred the document by parsing each ProductID into a 'node' and then extracting its value via the VALUE method
+SELECT P.ProdID.value('.', 'INT') as ProductID
+FROM @XML.nodes('/Product/ProductID') P(ProdID);
+```
+</p>
+				<ul>
+					<li>This would produce a record set with a single column named <b>ProductID</b> and each row containing the associated value of the current ProductID node</li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+	<li>See Exercise <a href="./Chapter%2015/XmlNodesMethod.sql">XmlNodesMethod</a></li>
+</ol>
+
+#### Namespaces ####
+<ol>
+	<li>XML uses namespaces to uniquely define an element and attribute names in an XML document
+		<ul>
+			<li>XML data can be typed (lacks namespace) or typed (elements are namespaced)</li>
+			<li>XML data that is <b>typed</b> is associated with a schema
+				<ul>
+					<li>The schema represents the explicit definition for that document</li>
+				</ul>
+			</li>
+			<li><b>IMPORTANT:</b> If you use one of the XML methods on a column in which the data is typed (element is namespaced), you <b>MUST</b> include the namespace in you XML method query</li>
+		</ul>
+	</li>
+	<li>See Exercise <a href="./Chapter%2015/Namespaces.sql">Namespaces</a></li>
+</ol>
+
 # Appendix A: Notepad++ custom setup
 <ol>
 	<li><b>IMPORTANT:</b> Regardless of what directory you tell the installer to place the Notepad++ files, it will create most of the required file directories in:
