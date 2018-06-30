@@ -4115,7 +4115,7 @@ FROM @XML.nodes('/Product/ProductID') P(ProdID);
 		</ul>
 	</li>
 	<li>Steps for setting up a FILESTREAM
-		<ol>
+		<ul>
 			<li>
 				<li>Launch the SQL Server Configuration Manager</li>
 				<li>Select SQL Server Services and locate the SQL Server instance</li>
@@ -4130,6 +4130,11 @@ FROM @XML.nodes('/Product/ProductID') P(ProdID);
 					</ul>
 				</li>
 				<li>Click OK, restart SQL Server</li>
+				<li><b>NOTE:</b> SQL Server Databases have a minimum of two files: the data file and the log file.
+					<ul>
+						<li>To use FILESTREAM functionality in a database, you will add a special <b>filegroup</b> and add a file to the filegroup</li>
+					</ul>
+				</li>
 				<li>Right click the database in the Object Explorer and select Properties</li>
 				<li>Select <b>FileGroups</b></li>
 				<li>In the FILESTREAM section, click Add FileGroup</li>
@@ -4144,14 +4149,8 @@ FROM @XML.nodes('/Product/ProductID') P(ProdID);
 					</ul>
 				</li>
 				<li>Once this is finished and you click OK, your database is now setup to work with FILESTREAM data</li>
-			</li>
+			</ul>
 		</ol>
-	</li>
-	<li><b>NOTE:</b> SQL Server Databases have a minimum of two files: the data file and the log file.
-		<ul>
-			<li>To use FILESTREAM functionality in a database, you will add a special <b>filegroup</b> and add a file to the filegroup</li>
-			<li>See step 5-8 above</li>
-		</ul>
 	</li>
 </ol>
 
