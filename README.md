@@ -4116,7 +4116,11 @@ FROM @XML.nodes('/Product/ProductID') P(ProdID);
 	</li>
 	<li>Steps for setting up a FILESTREAM
 		<ul>
-			<li>Launch the SQL Server Configuration Manager</li>
+			<li>Launch the SQL Server Configuration Manager
+				<ul>
+					<li>I had to path to this and launch it from <b>C:\Windows\SysWOW64\SQLServerManager14.msc</b></li>
+				</ul>
+			</li>
 			<li>Select SQL Server Services and locate the SQL Server instance</li>
 			<li>Click the instance and select the FILESTREAM tab
 				<ul>
@@ -4134,7 +4138,11 @@ FROM @XML.nodes('/Product/ProductID') P(ProdID);
 					<li>To use FILESTREAM functionality in a database, you will add a special <b>filegroup</b> and add a file to the filegroup</li>
 				</ul>
 			</li>
-			<li>Right click the database in the Object Explorer and select Properties</li>
+			<li>Right click the database in the Object Explorer and select Properties
+				<ul>
+					<li><b>NOTE:</b> This is not the top-level icon representing the DB server, you have to expand that and then find the DB name and right click that for the pages you need</li>
+				</ul>
+			</li>
 			<li>Select <b>FileGroups</b></li>
 			<li>In the FILESTREAM section, click Add FileGroup</li>
 			<li>Type the name you want for the new Filestream.</li>
@@ -4151,6 +4159,53 @@ FROM @XML.nodes('/Product/ProductID') P(ProdID);
 			</ul>
 		</ol>
 	</li>
+</ol>
+
+### Enhanced Date and Time ###
+#### DATE, TIME, DATETIME2 ####
+<ol>
+	<li>These data types allow you to store either just the DATE or TIME component of a date value
+		<ul>
+			<li>TIME and DATETIME2 allow you to specify the precision of the TIME component from 0 to 7 decimal places</li>
+		</ul>
+	</li>
+	<li>See Exercise <a href="./Chapter%2016/DateTimeAndDatetime2.sql">DateTimeAndDatetime2</a></li>
+</ol>
+
+#### DATETIMEOFFSET ####
+<ol>
+	<li>The <b>DATETIMEOFFSET</b> contains the Date and Time components but also the ability to work with time zone offsets 
+		<ul>
+			<li>This represents the difference between UTC date/time and the stored date</li>
+		</ul>
+	</li>
+	<li>See Exercise <a href="./Chapter%2016/DateTimeOffset.sql">DateTimeOffset</a></li>
+</ol>
+
+### Spatial Data Types ###
+<ol>
+	<li>SQL Server has two CLR data types, GEOMETRY and GEOGRAPHY, that fall into the category of <b>spatial</b> data types</li>
+</ol>
+
+#### GEOMETRY ####
+<ol>
+	<li>This CLR data type can store points, lines and polygons
+		<ul>
+			<li>You can then use this data to calculate the difference between two shapes, determine where they intersect and much more</li>
+			<li>The database engine will store the data as a binary value</li>
+		</ul>
+	</li>
+	<li>See Exercise <a href="./Chapter%2016/Geometry.sql">Geometry</a></li>
+</ol>
+
+#### GEOGRAPHY ####
+<ol>
+	<li>Using <b>GEOGRAPHY</b>, you can store longitude and latitude values for actual locations or areas
+		<ul>
+			<li>You can use the built in SQL Server function to then calculate distance between stored locations</li>
+		</ul>
+	</li>
+	<li>See Exercise <a href="./Chapter%2016/Geography.sql">Geography</a></li>
 </ol>
 
 # Appendix A: Notepad++ custom setup
